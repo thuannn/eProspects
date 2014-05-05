@@ -21,7 +21,7 @@ import com.lemania.eprospects.client.event.ProfessorAfterAddEvent.ProfessorAfter
 import com.lemania.eprospects.client.event.StudentAfterAddEvent.StudentAfterAddHandler;
 import com.lemania.eprospects.client.event.StudentAfterStatusChangeEvent.StudentAfterStatusChangeHandler;
 import com.lemania.eprospects.client.place.NameTokens;
-import com.lemania.eprospects.client.presenter.MainPagePresenter;
+import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.uihandler.UserManagementUiHandler;
 import com.lemania.eprospects.shared.ProfessorProxy;
 import com.lemania.eprospects.shared.StudentProxy;

@@ -1,6 +1,23 @@
 package com.lemania.eprospects.client.place;
 
 public class NameTokens {
+
+	public static final String applicationfinal = "applicationfinal";
+
+	public static final String applicationpayment = "applicationpayment";
+
+	public static final String applicationstep5 = "applicationstep5";
+
+	public static final String applicationstep4 = "applicationstep4";
+
+	public static final String applicationstep3 = "applicationstep3";
+
+	public static final String applicationstep2 = "applicationstep2";
+
+	public static final String applicationstep1 = "applicationstep1";
+
+	public static final String applicationhome = "applicationhome";
+
 	public static final String homepage = "!homepage";
 	public static final String ecolepage = "!ecolepage";
 	public static final String addecole = "!addecole";
@@ -38,7 +55,7 @@ public class NameTokens {
 	public static final String evaluationinputstudent = "evaluationinputstudent";
 
 	public static String getHomePage() {
-	    return homepage;
+		return homepage;
 	}
 
 	public static String getEcolepage() {
@@ -176,4 +193,37 @@ public class NameTokens {
 	public static String getEvaluationinputstudent() {
 		return evaluationinputstudent;
 	}
+
+	public static String getApplicationhome() {
+		return applicationhome;
+	}
+
+	public static String getApplicationstep1() {
+		return applicationstep1;
+	}
+
+	public static String getApplicationstep2() {
+		return applicationstep2;
+	}
+
+	public static String getApplicationstep3() {
+		return applicationstep3;
+	}
+
+	public static String getApplicationstep4() {
+		return applicationstep4;
+	}
+
+	public static String getApplicationstep5() {
+		return applicationstep5;
+	}
+
+	public static String getApplicationpayment() {
+		return applicationpayment;
+	}
+
+	public static String getApplicationfinal() {
+		return applicationfinal;
+	}
+
 }

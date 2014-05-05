@@ -19,6 +19,7 @@ import com.lemania.eprospects.client.event.CheckClassMasterRoleEvent.CheckClassM
 import com.lemania.eprospects.client.event.EvaluationStudentReportLoadEvent.EvaluationStudentReportLoadHandler;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent.LoginAuthenticatedHandler;
 import com.lemania.eprospects.client.place.NameTokens;
+import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.uihandler.FrmEvaluationInputStudentUiHandler;
 import com.lemania.eprospects.shared.BulletinProxy;
 import com.lemania.eprospects.shared.ClasseProxy;

@@ -26,7 +26,6 @@ import com.lemania.eprospects.client.presenter.FrmPasswordPresenter;
 import com.lemania.eprospects.client.presenter.FrmSubjectAddPresenter;
 import com.lemania.eprospects.client.presenter.FrmSubjectListPresenter;
 import com.lemania.eprospects.client.presenter.HomePresenter;
-import com.lemania.eprospects.client.presenter.MainPagePresenter;
 import com.lemania.eprospects.client.presenter.ProfileManagementPresenter;
 import com.lemania.eprospects.client.presenter.ProfsAddPresenter;
 import com.lemania.eprospects.client.presenter.ProfsPresenter;
@@ -55,7 +54,6 @@ import com.lemania.eprospects.client.view.FrmPasswordView;
 import com.lemania.eprospects.client.view.FrmSubjectAddView;
 import com.lemania.eprospects.client.view.FrmSubjectListView;
 import com.lemania.eprospects.client.view.HomeView;
-import com.lemania.eprospects.client.view.MainPageView;
 import com.lemania.eprospects.client.view.ProfileManagementView;
 import com.lemania.eprospects.client.view.ProfsAddView;
 import com.lemania.eprospects.client.view.ProfsView;
@@ -63,17 +61,24 @@ import com.lemania.eprospects.client.view.SettingsView;
 import com.lemania.eprospects.client.view.StudentAddView;
 import com.lemania.eprospects.client.view.StudentView;
 import com.lemania.eprospects.client.view.UserManagementView;
+import com.lemania.eprospects.client.presenter.applicationhome.ApplicationHomeModule;
+import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
+import com.lemania.eprospects.client.presenter.mainpage.MainPageView;
 
 public class ClientModule extends AbstractPresenterModule {
 
 	@Override
 	protected void configure() {
+		install(new ApplicationHomeModule());
 		// Singletons
 		install(new DefaultModule(SISPlaceManager.class));
 		
 		// Set DefaultPlace to homepage
-		bindConstant().annotatedWith(DefaultPlace.class).to(
-				NameTokens.homepage);
+		// bindConstant().annotatedWith(DefaultPlace.class).to(
+		//		NameTokens.homepage);
+		
+		bindConstant().annotatedWith(DefaultPlace.class).to (
+				NameTokens.applicationhome);
 		
 		bindPresenter(MainPagePresenter.class, MainPagePresenter.MyView.class,
 				MainPageView.class, MainPagePresenter.MyProxy.class);

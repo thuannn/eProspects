@@ -17,7 +17,7 @@ import com.lemania.eprospects.client.event.PageAfterSelectEvent;
 import com.lemania.eprospects.client.event.StudentAfterStatusChangeEvent;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent.LoginAuthenticatedHandler;
 import com.lemania.eprospects.client.place.NameTokens;
-import com.lemania.eprospects.client.presenter.MainPagePresenter;
+import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.uihandler.StudentListUiHandler;
 import com.lemania.eprospects.shared.StudentProxy;
 import com.lemania.eprospects.shared.service.EventSourceRequestTransport;

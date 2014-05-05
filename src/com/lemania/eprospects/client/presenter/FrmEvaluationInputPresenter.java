@@ -15,6 +15,7 @@ import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
 import com.lemania.eprospects.client.event.PageAfterSelectEvent;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent.LoginAuthenticatedHandler;
 import com.lemania.eprospects.client.place.NameTokens;
+import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.uihandler.FrmEvaluationInputUiHandler;
 import com.lemania.eprospects.shared.AssignmentProxy;
 import com.lemania.eprospects.shared.EvaluationHeaderProxy;

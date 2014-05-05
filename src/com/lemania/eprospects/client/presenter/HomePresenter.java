@@ -17,7 +17,7 @@ import com.lemania.eprospects.client.event.PageAfterSelectEvent;
 import com.lemania.eprospects.client.event.AfterUserLogOutEvent.AfterUserLogOutHandler;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent.LoginAuthenticatedHandler;
 import com.lemania.eprospects.client.place.NameTokens;
-import com.lemania.eprospects.client.presenter.MainPagePresenter;
+import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.uihandler.HomeUiHandler;
 import com.lemania.eprospects.shared.SettingOptionProxy;
 import com.lemania.eprospects.shared.UserProxy;
@@ -227,23 +227,25 @@ public class HomePresenter
 	 * */
 	private void drawEcoleInterface() {
 		//
-		SettingOptionRequestFactory rf = GWT.create(SettingOptionRequestFactory.class);
-		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
-		SettingOptionRequestContext rc = rf.settingOptionRequest();
-		rc.listAll().fire(new Receiver<List<SettingOptionProxy>>(){
-			@Override
-			public void onFailure(ServerFailure error){
-				Window.alert(error.getMessage());
-			}
-			@Override
-			public void onSuccess(List<SettingOptionProxy> response) {
-				for (SettingOptionProxy setting : response){
-					if (setting.getOptionName().equals("ECOLE")) {
-						getEventBus().fireEvent(new DrawSchoolInterfaceEvent(setting.getOptionValue()));
-					}
-				}
-			}
-		});
+//		SettingOptionRequestFactory rf = GWT.create(SettingOptionRequestFactory.class);
+//		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
+//		SettingOptionRequestContext rc = rf.settingOptionRequest();
+//		rc.listAll().fire(new Receiver<List<SettingOptionProxy>>(){
+//			@Override
+//			public void onFailure(ServerFailure error){
+//				Window.alert(error.getMessage());
+//			}
+//			@Override
+//			public void onSuccess(List<SettingOptionProxy> response) {
+//				for (SettingOptionProxy setting : response){
+//					if (setting.getOptionName().equals("ECOLE")) {
+//						getEventBus().fireEvent(new DrawSchoolInterfaceEvent(setting.getOptionValue()));
+//					}
+//				}
+//			}
+//		});
+		
+		getEventBus().fireEvent( new DrawSchoolInterfaceEvent() );
 	}
 
 
