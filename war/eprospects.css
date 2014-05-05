@@ -162,6 +162,7 @@ th {
 .fieldTitle {
 	color: navy;
 	padding: 1px;
+	width: 150px;
 }
 .sis-TextArea {
 	border: 0px;

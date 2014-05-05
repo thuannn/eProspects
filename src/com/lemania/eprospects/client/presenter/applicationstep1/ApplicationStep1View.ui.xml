@@ -2,9 +2,209 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <g:SimplePanel ui:field="main">
-    	<g:VerticalPanel width="100%" height="100%">
-    		<g:Label text="Step 1"/>
-    		<g:Button ui:field="cmdNextStep">Next Step</g:Button>
+    	<g:VerticalPanel width="100%" height="">
+    		<g:Label text="INFORMATIONS GENERALES" styleName="pageTitle"/>
+    		<g:Label text="Step 1 of 5"/>
+    		<g:FlowPanel width="900px">
+    			<g:Label text="Etudiant(e)" styleName="sectionTitle"/>
+    			<g:Grid width="100%">
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Veuillez sélectionner"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:ListBox/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Nom de famille"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:Label text="Prénom"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Date de naissance"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:Label text="Nationalité"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    		</g:Grid>
+    			<g:HorizontalPanel width="100%">
+    						<g:Label text="Adresse (Rue, No.)"/>
+    						<g:TextBox/>
+    					</g:HorizontalPanel>
+    			<g:Grid width="100%">
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Code postale / Ville"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:Label text="Pays"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Email"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:Label text="Mobile (pour les activités)"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    		</g:Grid>
+    			<g:Label text="Parents / tuteurs" styleName="sectionTitle"/>
+    			<g:Grid width="100%">
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Nom de famille"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:Label text="Prénom"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    		</g:Grid>
+    			<g:HorizontalPanel width="100%">
+    						<g:Label text="Adresse (Rue, No.)"/>
+    						<g:TextBox/>
+    					</g:HorizontalPanel>
+    			<g:Grid width="100%">
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Code postale / Ville"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:Label text="Pays"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Mobile (mère)"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:Label text="Mobile (père)"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Téléphone (domicile)"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:Label text="Téléphone professionnel"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Fax"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:Label text="E-mail"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    		</g:Grid>
+    			<g:Label text="Adresse pour l&apos;envoie de la facture et de la lettre de confirmation (si différente de l&apos;adresse des parents)" styleName="sectionTitle"/>
+    			<g:Grid width="100%">
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Nom de l&apos;entreprise"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Nom / Prénom de la personne responsable"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Adresse (Rue, No.)"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Code postale / Ville"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Pays"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox/>
+    				</g:customCell>
+    			</g:row>
+    		</g:Grid>
+    			<g:HorizontalPanel horizontalAlignment="ALIGN_RIGHT" width="100%">
+    				<g:Button ui:field="cmdNextStep">Next Step</g:Button>
+    			</g:HorizontalPanel>
+    		</g:FlowPanel>
     	</g:VerticalPanel>
     </g:SimplePanel>
 </ui:UiBinder>

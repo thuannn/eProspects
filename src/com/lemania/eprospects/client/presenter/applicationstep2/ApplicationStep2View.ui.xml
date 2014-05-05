@@ -2,9 +2,166 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <g:SimplePanel ui:field="main">
-    	<g:VerticalPanel width="100%" height="100%">
-    		<g:Label text="Step 2"/>
-    		<g:Button ui:field="cmdNextStep">Next Step</g:Button>
+    	<g:VerticalPanel width="100%" height="">
+    		<g:Label text="CHOIX DU PROGRAMME" styleName="pageTitle"/>
+    		<g:Label text="Step 2 of 5"/>
+    		<g:FlowPanel width="900px">
+    			<g:HorizontalPanel width="100%" spacing="10">
+    			<g:VerticalPanel width="100%">
+    				<g:Label text="PROGRAMMES" styleName="sectionTitle"/>
+    				<g:CheckBox text="Frais d&apos;inscription, CHF 100.-"/>
+    				<g:CheckBox text="Pack Assurance santé CHF 190.- (obligatoire pour les internes)"/>
+    				<g:Grid width="100%">
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Date choisies"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="Du"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="Jusqu&apos;au"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="(combinaison possible Juillet &amp; Août)"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="Juillet"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="Août"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Français"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="20 périodes"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="25 périodes"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Français"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="20 périodes + 5 conversations"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="25 périodes + 10 conversations"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Anglais"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="20 périodes"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="25 périodes"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Anglais"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="20 périodes + 5 conversations"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="25 périodes + 10 conversations"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Français matin &amp; Anglais après-midi"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="20 périodes"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="25 périodes"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Anglais matin &amp; Français après-midi"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="20 périodes + 5 conversations"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="25 périodes + 10 conversations"/>
+    						</g:customCell>
+    					</g:row>
+    				</g:Grid>
+    				<g:Label text="Logement - Internat" styleName="sectionTitle"/>
+    				<g:Grid width="100%">
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Chambre simple"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="Confort plus"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="Confort"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="Standard"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Chambre à partager (Deux lits jumeaux)"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="Confort plus"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="Confort"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="Standard"/>
+    						</g:customCell>
+    					</g:row>
+    				</g:Grid>
+    				<g:Label text="Le nombre de places à l&apos;internat étant limité, une réservation en avance est recommandée.&#10;Les étudiants doivent arriver le dimanche après-midi et partir le samedi matin."/>
+    				<g:Label text="Dépôt pour la clé"/>
+    				<g:Label text="Afin de recevoir la clé de la chambre, les étudiants doivent effectuer un dépôt à leur arrivée.&#10;Ce montant leur sera restitué à leur départ avec le retour de la clé. Il sera conservé en cas de perte de la clé."/>
+    				<g:Grid width="100%">
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Choix de la monnaie du dépôt"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="CHF 100.-"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="€ 100.-"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:CheckBox text="US$ 100.-"/>
+    						</g:customCell>
+    					</g:row>
+    				</g:Grid>
+    			</g:VerticalPanel>
+    			<g:VerticalPanel width="250px" styleName="subSection">
+    				<g:Label text="ELEMENTS CHOISIS" styleName="sectionTitle"/>
+    				<g:FlexTable width="100%"/>
+    				<g:Label text="Total"/>
+    			</g:VerticalPanel>
+    		</g:HorizontalPanel>
+    			<g:HorizontalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
+    			<g:Button ui:field="cmdNextStep">Next Step</g:Button>
+    		</g:HorizontalPanel>
+    		</g:FlowPanel>
     	</g:VerticalPanel>
     </g:SimplePanel>
 </ui:UiBinder>

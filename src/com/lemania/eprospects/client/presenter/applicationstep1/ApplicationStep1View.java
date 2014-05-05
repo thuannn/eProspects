@@ -21,7 +21,6 @@ public class ApplicationStep1View extends
 
 	@UiField
 	SimplePanel main;
-	@UiField Button cmdNextStep;
 
 	@Inject
 	ApplicationStep1View(Binder uiBinder) {
@@ -37,11 +36,10 @@ public class ApplicationStep1View extends
 		}
 	}
 	
-	/*
+	/* 
 	 * */
 	@UiHandler("cmdNextStep")
 	void onCmdNextStepClick(ClickEvent event) {
-		//
 		getUiHandlers().nextStep();
 	}
 }
