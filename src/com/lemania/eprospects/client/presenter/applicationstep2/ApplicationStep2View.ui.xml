@@ -9,24 +9,35 @@
     			<g:HorizontalPanel width="100%" spacing="10">
     			<g:VerticalPanel width="100%">
     				<g:Label text="PROGRAMMES" styleName="sectionTitle"/>
-    				<g:CheckBox text="Frais d&apos;inscription, CHF 100.-"/>
-    				<g:CheckBox text="Pack Assurance santé CHF 190.- (obligatoire pour les internes)"/>
+    				<g:CheckBox text="Frais d&apos;inscription, CHF 100.-" checked="true" enabled="false"/>
+    				<g:CheckBox text="Pack Assurance santé CHF 190.- (obligatoire pour les internes sauf les résidents en Suisse)"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Grid width="100%" cellPadding="2" cellSpacing="2">
     					<g:row>
     						<g:customCell>
-    							<g:Label text="Date choisies"/>
+    							<g:Label text="Date de début"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:Label text="Du"/>
+    							<g:ListBox ui:field="lstStartDate"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:Label text="Jusqu&apos;au"/>
+    							<g:Label text="(dd/MM/yyyy)"/>
     						</g:customCell>
     					</g:row>
     					<g:row>
     						<g:customCell>
-    							<g:Label text="(combinaison possible Juillet &amp; Août)"/>
+    							<g:Label text="Nombre de semaines"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:ListBox ui:field="lstWeekNumber"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="Nous vous recommandons à choisir au moins 2 semaines."/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="La durée choisie en détail"/>
     						</g:customCell>
     						<g:customCell>
     							<g:Label text="Juillet"/>
@@ -37,68 +48,21 @@
     					</g:row>
     					<g:row>
     						<g:customCell>
-    							<g:Label text="Français"/>
+    							<g:Label text="." styleName="hiddenText"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="20 périodes"/>
+    							<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtJulyWeek"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="25 périodes"/>
-    						</g:customCell>
-    					</g:row>
-    					<g:row>
-    						<g:customCell>
-    							<g:Label text="Français"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:CheckBox text="20 périodes + 5 conversations"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:CheckBox text="25 périodes + 10 conversations"/>
+    							<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtAgustWeek"/>
     						</g:customCell>
     					</g:row>
     					<g:row>
     						<g:customCell>
-    							<g:Label text="Anglais"/>
+    							<g:Label text="Programme"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="20 périodes"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:CheckBox text="25 périodes"/>
-    						</g:customCell>
-    					</g:row>
-    					<g:row>
-    						<g:customCell>
-    							<g:Label text="Anglais"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:CheckBox text="20 périodes + 5 conversations"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:CheckBox text="25 périodes + 10 conversations"/>
-    						</g:customCell>
-    					</g:row>
-    					<g:row>
-    						<g:customCell>
-    							<g:Label text="Français matin &amp; Anglais après-midi"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:CheckBox text="20 périodes"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:CheckBox text="25 périodes"/>
-    						</g:customCell>
-    					</g:row>
-    					<g:row>
-    						<g:customCell>
-    							<g:Label text="Anglais matin &amp; Français après-midi"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:CheckBox text="20 périodes + 5 conversations"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:CheckBox text="25 périodes + 10 conversations"/>
+    							<g:ListBox ui:field="lstProgrammes"/>
     						</g:customCell>
     					</g:row>
     				</g:Grid>
@@ -107,16 +71,16 @@
     				<g:Grid width="100%">
     					<g:row>
     						<g:customCell>
-    							<g:Label text="Chambre simple"/>
+    							<g:Label text="Chambre privée"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="Confort plus"/>
+    							<g:RadioButton name="new name" text="Confort plus" ui:field="optConfortPlus"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="Confort"/>
+    							<g:RadioButton name="new name" text="Confort"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="Standard"/>
+    							<g:RadioButton name="new name" text="Standard"/>
     						</g:customCell>
     					</g:row>
     					<g:row>
@@ -124,13 +88,13 @@
     							<g:Label text="Chambre à partager (Deux lits jumeaux)"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="Confort plus"/>
+    							<g:RadioButton name="new name" text="Confort plus"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="Confort"/>
+    							<g:RadioButton name="new name" text="Confort"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="Standard"/>
+    							<g:RadioButton name="new name" text="Standard"/>
     						</g:customCell>
     					</g:row>
     				</g:Grid>
@@ -144,13 +108,13 @@
     							<g:Label text="Choix de la monnaie du dépôt"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="CHF 100.-"/>
+    							<g:RadioButton name="new name" text="CHF 100.-"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="€ 100.-"/>
+    							<g:RadioButton name="new name" text="€ 100.-"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:CheckBox text="US$ 100.-"/>
+    							<g:RadioButton name="new name" text="US$ 100.-"/>
     						</g:customCell>
     					</g:row>
     				</g:Grid>

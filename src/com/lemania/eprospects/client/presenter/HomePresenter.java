@@ -227,6 +227,7 @@ public class HomePresenter
 	 * */
 	private void drawEcoleInterface() {
 		//
+// Fire an event and let the mainpage handle that - 20140506
 //		SettingOptionRequestFactory rf = GWT.create(SettingOptionRequestFactory.class);
 //		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
 //		SettingOptionRequestContext rc = rf.settingOptionRequest();
