@@ -359,11 +359,11 @@ public class MainPageView extends ViewWithUiHandlers<MainPageUiHandler> implemen
 		//
 		if (schoolCode.equals(NotificationTypes.pierreViret)) {
 			imgLogo.setUrl("images/logo-pv.png");
-			txtCopyright.setText("Copyright © Pierre Viret - IT Services -");
+			txtCopyright.setText("Besoin d'assistance ? ");
 		}
 		if (schoolCode.equals(NotificationTypes.ecoleLemania)) {
 			imgLogo.setUrl("images/logo_lemania.png");
-			txtCopyright.setText("Copyright © Ecole Lémania - IT Services -");
+			txtCopyright.setText("Besoin d'assistance ? ");
 		}
 	}
 	

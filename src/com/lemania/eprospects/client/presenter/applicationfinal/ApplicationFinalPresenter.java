@@ -14,6 +14,7 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.lemania.eprospects.client.event.DrawSchoolInterfaceEvent;
 import com.lemania.eprospects.client.place.NameTokens;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 
@@ -42,10 +43,16 @@ public class ApplicationFinalPresenter
                 getView().setUiHandlers(this);
             }
 
+	/*
+	 * */
 	protected void onBind() {
 		super.onBind();
+		//
+		getEventBus().fireEvent( new DrawSchoolInterfaceEvent() );
 	}
 
+	/*
+	 * */
 	protected void onReset() {
 		super.onReset();
 	}

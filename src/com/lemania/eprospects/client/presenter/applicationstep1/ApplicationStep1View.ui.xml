@@ -2,7 +2,7 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <g:SimplePanel ui:field="main">
-    	<g:VerticalPanel width="100%" height="">
+    	<g:VerticalPanel width="100%" height="" horizontalAlignment="ALIGN_CENTER">
     		<g:Label text="INFORMATIONS GENERALES" styleName="pageTitle"/>
     		<g:Label text="Step 1 of 5"/>
     		<g:FlowPanel width="900px">
@@ -10,7 +10,7 @@
     			<g:Grid width="100%">
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Veuillez sélectionner"/>
+    					<g:Label text="Veuillez sélectionner" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
     					<g:ListBox/>
@@ -18,64 +18,64 @@
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Nom de famille"/>
+    					<g:Label text="Nom de famille" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Prénom"/>
+    					<g:Label text="Prénom" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Date de naissance"/>
+    					<g:Label text="Date de naissance" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Nationalité"/>
+    					<g:Label text="Nationalité" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     			</g:row>
     		</g:Grid>
-    			<g:HorizontalPanel width="100%">
-    						<g:Label text="Adresse (Rue, No.)"/>
-    						<g:TextBox/>
+    			<g:HorizontalPanel width="720px" spacing="4">
+    						<g:Label text="Adresse (Rue, No.)" styleName="fieldTitle"/>
+    						<g:TextBox styleName="sis-textbox-long"/>
     					</g:HorizontalPanel>
     			<g:Grid width="100%">
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Code postale / Ville"/>
+    					<g:Label text="Code postale / Ville" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Pays"/>
+    					<g:Label text="Pays" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Email"/>
+    					<g:Label text="Email" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Mobile (pour les activités)"/>
+    					<g:Label text="Mobile (pour les activités)" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     			</g:row>
     		</g:Grid>
@@ -83,78 +83,78 @@
     			<g:Grid width="100%">
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Nom de famille"/>
+    					<g:Label text="Nom de famille" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Prénom"/>
+    					<g:Label text="Prénom" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     			</g:row>
     		</g:Grid>
-    			<g:HorizontalPanel width="100%">
-    						<g:Label text="Adresse (Rue, No.)"/>
-    						<g:TextBox/>
+    			<g:HorizontalPanel width="720px" spacing="4">
+    						<g:Label text="Adresse (Rue, No.)" styleName="fieldTitle"/>
+    						<g:TextBox styleName="sis-textbox-long"/>
     					</g:HorizontalPanel>
     			<g:Grid width="100%">
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Code postale / Ville"/>
+    					<g:Label text="Code postale / Ville" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Pays"/>
+    					<g:Label text="Pays" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
-    				</g:customCell>
-    			</g:row>
-    			<g:row>
-    				<g:customCell>
-    					<g:Label text="Mobile (mère)"/>
-    				</g:customCell>
-    				<g:customCell>
-    					<g:TextBox/>
-    				</g:customCell>
-    				<g:customCell>
-    					<g:Label text="Mobile (père)"/>
-    				</g:customCell>
-    				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Téléphone (domicile)"/>
+    					<g:Label text="Mobile (mère)" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Téléphone professionnel"/>
+    					<g:Label text="Mobile (père)" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Fax"/>
+    					<g:Label text="Téléphone (domicile)" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="E-mail"/>
+    					<g:Label text="Téléphone professionnel" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis_textbox"/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Fax" styleName="fieldTitle"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox styleName="sis_textbox"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:Label text="E-mail" styleName="fieldTitle"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox styleName="sis_textbox"/>
     				</g:customCell>
     			</g:row>
     		</g:Grid>
@@ -162,48 +162,51 @@
     			<g:Grid width="100%">
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Nom de l&apos;entreprise"/>
+    					<g:Label text="Nom de l&apos;entreprise" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
-    				</g:customCell>
-    			</g:row>
-    			<g:row>
-    				<g:customCell>
-    					<g:Label text="Nom / Prénom de la personne responsable"/>
-    				</g:customCell>
-    				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis-textbox-long"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Adresse (Rue, No.)"/>
+    					<g:Label text="Nom / Prénom de la personne responsable" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
-    				</g:customCell>
-    			</g:row>
-    			<g:row>
-    				<g:customCell>
-    					<g:Label text="Code postale / Ville"/>
-    				</g:customCell>
-    				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis-textbox-long"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Pays"/>
+    					<g:Label text="Adresse (Rue, No.)" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox/>
+    					<g:TextBox styleName="sis-textbox-long"/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Code postale / Ville" styleName="fieldTitle"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox styleName="sis-textbox-long"/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Pays" styleName="fieldTitle"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox styleName="sis-textbox-long"/>
     				</g:customCell>
     			</g:row>
     		</g:Grid>
-    			<g:HorizontalPanel horizontalAlignment="ALIGN_RIGHT" width="100%">
-    				<g:Button ui:field="cmdNextStep">Next Step</g:Button>
-    			</g:HorizontalPanel>
+    			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
+    				<g:HorizontalPanel width="20%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
+    				<g:Button>Précédant</g:Button>
+    			<g:Button ui:field="cmdNextStep" text="Suivant">Next Step</g:Button>
+    		</g:HorizontalPanel>
+    			</g:VerticalPanel>
     		</g:FlowPanel>
     	</g:VerticalPanel>
     </g:SimplePanel>

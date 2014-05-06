@@ -1,5 +1,18 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
-    <g:SimplePanel ui:field="main"/>
+    <g:SimplePanel ui:field="main">
+    	<g:VerticalPanel width="100%" height="" horizontalAlignment="ALIGN_CENTER">
+    		<g:Label text="MERCI" styleName="pageTitle"/>
+    		<g:Label text="." styleName="hiddenText"/>
+    		<g:FlowPanel width="900px">
+    			<g:HorizontalPanel width="100%" spacing="10">
+    				<g:VerticalPanel width="100%" spacing="10">
+    					<g:Label text="MERCI"/>
+    				</g:VerticalPanel>
+    			</g:HorizontalPanel>
+    			
+    		</g:FlowPanel>
+    	</g:VerticalPanel>
+    </g:SimplePanel>
 </ui:UiBinder>

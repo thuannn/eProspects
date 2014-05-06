@@ -395,7 +395,7 @@ public class MainPagePresenter extends
 	@ProxyEvent
 	@Override
 	public void onApplicationFinal(ApplicationFinalEvent event) {
-		// TODO 
+		// 
 	}
 
 	/*
@@ -404,6 +404,7 @@ public class MainPagePresenter extends
 	@Override
 	public void onApplicationPayment(ApplicationPaymentEvent event) {
 		//
+		History.newItem( NameTokens.applicationfinal );
 	}
 
 	/*

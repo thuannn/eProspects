@@ -72,7 +72,7 @@ th {
 	box-shadow:         0px 0px 5px rgba(50, 50, 50, 0.75);
 	margin: 2px;
 	border: 1px solid royalblue;
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 .FlexTable {
@@ -139,7 +139,7 @@ th {
 	width: 100px;
 }
 .sis_textbox {
-	width: 300px;
+	width: 250px;
 }
 .hiddenText {
 	color: white;
@@ -160,15 +160,13 @@ th {
 	font-weight: bold;
 }
 .fieldTitle {
-	color: navy;
 	padding: 1px;
 	width: 150px;
 }
 .sis-TextArea {
-	border: 0px;
 	font-size: 12px;
 	font-family: Tahoma;
-	width: 99%;
+	width: 300px;
 	overflow: auto;
 }
 .subjectLine {
@@ -216,6 +214,16 @@ th {
 	vertical-align: middle;
 	text-align: center;
 	background-color: azure;
+}
+
+.sis-textbox-long {
+	width: 500px;
+}
+
+.lablel_TotalAmount {
+	color: royalblue;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 .progressBar {

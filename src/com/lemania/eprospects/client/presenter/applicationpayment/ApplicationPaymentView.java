@@ -9,6 +9,11 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.RadioButton;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
 
 public class ApplicationPaymentView extends
 		ViewWithUiHandlers<ApplicationPaymentUiHandlers> implements
@@ -18,6 +23,10 @@ public class ApplicationPaymentView extends
 
 	@UiField
 	SimplePanel main;
+	@UiField RadioButton optionDirect;
+	@UiField RadioButton optionPaypal;
+	@UiField Button cmdNextStep;
+	@UiField HTML htmlPaypalButton;
 
 	@Inject
 	ApplicationPaymentView(Binder uiBinder) {
@@ -31,5 +40,49 @@ public class ApplicationPaymentView extends
 		} else {
 			super.setInSlot(slot, content);
 		}
+	}
+	
+	/*
+	 * */
+	@UiHandler("cmdNextStep")
+	void onCmdNextStepClick(ClickEvent event) {
+		getUiHandlers().nextStep();
+	}
+	
+	/*
+	 * */
+	@UiHandler("optionDirect")
+	void onOptionDirectClick(ClickEvent event) {
+		cmdNextStep.setVisible(true);
+	}
+	
+	/*
+	 * */
+	@UiHandler("optionPaypal")
+	void onOptionPaypalClick(ClickEvent event) {
+		cmdNextStep.setVisible(false);
+	}
+
+	@Override
+	public void initializeUI() {
+		//
+		htmlPaypalButton.setHTML(
+				"<form action='https://www.paypal.com/cgi-bin/webscr' method='post' target='_top'>" +
+				"<input type='hidden' name='cmd' value='_xclick'>" +
+				"<input type='hidden' name='item_name' value='Lemania Summer Camp & Courses'>" +
+				"<input type='hidden' name='amount' value='0.1'>" +
+				"<input type='hidden' name='business' value='J2A4WFF2URAN2'>" +
+				"<input type='hidden' name='lc' value='CH'>" +
+				"<input type='hidden' name='button_subtype' value='services'>" +
+				"<input type='hidden' name='no_note' value='1'>" +
+				"<input type='hidden' name='no_shipping' value='1'>" +
+				"<input type='hidden' name='rm' value='1'>" +
+				"<input type='hidden' name='return' value='http://lemania-eprospects-dev.appspot.com/#applicationfinal'>" +
+				"<input type='hidden' name='currency_code' value='CHF'>" +
+				"<input type='hidden' name='bn' value='PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted'>" +
+				"<input type='image' src='https://www.paypalobjects.com/fr_FR/CH/i/btn/btn_paynowCC_LG.gif' border='0' name='submit' alt='PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !'>" +
+				"<img alt='' border='0' src='https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif' width='1' height='1'>" +
+				"</form>"
+		);
 	}
 }

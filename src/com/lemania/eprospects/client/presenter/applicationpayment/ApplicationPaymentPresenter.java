@@ -14,6 +14,8 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.lemania.eprospects.client.event.ApplicationFinalEvent;
+import com.lemania.eprospects.client.event.ApplicationPaymentEvent;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.place.NameTokens;
 
@@ -22,6 +24,8 @@ public class ApplicationPaymentPresenter
 		Presenter<ApplicationPaymentPresenter.MyView, ApplicationPaymentPresenter.MyProxy>
 		implements ApplicationPaymentUiHandlers {
 	interface MyView extends View, HasUiHandlers<ApplicationPaymentUiHandlers> {
+		//
+		void initializeUI();
 	}
 
 	@ContentSlot
@@ -42,10 +46,18 @@ public class ApplicationPaymentPresenter
 
 	protected void onBind() {
 		super.onBind();
+		//
+		getView().initializeUI();
 	}
 
 	protected void onReset() {
 		super.onReset();
+	}
+
+	@Override
+	public void nextStep() {
+		// 
+		getEventBus().fireEvent( new ApplicationPaymentEvent() );
 	}
 
 }

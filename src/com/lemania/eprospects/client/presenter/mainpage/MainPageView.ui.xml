@@ -120,20 +120,20 @@
 			</g:Dock>
 			<g:Dock direction="CENTER">
 				<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_LEFT" height="">
-					<g:FlowPanel ui:field="mainContentPanel" width="100%" height="" styleName="paneMain"/>
+					<g:FlowPanel ui:field="mainContentPanel" width="98%" height="" styleName="paneMain"/>
 					<g:HorizontalPanel verticalAlignment="ALIGN_MIDDLE" width="100%" horizontalAlignment="ALIGN_LEFT" spacing="5">
 						<g:Grid>
 							<g:row>
 								<g:customCell>
-									<g:Label text="Copyright © Ecole Lémania - IT Services - " horizontalAlignment="ALIGN_LEFT" width="" ui:field="txtCopyright"/>
+									<g:Label text="Besoin d&apos;assistance ?" horizontalAlignment="ALIGN_LEFT" width="" ui:field="txtCopyright"/>
 								</g:customCell>
 								<g:customCell>
-									<g:Hyperlink text="Envoyez-nous vos avis" targetHistoryToken="!contact"/>
+									<g:Hyperlink text="Envoyez-nous un message" targetHistoryToken="!contact"/>
 								</g:customCell>
 							</g:row>
 						</g:Grid>
 						<g:HorizontalPanel horizontalAlignment="ALIGN_RIGHT" width="100%">
-							<g:Image url="images/appengine-noborder-120x30.gif"/>
+							<g:Image url="images/appengine-noborder-120x30.gif" visible="false"/>
 						</g:HorizontalPanel>
 					</g:HorizontalPanel>
 					<g:VerticalPanel ui:field="pnlProgressBar" visible="false" horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE">
