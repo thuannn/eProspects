@@ -5,4 +5,5 @@ import com.gwtplatform.mvp.client.UiHandlers;
 public interface ApplicationStep3UiHandlers extends UiHandlers {
 	//
 	void nextStep();
+	void previousStep();
 }

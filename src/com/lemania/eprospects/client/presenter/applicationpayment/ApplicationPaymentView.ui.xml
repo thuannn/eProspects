@@ -20,7 +20,7 @@
     					<g:HTML wordWrap="true" ui:field="htmlPaypalButton"/>
     					<g:RadioButton name="new name" text="PAIEMENT DIRECT" ui:field="optionDirect"/>
     					<g:Label text="Je suis résident suisse et je souhaite effectuer le paiement, au plus tard quatre semaines avant le début du cours d&apos;été, directement au secrétariat de l&apos;Ecole Lémania, Chemin de Préville 3, à Lausanne."/>
-    					<g:HorizontalPanel width="100%">
+    					<g:HorizontalPanel width="100%" ui:field="pnlOptionDirect" visible="false">
     						<g:Label text="Je paierai"/>
     						<g:RadioButton name="new name" text="En espèce"/>
     						<g:RadioButton name="new name" text="Par carte de crédit"/>
@@ -29,7 +29,7 @@
     		</g:HorizontalPanel>
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
     				<g:HorizontalPanel width="20%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
-    				<g:Button>Précédant</g:Button>
+    				<g:Button ui:field="cmdPreviousStep">Précédant</g:Button>
     			<g:Button ui:field="cmdNextStep" text="Terminer" visible="false"></g:Button>
     		</g:HorizontalPanel>
     			</g:VerticalPanel>

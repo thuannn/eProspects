@@ -12,6 +12,8 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.ListBox;
+import com.lemania.eprospects.client.SummerCampSettingValues;
 
 public class ApplicationStep1View extends
 		ViewWithUiHandlers<ApplicationStep1UiHandlers> implements
@@ -22,6 +24,7 @@ public class ApplicationStep1View extends
 	@UiField
 	SimplePanel main;
 	@UiField Button button;
+	@UiField ListBox lstGender;
 
 	@Inject
 	ApplicationStep1View(Binder uiBinder) {
@@ -49,5 +52,15 @@ public class ApplicationStep1View extends
 	@UiHandler("button")
 	void onButtonClick(ClickEvent event) {
 		getUiHandlers().previousStep();
+	}
+
+	/*
+	 * */
+	@Override
+	public void initializeUi() {
+		//
+		lstGender.addItem("Veuillez choisir","");
+		lstGender.addItem( SummerCampSettingValues.sexe_male_description, SummerCampSettingValues.sexe_male_code );
+		lstGender.addItem( SummerCampSettingValues.sexe_female_description, SummerCampSettingValues.sexe_female_code );
 	}
 }

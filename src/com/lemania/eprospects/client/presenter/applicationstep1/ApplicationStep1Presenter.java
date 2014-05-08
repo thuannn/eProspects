@@ -26,6 +26,8 @@ public class ApplicationStep1Presenter
 		Presenter<ApplicationStep1Presenter.MyView, ApplicationStep1Presenter.MyProxy>
 		implements ApplicationStep1UiHandlers {
 	interface MyView extends View, HasUiHandlers<ApplicationStep1UiHandlers> {
+		//
+		void initializeUi();
 	}
 
 	@ContentSlot
@@ -50,6 +52,8 @@ public class ApplicationStep1Presenter
 	protected void onBind() {
 		//
 		super.onBind();
+		//
+		getView().initializeUi();
 	}
 
 	protected void onReset() {

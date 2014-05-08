@@ -14,6 +14,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 
 public class ApplicationPaymentView extends
 		ViewWithUiHandlers<ApplicationPaymentUiHandlers> implements
@@ -27,6 +28,8 @@ public class ApplicationPaymentView extends
 	@UiField RadioButton optionPaypal;
 	@UiField Button cmdNextStep;
 	@UiField HTML htmlPaypalButton;
+	@UiField Button cmdPreviousStep;
+	@UiField HorizontalPanel pnlOptionDirect;
 
 	@Inject
 	ApplicationPaymentView(Binder uiBinder) {
@@ -49,18 +52,23 @@ public class ApplicationPaymentView extends
 		getUiHandlers().nextStep();
 	}
 	
+	void showOptionDirect(boolean show){
+		cmdNextStep.setVisible( show );
+		pnlOptionDirect.setVisible( show );
+	}
+	
 	/*
 	 * */
 	@UiHandler("optionDirect")
 	void onOptionDirectClick(ClickEvent event) {
-		cmdNextStep.setVisible(true);
+		showOptionDirect( true );
 	}
 	
 	/*
 	 * */
 	@UiHandler("optionPaypal")
 	void onOptionPaypalClick(ClickEvent event) {
-		cmdNextStep.setVisible(false);
+		showOptionDirect( false );
 	}
 
 	@Override
@@ -84,5 +92,13 @@ public class ApplicationPaymentView extends
 				"<img alt='' border='0' src='https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif' width='1' height='1'>" +
 				"</form>"
 		);
+	}
+	
+	/*
+	 * */
+	@UiHandler("cmdPreviousStep")
+	void onCmdPreviousStepClick(ClickEvent event) {
+		//
+		getUiHandlers().previousStep();
 	}
 }

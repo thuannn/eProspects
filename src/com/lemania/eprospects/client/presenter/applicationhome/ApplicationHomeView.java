@@ -15,6 +15,8 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.ListBox;
 import com.lemania.eprospects.client.SummerCampSettingValues;
+import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.RadioButton;
 
 public class ApplicationHomeView extends
 		ViewWithUiHandlers<ApplicationHomeUiHandlers> implements
@@ -27,6 +29,10 @@ public class ApplicationHomeView extends
 	@UiField Button cmdStartApplication;
 	@UiField TextBox txtEmail;
 	@UiField ListBox lstProgrammes;
+	@UiField VerticalPanel pnlApplicationIdRequest;
+	@UiField RadioButton optNew;
+	@UiField TextBox txtApplicationId;
+	@UiField RadioButton optModify;
 
 	@Inject
 	ApplicationHomeView(Binder uiBinder) {
@@ -45,7 +51,7 @@ public class ApplicationHomeView extends
 	@UiHandler("cmdStartApplication")
 	void onCmdStartApplicationClick(ClickEvent event) {
 		//
-		getUiHandlers().startApplication( txtEmail.getText() );
+		getUiHandlers().startApplication( txtEmail.getText(), optNew.getValue(), optModify.getValue(), txtApplicationId.getText() );
 	}
 
 	/*
@@ -54,5 +60,13 @@ public class ApplicationHomeView extends
 	public void initializeUI() {
 		//
 		lstProgrammes.addItem( SummerCampSettingValues.applicationName, SummerCampSettingValues.applicationCode );
+	}
+
+	/*
+	 * */
+	@Override
+	public void showApplicationIDRequest() {
+		//
+		pnlApplicationIdRequest.setVisible(true);
 	}
 }

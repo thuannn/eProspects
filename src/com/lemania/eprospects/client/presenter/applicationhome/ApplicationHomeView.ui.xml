@@ -12,8 +12,16 @@
     		<g:Label text="Merci de saisir votre adresse email pour commencer l&apos;inscription :"/>
     		<g:HorizontalPanel>
     			<g:TextBox ui:field="txtEmail"/>
-    			<g:Button text="Commencer" ui:field="cmdStartApplication"/>
     		</g:HorizontalPanel>
+    		<g:VerticalPanel horizontalAlignment="ALIGN_CENTER" ui:field="pnlApplicationIdRequest" visible="false">
+    			<g:Label text="Votre adresse email se trouve dans notre base de donné, merci de choisir une option ci-dessous :"/>
+    			<g:HorizontalPanel spacing="5">
+    				<g:RadioButton name="new name" text="Nouvelle inscription" ui:field="optNew"/>
+    				<g:RadioButton name="new name" text="Modifier votre inscription, veuillez saisir l&apos;ID de votre inscription :" ui:field="optModify"/>
+    				<g:TextBox ui:field="txtApplicationId"/>
+    			</g:HorizontalPanel>
+    		</g:VerticalPanel>
+    		<g:Button text="Commencer" ui:field="cmdStartApplication"/>
     		<g:Label text="." styleName="hiddenText"/>
     	</g:VerticalPanel>
     </g:SimplePanel>

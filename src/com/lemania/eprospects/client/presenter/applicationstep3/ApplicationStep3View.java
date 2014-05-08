@@ -12,6 +12,8 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.ListBox;
+import com.lemania.eprospects.client.SummerCampSettingValues;
 
 public class ApplicationStep3View extends
 		ViewWithUiHandlers<ApplicationStep3UiHandlers> implements
@@ -22,6 +24,8 @@ public class ApplicationStep3View extends
 	@UiField
 	SimplePanel main;
 	@UiField Button cmdNextStep;
+	@UiField Button cmdPreviousStep;
+	@UiField ListBox lstAirportDirection;
 
 	@Inject
 	ApplicationStep3View(Binder uiBinder) {
@@ -42,5 +46,22 @@ public class ApplicationStep3View extends
 	@UiHandler("cmdNextStep")
 	void onCmdNextStepClick(ClickEvent event) {
 		getUiHandlers().nextStep();
+	}
+	
+	/*
+	 * */
+	@UiHandler("cmdPreviousStep")
+	void onCmdPreviousStepClick(ClickEvent event) {
+		this.getUiHandlers().previousStep();
+	}
+
+	/*
+	 * */
+	@Override
+	public void initializeUi() {
+		//
+		lstAirportDirection.addItem("Veuillez choisir", "");
+		lstAirportDirection.addItem( SummerCampSettingValues.airport_direction_from_description, SummerCampSettingValues.airport_direction_from_code );
+		lstAirportDirection.addItem( SummerCampSettingValues.airport_direction_to_description, SummerCampSettingValues.airport_direction_to_code );
 	}
 }

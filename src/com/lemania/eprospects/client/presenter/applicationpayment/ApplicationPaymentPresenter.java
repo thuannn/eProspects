@@ -1,6 +1,7 @@
 package com.lemania.eprospects.client.presenter.applicationpayment;
 
 import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.user.client.History;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -16,6 +17,7 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.lemania.eprospects.client.event.ApplicationFinalEvent;
 import com.lemania.eprospects.client.event.ApplicationPaymentEvent;
+import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.place.NameTokens;
 
@@ -58,6 +60,14 @@ public class ApplicationPaymentPresenter
 	public void nextStep() {
 		// 
 		getEventBus().fireEvent( new ApplicationPaymentEvent() );
+	}
+
+	/*
+	 * */
+	@Override
+	public void previousStep() {
+		//
+		getEventBus().fireEvent( new GotoPreviousPageEvent(History.getToken()) );
 	}
 
 }

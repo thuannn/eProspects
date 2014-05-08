@@ -2,6 +2,7 @@ package com.lemania.eprospects.server.service;
 
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.util.DAOBase;
+import com.lemania.eprospects.server.ApplicationForm;
 import com.lemania.eprospects.server.Assignment;
 import com.lemania.eprospects.server.Branche;
 import com.lemania.eprospects.server.Bulletin;
@@ -135,6 +136,12 @@ public class MyDAOBase extends DAOBase {
 		
 		try {
         	ObjectifyService.register(EvaluationStudentReport.class);
+        } catch (Exception e) {
+        	// do nothing
+        }
+		
+		try {
+        	ObjectifyService.register(ApplicationForm.class);
         } catch (Exception e) {
         	// do nothing
         }	
