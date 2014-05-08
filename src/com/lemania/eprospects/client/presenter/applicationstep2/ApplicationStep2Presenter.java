@@ -1,6 +1,7 @@
 package com.lemania.eprospects.client.presenter.applicationstep2;
 
 import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.user.client.History;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -15,6 +16,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.lemania.eprospects.client.event.ApplicationStep2CompletedEvent;
+import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.place.NameTokens;
 
@@ -59,6 +61,12 @@ public class ApplicationStep2Presenter
 	public void nextStep() {
 		//
 		getEventBus().fireEvent( new ApplicationStep2CompletedEvent() );
+	}
+
+	@Override
+	public void previousStep() {
+		//
+		this.getEventBus().fireEvent( new GotoPreviousPageEvent( History.getToken()) );
 	}
 
 }

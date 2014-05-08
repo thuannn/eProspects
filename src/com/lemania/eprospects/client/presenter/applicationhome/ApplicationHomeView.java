@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.ListBox;
+import com.lemania.eprospects.client.SummerCampSettingValues;
 
 public class ApplicationHomeView extends
 		ViewWithUiHandlers<ApplicationHomeUiHandlers> implements
@@ -52,6 +53,6 @@ public class ApplicationHomeView extends
 	@Override
 	public void initializeUI() {
 		//
-		lstProgrammes.addItem("Summer Courses", "SUMMER");
+		lstProgrammes.addItem( SummerCampSettingValues.applicationName, SummerCampSettingValues.applicationCode );
 	}
 }

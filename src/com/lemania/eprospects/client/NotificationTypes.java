@@ -9,7 +9,7 @@ public class NotificationTypes {
 	
 	public static String student_code_access_created = "Un code d'accès a été créé pour cet élève.";
 	
-	public static String invalid_input = "Donnée Invalide";
+	public static String invalid_input = "Donnée invalide : ";
 	
 	public static String branche_create_good = "La nouvelle branche a été créée avec succès.";
 	

@@ -1,6 +1,7 @@
 package com.lemania.eprospects.client.presenter.applicationhome;
 
 import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -14,6 +15,8 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.lemania.eprospects.client.FieldValidation;
+import com.lemania.eprospects.client.NotificationTypes;
 import com.lemania.eprospects.client.event.ApplicationStartEvent;
 import com.lemania.eprospects.client.event.DrawSchoolInterfaceEvent;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
@@ -58,9 +61,17 @@ public class ApplicationHomePresenter
 		getView().initializeUI();
 	}
 
+	/*
+	 * Validate the email, if it looks valid, create an application in the DB and start the process
+	 * */
 	@Override
 	public void startApplication(String emailAddress) {
 		//
+		if ( ! FieldValidation.isValidEmailAddress(emailAddress)) {
+			Window.alert( NotificationTypes.invalid_input + "Email");
+			return;
+		}
+		// Go to Step 1
 		getEventBus().fireEvent( new ApplicationStartEvent() );
 	}
 

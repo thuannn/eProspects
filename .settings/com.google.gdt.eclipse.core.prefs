@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 jarsExcludedFromWebInfLib=
 lastWarOutDir=/Users/ngocthuannguyen/Documents/workspace-ee/eprospects/war
+launchConfigExternalUrlPrefix=
 warSrcDir=war
 warSrcDirIsOutput=true

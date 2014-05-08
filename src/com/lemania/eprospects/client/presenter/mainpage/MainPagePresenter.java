@@ -40,6 +40,8 @@ import com.lemania.eprospects.client.event.ApplicationStep4CompletedEvent.Applic
 import com.lemania.eprospects.client.event.ApplicationStep5CompletedEvent;
 import com.lemania.eprospects.client.event.ApplicationStep5CompletedEvent.ApplicationStep5CompletedHandler;
 import com.lemania.eprospects.client.event.DrawSchoolInterfaceEvent;
+import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
+import com.lemania.eprospects.client.event.GotoPreviousPageEvent.GotoPreviousPageHandler;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
 import com.lemania.eprospects.client.event.PageAfterSelectEvent;
 import com.lemania.eprospects.client.event.ActionCompletedEvent.ActionCompletedHandler;
@@ -68,7 +70,8 @@ public class MainPagePresenter extends
 					ApplicationStep4CompletedHandler,
 					ApplicationStep5CompletedHandler,
 					ApplicationPaymentHandler,
-					ApplicationFinalHandler {
+					ApplicationFinalHandler,
+					GotoPreviousPageHandler {
 	/**
 	   * Child presenters can fire a RevealContentEvent with TYPE_SetMainContent to set themselves
 	   * as children of this presenter.
@@ -432,5 +435,35 @@ public class MainPagePresenter extends
 	public void onApplicationStep3Completed(ApplicationStep3CompletedEvent event) {
 		// 
 		History.newItem( NameTokens.applicationstep4 );
+	}
+
+	/*
+	 * */
+	@ProxyEvent
+	@Override
+	public void onGotoPreviousPage(GotoPreviousPageEvent event) {
+		//
+		if (event.getCurrentPage().equals( NameTokens.applicationstep1))
+			return;
+		if (event.getCurrentPage().equals( NameTokens.applicationstep2)) {
+			History.newItem( NameTokens.applicationstep1 );
+			return;
+		}
+		if (event.getCurrentPage().equals( NameTokens.applicationstep3)) {
+			History.newItem( NameTokens.applicationstep2 );
+			return;
+		}
+		if (event.getCurrentPage().equals( NameTokens.applicationstep4)) {
+			History.newItem( NameTokens.applicationstep3 );
+			return;
+		}
+		if (event.getCurrentPage().equals( NameTokens.applicationstep5)) {
+			History.newItem( NameTokens.applicationstep4 );
+			return;
+		}
+		if (event.getCurrentPage().equals( NameTokens.applicationpayment)) {
+			History.newItem( NameTokens.applicationstep5 );
+			return;
+		}
 	}
 }

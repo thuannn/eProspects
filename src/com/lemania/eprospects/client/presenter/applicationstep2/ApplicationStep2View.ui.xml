@@ -12,7 +12,26 @@
     				<g:CheckBox text="Frais d&apos;inscription, CHF 100.-" checked="true" enabled="false"/>
     				<g:CheckBox text="Pack Assurance santé CHF 190.- (obligatoire pour les internes sauf les résidents en Suisse)"/>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:Grid width="100%" cellPadding="2" cellSpacing="2">
+    				<g:Grid width="100%">
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Programme"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:ListBox ui:field="lstProgrammes"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Combination du cours"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:ListBox ui:field="lstCourses"/>
+    						</g:customCell>
+    					</g:row>
+    				</g:Grid>
+    				<g:Cell verticalAlignment="ALIGN_MIDDLE">
+    					<g:Grid width="100%" cellPadding="2">
     					<g:row>
     						<g:customCell>
     							<g:Label text="Date de début"/>
@@ -32,12 +51,12 @@
     							<g:ListBox ui:field="lstWeekNumber"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:Label text="Nous vous recommandons à choisir au moins 2 semaines."/>
+    							<g:Label text="Reccomandation : au moins 2 semaines"/>
     						</g:customCell>
     					</g:row>
     					<g:row>
     						<g:customCell>
-    							<g:Label text="La durée choisie en détail"/>
+    							<g:Label text="." styleName="hiddenText"/>
     						</g:customCell>
     						<g:customCell>
     							<g:Label text="Juillet"/>
@@ -54,18 +73,23 @@
     							<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtJulyWeek"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtAgustWeek"/>
+    							<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtAugustWeek"/>
     						</g:customCell>
     					</g:row>
     					<g:row>
     						<g:customCell>
-    							<g:Label text="Programme"/>
+    							<g:Label text="." styleName="hiddenText"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:ListBox ui:field="lstProgrammes"/>
+    							<g:Label text="(Cours standard)"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="(Cours intensifs)"/>
     						</g:customCell>
     					</g:row>
     				</g:Grid>
+    				</g:Cell>
+    				<g:CheckBox text="Je souhaite continuer le programme choisi après le cours d&apos;été."/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Logement - Internat" styleName="sectionTitle"/>
     				<g:Grid width="100%">
@@ -127,7 +151,7 @@
     		</g:HorizontalPanel>
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
     				<g:HorizontalPanel width="20%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
-    				<g:Button>Précédant</g:Button>
+    				<g:Button ui:field="cmdPreviousStep">Précédant</g:Button>
     			<g:Button ui:field="cmdNextStep" text="Suivant">Next Step</g:Button>
     		</g:HorizontalPanel>
     			</g:VerticalPanel>

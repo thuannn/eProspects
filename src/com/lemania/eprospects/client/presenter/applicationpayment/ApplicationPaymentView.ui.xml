@@ -1,0 +1,39 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <g:SimplePanel ui:field="main">
+    	<g:VerticalPanel width="100%" height="" horizontalAlignment="ALIGN_CENTER">
+    		<g:Label text="POSSIBILITES DE PAIEMENT" styleName="pageTitle"/>
+    		<g:Label text="." styleName="hiddenText"/>
+    		<g:FlowPanel width="900px">
+    			<g:HorizontalPanel width="100%" spacing="10">
+    				<g:VerticalPanel width="400px" styleName="subSection" spacing="10">
+    				<g:Label text="ELEMENTS CHOISIS" styleName="sectionTitle"/>
+    				<g:FlexTable width="100%"/>
+    				<g:HorizontalPanel width="100%">
+    					<g:Label text="Total" styleName="lablel_TotalAmount"/>
+    					<g:Label text="Amount" styleName="lablel_TotalAmount"/>
+    				</g:HorizontalPanel>
+    			</g:VerticalPanel>
+    				<g:VerticalPanel width="100%" spacing="10">
+    					<g:RadioButton name="new name" text="PAYPAL" checked="true" ui:field="optionPaypal"/>
+    					<g:HTML wordWrap="true" ui:field="htmlPaypalButton"/>
+    					<g:RadioButton name="new name" text="PAIEMENT DIRECT" ui:field="optionDirect"/>
+    					<g:Label text="Je suis résident suisse et je souhaite effectuer le paiement, au plus tard quatre semaines avant le début du cours d&apos;été, directement au secrétariat de l&apos;Ecole Lémania, Chemin de Préville 3, à Lausanne."/>
+    					<g:HorizontalPanel width="100%">
+    						<g:Label text="Je paierai"/>
+    						<g:RadioButton name="new name" text="En espèce"/>
+    						<g:RadioButton name="new name" text="Par carte de crédit"/>
+    					</g:HorizontalPanel>
+    				</g:VerticalPanel>
+    		</g:HorizontalPanel>
+    			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
+    				<g:HorizontalPanel width="20%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
+    				<g:Button>Précédant</g:Button>
+    			<g:Button ui:field="cmdNextStep" text="Terminer" visible="false"></g:Button>
+    		</g:HorizontalPanel>
+    			</g:VerticalPanel>
+    		</g:FlowPanel>
+    	</g:VerticalPanel>
+    </g:SimplePanel>
+</ui:UiBinder>
