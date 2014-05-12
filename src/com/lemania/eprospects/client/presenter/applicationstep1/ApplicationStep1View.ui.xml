@@ -4,13 +4,16 @@
     <g:SimplePanel ui:field="main">
     	<g:VerticalPanel width="100%" height="" horizontalAlignment="ALIGN_CENTER">
     		<g:Label text="INFORMATIONS GENERALES" styleName="pageTitle"/>
-    		<g:Label text="Step 1 of 5"/>
+    		<g:HorizontalPanel width="100%" spacing="5">
+    			<g:Label text="L&apos;inscription ID :" ui:field="lblApplicationInfo"/>
+    			<g:Label text="Step 1 of 5" horizontalAlignment="ALIGN_RIGHT"/>
+    		</g:HorizontalPanel>
     		<g:FlowPanel width="900px">
     			<g:Label text="Etudiant(e)" styleName="sectionTitle"/>
     			<g:Grid width="100%">
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Veuillez sélectionner" styleName="fieldTitle"/>
+    					<g:Label text="Veuillez sélectionner" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
     					<g:ListBox ui:field="lstGender"/>
@@ -18,64 +21,64 @@
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Nom de famille" styleName="fieldTitle"/>
+    					<g:Label text="Nom de famille" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtLastName_Student"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Prénom" styleName="fieldTitle"/>
+    					<g:Label text="Prénom" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtFirstName_Student"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Date de naissance" styleName="fieldTitle"/>
+    					<g:Label text="Date de naissance" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtDOB_Student"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Nationalité" styleName="fieldTitle"/>
+    					<g:Label text="Nationalité" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtNationality_Student"/>
     				</g:customCell>
     			</g:row>
     		</g:Grid>
     			<g:HorizontalPanel width="100%" spacing="4" horizontalAlignment="ALIGN_LEFT">
-    						<g:Label text="Adresse (Rue, No.)" styleName="fieldTitle"/>
-    						<g:TextBox styleName="sis-textbox-long"/>
+    						<g:Label text="Adresse (Rue, No.)" styleName="requiredField"/>
+    						<g:TextBox styleName="sis-textbox-long" ui:field="txtAddress_Student"/>
     					</g:HorizontalPanel>
     			<g:Grid width="100%">
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Code postale / Ville" styleName="fieldTitle"/>
+    					<g:Label text="Code postale / Ville" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtCity_Student"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Pays" styleName="fieldTitle"/>
+    					<g:Label text="Pays" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtCountry_Student"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Email" styleName="fieldTitle"/>
+    					<g:Label text="Email" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtEmail_Student"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Mobile (pour les activités)" styleName="fieldTitle"/>
+    					<g:Label text="Mobile (pour les activités)" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtMobilePhone_Student"/>
     				</g:customCell>
     			</g:row>
     		</g:Grid>
@@ -83,78 +86,78 @@
     			<g:Grid width="100%">
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Nom de famille" styleName="fieldTitle"/>
+    					<g:Label text="Nom de famille" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtLastName_Parents"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Prénom" styleName="fieldTitle"/>
+    					<g:Label text="Prénom" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtFirstName_Parents"/>
     				</g:customCell>
     			</g:row>
     		</g:Grid>
     			<g:HorizontalPanel width="100%" spacing="4">
-    						<g:Label text="Adresse (Rue, No.)" styleName="fieldTitle"/>
-    						<g:TextBox styleName="sis-textbox-long"/>
+    						<g:Label text="Adresse (Rue, No.)" styleName="requiredField"/>
+    						<g:TextBox styleName="sis-textbox-long" ui:field="txtAddress_Parents"/>
     					</g:HorizontalPanel>
     			<g:Grid width="100%">
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Code postale / Ville" styleName="fieldTitle"/>
+    					<g:Label text="Code postale / Ville" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtCity_Parents"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Pays" styleName="fieldTitle"/>
+    					<g:Label text="Pays" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
-    				</g:customCell>
-    			</g:row>
-    			<g:row>
-    				<g:customCell>
-    					<g:Label text="Mobile (mère)" styleName="fieldTitle"/>
-    				</g:customCell>
-    				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
-    				</g:customCell>
-    				<g:customCell>
-    					<g:Label text="Mobile (père)" styleName="fieldTitle"/>
-    				</g:customCell>
-    				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtCountry_Parents"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Téléphone (domicile)" styleName="fieldTitle"/>
+    					<g:Label text="Mobile (mère)" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txt_MobilePhone_Mother"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Téléphone professionnel" styleName="fieldTitle"/>
+    					<g:Label text="Mobile (père)" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtMobilePhone_Father"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Fax" styleName="fieldTitle"/>
+    					<g:Label text="Téléphone (domicile)" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtHomePhone_Parents"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="E-mail" styleName="fieldTitle"/>
+    					<g:Label text="Téléphone professionnel" styleName="requiredField"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtWorkPhone_Parents"/>
+    				</g:customCell>
+    			</g:row>
+    			<g:row>
+    				<g:customCell>
+    					<g:Label text="Fax" styleName="requiredField"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtFax_Parents"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:Label text="E-mail" styleName="requiredField"/>
+    				</g:customCell>
+    				<g:customCell>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtEmail_Parents"/>
     				</g:customCell>
     			</g:row>
     		</g:Grid>
@@ -165,7 +168,7 @@
     					<g:Label text="Nom de l&apos;entreprise" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis-textbox-long"/>
+    					<g:TextBox styleName="sis-textbox-long" ui:field="txtCompanyName_Invoice"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
@@ -173,7 +176,7 @@
     					<g:Label text="Nom / Prénom de la personne responsable" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis-textbox-long"/>
+    					<g:TextBox styleName="sis-textbox-long" ui:field="txtFullName_Invoice"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
@@ -181,7 +184,7 @@
     					<g:Label text="Adresse (Rue, No.)" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis-textbox-long"/>
+    					<g:TextBox styleName="sis-textbox-long" ui:field="txtAddress_Invoice"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
@@ -189,7 +192,7 @@
     					<g:Label text="Code postale / Ville" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis-textbox-long"/>
+    					<g:TextBox styleName="sis-textbox-long" ui:field="txtCity_Invoice"/>
     				</g:customCell>
     			</g:row>
     			<g:row>
@@ -197,14 +200,14 @@
     					<g:Label text="Pays" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:TextBox styleName="sis-textbox-long"/>
+    					<g:TextBox styleName="sis-textbox-long" ui:field="txtCountry_Invoice"/>
     				</g:customCell>
     			</g:row>
     		</g:Grid>
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
-    				<g:HorizontalPanel width="20%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
+    				<g:HorizontalPanel width="30%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
     				<g:Button ui:field="button" visible="false">Précédant</g:Button>
-    			<g:Button ui:field="cmdNextStep" text="Suivant">Next Step</g:Button>
+    			<g:Button ui:field="cmdNextStep" text="Enregister &amp; Suivant &gt;&gt;">Next Step</g:Button>
     		</g:HorizontalPanel>
     			</g:VerticalPanel>
     		</g:FlowPanel>

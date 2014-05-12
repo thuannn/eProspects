@@ -9,8 +9,8 @@
     			<g:HorizontalPanel width="100%" spacing="10">
     			<g:VerticalPanel width="100%">
     				<g:Label text="PROGRAMMES" styleName="sectionTitle"/>
-    				<g:CheckBox text="Frais d&apos;inscription, CHF 100.-" checked="true" enabled="false"/>
-    				<g:CheckBox text="Pack Assurance santé CHF 190.- (obligatoire pour les internes sauf les résidents en Suisse)"/>
+    				<g:CheckBox text="Frais d&apos;inscription, CHF 100.-" checked="true" enabled="false" ui:field="chkApplicaitonFee"/>
+    				<g:CheckBox text="Pack Assurance santé CHF 190.- (obligatoire pour les internes sauf les résidents en Suisse)" ui:field="chkPackAssurance"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Grid width="100%">
     					<g:row>
@@ -89,7 +89,7 @@
     					</g:row>
     				</g:Grid>
     				</g:Cell>
-    				<g:CheckBox text="Je souhaite continuer le programme choisi après le cours d&apos;été."/>
+    				<g:CheckBox text="Je souhaite continuer le programme choisi après le cours d&apos;été." ui:field="chkContinueAfter"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Logement - Internat" styleName="sectionTitle"/>
     				<g:Grid width="100%">
@@ -98,13 +98,13 @@
     							<g:Label text="Chambre privée"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:RadioButton name="new name" text="Confort plus" ui:field="optConfortPlus"/>
+    							<g:RadioButton name="new name" text="Confort plus" ui:field="optConfortPlusPrivate"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:RadioButton name="new name" text="Confort"/>
+    							<g:RadioButton name="new name" text="Confort" ui:field="optConfortPrivate"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:RadioButton name="new name" text="Standard"/>
+    							<g:RadioButton name="new name" text="Standard" ui:field="optStandardPrivate"/>
     						</g:customCell>
     					</g:row>
     					<g:row>
@@ -112,13 +112,13 @@
     							<g:Label text="Chambre à partager (Deux lits jumeaux)"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:RadioButton name="new name" text="Confort plus"/>
+    							<g:RadioButton name="new name" text="Confort plus" ui:field="optConfortPlusShare"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:RadioButton name="new name" text="Confort"/>
+    							<g:RadioButton name="new name" text="Confort" ui:field="optConfortShare"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:RadioButton name="new name" text="Standard"/>
+    							<g:RadioButton name="new name" text="Standard" ui:field="optStandardShare"/>
     						</g:customCell>
     					</g:row>
     				</g:Grid>
@@ -132,13 +132,13 @@
     							<g:Label text="Choix de la monnaie du dépôt"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:RadioButton name="new name" text="CHF 100.-"/>
+    							<g:RadioButton name="deposit" text="CHF 100.-" ui:field="optKeyDepositCHF"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:RadioButton name="new name" text="€ 100.-"/>
+    							<g:RadioButton name="deposit" text="€ 100.-" ui:field="optKeyDepositEuro"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:RadioButton name="new name" text="US$ 100.-"/>
+    							<g:RadioButton name="deposit" text="US$ 100.-" ui:field="optKeyDepositUSD"/>
     						</g:customCell>
     					</g:row>
     				</g:Grid>
@@ -150,9 +150,9 @@
     			</g:VerticalPanel>
     		</g:HorizontalPanel>
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
-    				<g:HorizontalPanel width="20%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
+    				<g:HorizontalPanel width="35%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
     				<g:Button ui:field="cmdPreviousStep">Précédant</g:Button>
-    			<g:Button ui:field="cmdNextStep" text="Suivant">Next Step</g:Button>
+    			<g:Button ui:field="cmdNextStep" text="Enregistrer &amp; Suivant &gt;&gt;">Next Step</g:Button>
     		</g:HorizontalPanel>
     			</g:VerticalPanel>
     		</g:FlowPanel>

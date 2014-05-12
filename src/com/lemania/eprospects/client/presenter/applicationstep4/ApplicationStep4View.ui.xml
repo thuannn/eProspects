@@ -48,9 +48,9 @@
     			</g:VerticalPanel>
     		</g:HorizontalPanel>
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
-    				<g:HorizontalPanel width="20%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
+    				<g:HorizontalPanel width="35%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
     				<g:Button ui:field="cmdPreviousStep">Précédant</g:Button>
-    			<g:Button ui:field="cmdNextStep" text="Suivant">Next Step</g:Button>
+    			<g:Button ui:field="cmdNextStep" text="Enregistrer &amp; Suivant &gt;&gt;">Next Step</g:Button>
     		</g:HorizontalPanel>
     			</g:VerticalPanel>
     		</g:FlowPanel>

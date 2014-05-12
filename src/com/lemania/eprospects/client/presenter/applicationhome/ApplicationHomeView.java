@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.lemania.eprospects.client.SummerCampSettingValues;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.RadioButton;
+import com.google.gwt.event.dom.client.BlurEvent;
 
 public class ApplicationHomeView extends
 		ViewWithUiHandlers<ApplicationHomeUiHandlers> implements
@@ -51,6 +52,7 @@ public class ApplicationHomeView extends
 	@UiHandler("cmdStartApplication")
 	void onCmdStartApplicationClick(ClickEvent event) {
 		//
+		txtEmail.setText( txtEmail.getText().toLowerCase() );
 		getUiHandlers().startApplication( txtEmail.getText(), optNew.getValue(), optModify.getValue(), txtApplicationId.getText() );
 	}
 
@@ -69,4 +71,5 @@ public class ApplicationHomeView extends
 		//
 		pnlApplicationIdRequest.setVisible(true);
 	}
+	
 }

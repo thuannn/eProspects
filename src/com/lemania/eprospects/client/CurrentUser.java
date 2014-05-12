@@ -3,17 +3,21 @@ package com.lemania.eprospects.client;
 public class CurrentUser {
 	
 	private Long userId;
+	private String applicationId;
+	//
 	private String fullName;
 	private String userName;
 	private String userPassword;
 	private String userEmail;
-	
+	//
 	private boolean isAdmin = false;
 	private boolean isProf = false;
 	private boolean isStudent = false;
 	private boolean isLoggedIn = false;
 	private boolean isReadOnly = false;
-	
+	//
+	private boolean isCandidate = false;
+	//
 	private int currentMonth;
 	private int currentYear;
 	private int currentDay;
@@ -120,5 +124,21 @@ public class CurrentUser {
 
 	public void setReadOnly(boolean isReadOnly) {
 		this.isReadOnly = isReadOnly;
+	}
+
+	public boolean isCandidate() {
+		return isCandidate;
+	}
+
+	public void setCandidate(boolean isCandidate) {
+		this.isCandidate = isCandidate;
+	}
+
+	public String getApplicationId() {
+		return applicationId;
+	}
+
+	public void setApplicationId(String applicationId) {
+		this.applicationId = applicationId;
 	}
 }

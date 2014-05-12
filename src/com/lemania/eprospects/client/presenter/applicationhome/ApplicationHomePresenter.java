@@ -15,10 +15,12 @@ import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.lemania.eprospects.client.CurrentUser;
 import com.lemania.eprospects.client.FieldValidation;
 import com.lemania.eprospects.client.NotificationTypes;
 import com.lemania.eprospects.client.event.ApplicationStartEvent;
 import com.lemania.eprospects.client.event.DrawSchoolInterfaceEvent;
+import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.place.NameTokens;
 import com.lemania.eprospects.shared.ApplicationFormProxy;
@@ -51,20 +53,27 @@ public class ApplicationHomePresenter
 
 		getView().setUiHandlers(this);
 	}
+	
 
+	/*
+	 * */
 	protected void onBind() {
 		//
 		super.onBind();
 		//
 		getEventBus().fireEvent( new DrawSchoolInterfaceEvent() );
 	}
+	
 
+	/*
+	 * */
 	protected void onReset() {
 		//
 		super.onReset();
 		//
 		getView().initializeUI();
 	}
+	
 
 	/*
 	 * Validate the email, if it exist in the DB, ask for the application id, otherwise create a new application
@@ -76,7 +85,7 @@ public class ApplicationHomePresenter
 			Window.alert( NotificationTypes.invalid_input + "Email");
 			return;
 		}
-		//
+		// If it's for editing an existing one, check if user entered the app id
 		if (editOne && appId.equals("")) {
 			Window.alert( NotificationTypes.invalid_input + " Application ID");
 			return;
@@ -84,6 +93,7 @@ public class ApplicationHomePresenter
 		//
 		if (editOne && !appId.equals("")) {
 			loadExistingApplication( emailAddress, appId );
+			return;
 		}
 		//
 		ApplicationFormRequestFactory rf = GWT.create(ApplicationFormRequestFactory.class);
@@ -109,24 +119,53 @@ public class ApplicationHomePresenter
 		});
 	}
 	
+	
 	/*
 	 * */
 	private void loadExistingApplication(String emailAddress, String appId) {
-		//
-		Window.alert("load existing one");
-	}
-
-	/*
-	 * */
-	void createNewApplication(String emailAddress) {
 		//
 		ApplicationFormRequestFactory rf = GWT.create(ApplicationFormRequestFactory.class);
 		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
 		ApplicationFormRequestContext rc = rf.applicationFormRequest();
 		
-		rc.saveAndReturn(emailAddress).fire(new Receiver<ApplicationFormProxy>(){
+		rc.loadAndReturn( emailAddress, appId ).fire(new Receiver<ApplicationFormProxy>() {
 			@Override
 			public void onSuccess(ApplicationFormProxy app){
+				// Keep the current user info and fire an event
+				CurrentUser curUser = new CurrentUser();
+				curUser.setUserEmail( app.getEmailAddress() );
+				curUser.setApplicationId( app.getApplicationID() );
+				curUser.setCandidate( true );
+				getEventBus().fireEvent( new LoginAuthenticatedEvent(curUser) );
+				// Go to the next page
+				getEventBus().fireEvent( new ApplicationStartEvent() );
+			}
+			@Override
+			public void onFailure(ServerFailure error){
+				Window.alert(error.getMessage());
+			}
+		});
+	}
+	
+
+	/*
+	 * */
+	void createNewApplication( final String emailAddress ) {
+		//
+		ApplicationFormRequestFactory rf = GWT.create(ApplicationFormRequestFactory.class);
+		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
+		ApplicationFormRequestContext rc = rf.applicationFormRequest();
+		
+		rc.saveAndReturn( emailAddress ).fire(new Receiver<ApplicationFormProxy>() {
+			@Override
+			public void onSuccess(ApplicationFormProxy app){
+				// Keep the current user info and fire an event
+				CurrentUser curUser = new CurrentUser();
+				curUser.setUserEmail( app.getEmailAddress() );
+				curUser.setApplicationId( app.getApplicationID() );
+				curUser.setCandidate( true );
+				getEventBus().fireEvent( new LoginAuthenticatedEvent(curUser) );
+				// Go to the next page
 				getEventBus().fireEvent( new ApplicationStartEvent() );
 			}
 			@Override

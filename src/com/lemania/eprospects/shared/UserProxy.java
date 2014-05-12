@@ -45,4 +45,7 @@ public interface UserProxy extends EntityProxy {
 	
 	public String getCurrentLoggedInTime();
 	public void setCurrentLoggedInTime(String currentLoggedInTime);
+	
+	public Boolean getIsCandidate();
+	public void setIsCandidate(Boolean isCandidate);
 }

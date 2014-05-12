@@ -20,12 +20,12 @@ th {
 }
 
 .sectionTitle {
-	color: black;
+	color: White;
 	padding: 5px;
 	font-size: 14px;
 	font-style: bold;
 	text-align: center;
-	background-color: gainsboro;
+	background-color: darkgrey;
 }
 
 .header {
@@ -218,6 +218,11 @@ th {
 
 .sis-textbox-long {
 	width: 670px;
+}
+
+.requiredField {
+	background-color: papayawhip;
+	width: 150px;
 }
 
 .lablel_TotalAmount {

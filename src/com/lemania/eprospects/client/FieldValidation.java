@@ -1,5 +1,8 @@
 package com.lemania.eprospects.client;
 
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.ListBox;
+
 public class FieldValidation {
 	
 	// User name validation
@@ -34,8 +37,41 @@ public class FieldValidation {
          return valid;
 	}
 	
-	// Number validation
+	/*
+	 * Number validation
+	 * */
 	public static boolean isNumeric(String str) {
 		return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+	}
+	
+	
+	/*
+	 * */
+	public static boolean isEmptyString( String text, String fieldDescription ) {
+		//
+		if (text.equals("") || text.equals(null)) {
+			Window.alert( NotificationTypes.invalid_input + fieldDescription );
+			return true;
+		}
+		return false;
+	}
+	
+	
+	/*
+	 * */
+	public static void selectItemFromList( ListBox list, String value) {
+		for (int i=0; i<list.getItemCount(); i++) {
+			if (list.getValue(i).equals(value))
+				list.setSelectedIndex(i);
+		}
+	}
+	
+	/*
+	 * */
+	public static void selectItemFromListByText( ListBox list, String value) {
+		for (int i=0; i<list.getItemCount(); i++) {
+			if (list.getItemText(i).equals(value))
+				list.setSelectedIndex(i);
+		}
 	}
 }
