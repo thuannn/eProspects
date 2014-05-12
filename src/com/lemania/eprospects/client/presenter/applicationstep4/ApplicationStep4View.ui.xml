@@ -11,31 +11,31 @@
     				<g:Label text="L&apos;élève a-t-il/elle un problème de santé, nécessite-t-il un traitement ou un régime spécifique ou a-t-il handicap spécifique dont nous devrons avoir connaissance ?"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:HorizontalPanel width="100%">
-    					<g:RadioButton name="new name" text="Oui"/>
-    					<g:RadioButton name="new name" text="Non"/>
+    					<g:RadioButton name="HealthProblem" text="Oui" ui:field="optHealthProblemYes"/>
+    					<g:RadioButton name="HealthProblem" text="Non" ui:field="optHealProblemNo"/>
     					<g:Label text="Si oui, veuillez préciser" styleName="fieldTitle"/>
-    					<g:TextArea styleName="sis-TextArea"/>
+    					<g:TextArea styleName="sis-TextArea" ui:field="txtHealthProblem"/>
     				</g:HorizontalPanel>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="L&apos;élève est-il sujet à des allergies ?"/>
     				<g:HorizontalPanel width="100%">
-    					<g:RadioButton name="new name" text="Oui"/>
-    					<g:RadioButton name="new name" text="Non"/>
+    					<g:RadioButton name="Allergy" text="Oui" ui:field="optAllergyYes"/>
+    					<g:RadioButton name="Allergy" text="Non" ui:field="optAllergyNo"/>
     					<g:Label text="Si oui, lesquelles" styleName="fieldTitle"/>
-    					<g:TextArea styleName="sis-TextArea"/>
+    					<g:TextArea styleName="sis-TextArea" ui:field="txtAllergy"/>
     				</g:HorizontalPanel>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="L&apos;élève doit-il prendre un traitement/médicament particulier ?"/>
     				<g:HorizontalPanel width="100%">
-    					<g:RadioButton name="new name" text="Oui"/>
-    					<g:RadioButton name="new name" text="Non"/>
+    					<g:RadioButton name="Medical" text="Oui" ui:field="optMedicalYes"/>
+    					<g:RadioButton name="Medical" text="Non" ui:field="optMedicalNo"/>
     					<g:Label text="Si oui, lequel (posologie)" styleName="fieldTitle"/>
-    					<g:TextArea styleName="sis-TextArea"/>
+    					<g:TextArea styleName="sis-TextArea" ui:field="txtMedical"/>
     				</g:HorizontalPanel>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Autres"/>
     				<g:HorizontalPanel width="100%">
-    					<g:TextArea styleName="sis-TextArea"/>
+    					<g:TextArea styleName="sis-TextArea" ui:field="txtOther" width="600px" height="200px"/>
     				</g:HorizontalPanel>
     			</g:VerticalPanel>
     			<g:VerticalPanel width="250px" styleName="subSection">

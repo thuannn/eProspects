@@ -12,16 +12,12 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyEvent;
-import com.gwtplatform.mvp.client.annotations.ProxyStandard;
-import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.HasUiHandlers;
-import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.lemania.eprospects.client.CurrentUser;
-import com.lemania.eprospects.client.event.ApplicationStep1CompletedEvent;
 import com.lemania.eprospects.client.event.ApplicationStep2CompletedEvent;
 import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
@@ -43,9 +39,13 @@ public class ApplicationStep2Presenter
 	//
 	CurrentUser curUser;
 	
+	/*
+	 * 
+	 * */
 	interface MyView extends View, HasUiHandlers<ApplicationStep2UiHandlers> {
 		//
 		void initializeUI();
+		//
 		void showApplicationDetails( ApplicationFormProxy app );
 	}
 

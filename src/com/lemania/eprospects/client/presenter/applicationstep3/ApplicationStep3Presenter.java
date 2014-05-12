@@ -1,32 +1,49 @@
 package com.lemania.eprospects.client.presenter.applicationstep3;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.requestfactory.shared.Receiver;
+import com.google.web.bindery.requestfactory.shared.ServerFailure;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
-import com.gwtplatform.mvp.client.annotations.ProxyStandard;
-import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.HasUiHandlers;
-import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.gwtplatform.mvp.client.annotations.ProxyEvent;
+import com.lemania.eprospects.client.CurrentUser;
 import com.lemania.eprospects.client.event.ApplicationStep3CompletedEvent;
 import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
+import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
+import com.lemania.eprospects.client.event.LoginAuthenticatedEvent.LoginAuthenticatedHandler;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.place.NameTokens;
+import com.lemania.eprospects.shared.ApplicationFormProxy;
+import com.lemania.eprospects.shared.service.ApplicationFormRequestFactory;
+import com.lemania.eprospects.shared.service.EventSourceRequestTransport;
+import com.lemania.eprospects.shared.service.ApplicationFormRequestFactory.ApplicationFormRequestContext;
 
 public class ApplicationStep3Presenter
 		extends
 		Presenter<ApplicationStep3Presenter.MyView, ApplicationStep3Presenter.MyProxy>
-		implements ApplicationStep3UiHandlers {
+		implements 
+				ApplicationStep3UiHandlers,
+				LoginAuthenticatedHandler {
+	
+	//
+	private CurrentUser curUser;
+	
 	interface MyView extends View, HasUiHandlers<ApplicationStep3UiHandlers> {
 		//
 		void initializeUi();
+		//
+		void showApplicationDetails( ApplicationFormProxy app );
 	}
 
 	@ContentSlot
@@ -53,15 +70,141 @@ public class ApplicationStep3Presenter
 
 	protected void onReset() {
 		super.onReset();
+		//
+		loadCurrentApplication();
 	}
+	
+	
+	/*
+	 * */
+	private void loadCurrentApplication() {
+		//
+		ApplicationFormRequestFactory rf = GWT.create(ApplicationFormRequestFactory.class);
+		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
+		ApplicationFormRequestContext rc = rf.applicationFormRequest();
+		
+		rc.loadAndReturn( curUser.getUserEmail(), curUser.getApplicationId()).fire( new Receiver<ApplicationFormProxy>() {
+			@Override
+			public void onSuccess(ApplicationFormProxy app){
+				// show result
+				getView().showApplicationDetails(app);
+			}
+			@Override
+			public void onFailure(ServerFailure error){
+				Window.alert(error.getMessage());
+			}
+		});
+	}
+	
+	
 
 	/*
 	 * */
 	@Override
-	public void nextStep() {
-		//
-		getEventBus().fireEvent( new ApplicationStep3CompletedEvent() );
+	public void nextStep( 
+			String lstAirportDirection,
+			boolean optPrivateCourse,
+			String txtPrivateCoursePeriod,
+			boolean chkGeneveOneway,
+			boolean chkZurichOneway,
+			boolean chkGeneveRoundtrip,
+			boolean chkZurichRoundtrip,
+			String txtAirlineName,
+			String txtArriveVol,
+			String txtArriveTime,
+			String txtDepartVol,
+			String txtDepartTime,
+			boolean chkVisaLetterRequest,
+			boolean optMoneyDepositYes,
+			boolean optMoneyDepositNo,
+			String txtMoneyDepositAmount,
+			boolean chkMealPackage,
+			boolean chkActivitiesPackage ) {
+		//validate data
+		if ( !formCompleted(
+				 lstAirportDirection,
+				 optPrivateCourse,
+				 txtPrivateCoursePeriod,
+				 chkGeneveOneway,
+				 chkZurichOneway,
+				 chkGeneveRoundtrip,
+				 chkZurichRoundtrip,
+				 txtAirlineName,
+				 txtArriveVol,
+				 txtArriveTime,
+				 txtDepartVol,
+				 txtDepartTime,
+				 chkVisaLetterRequest,
+				 optMoneyDepositYes,
+				 optMoneyDepositNo,
+				 txtMoneyDepositAmount,
+				 chkMealPackage,
+				 chkActivitiesPackage) )
+			return;
+		// save data
+		ApplicationFormRequestFactory rf = GWT.create(ApplicationFormRequestFactory.class);
+		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
+		ApplicationFormRequestContext rc = rf.applicationFormRequest();
+		
+		rc.saveStep3( curUser.getUserEmail(), curUser.getApplicationId(), 
+				lstAirportDirection,
+				 optPrivateCourse,
+				 txtPrivateCoursePeriod,
+				 chkGeneveOneway,
+				 chkZurichOneway,
+				 chkGeneveRoundtrip,
+				 chkZurichRoundtrip,
+				 txtAirlineName,
+				 txtArriveVol,
+				 txtArriveTime,
+				 txtDepartVol,
+				 txtDepartTime,
+				 chkVisaLetterRequest,
+				 optMoneyDepositYes,
+				 optMoneyDepositNo,
+				 txtMoneyDepositAmount,
+				 chkMealPackage,
+				 chkActivitiesPackage )
+		.fire( new Receiver<Boolean>() {
+			@Override
+			public void onSuccess(Boolean saved){
+				// Go to the next page
+				getEventBus().fireEvent( new ApplicationStep3CompletedEvent() );
+			}
+			@Override
+			public void onFailure(ServerFailure error){
+				Window.alert(error.getMessage());
+			}
+		});
+		//	
 	}
+	
+	
+	/*
+	 * */
+	private boolean formCompleted(
+			String lstAirportDirection,
+			boolean optPrivateCourse,
+			String txtPrivateCoursePeriod,
+			boolean chkGeneveOneway,
+			boolean chkZurichOneway,
+			boolean chkGeneveRoundtrip,
+			boolean chkZurichRoundtrip,
+			String txtAirlineName,
+			String txtArriveVol,
+			String txtArriveTime,
+			String txtDepartVol,
+			String txtDepartTime,
+			boolean chkVisaLetterRequest,
+			boolean optMoneyDepositYes,
+			boolean optMoneyDepositNo,
+			String txtMoneyDepositAmount,
+			boolean chkMealPackage,
+			boolean chkActivitiesPackage) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
 
 	/*
 	 * */
@@ -69,6 +212,16 @@ public class ApplicationStep3Presenter
 	public void previousStep() {
 		//
 		getEventBus().fireEvent( new GotoPreviousPageEvent(History.getToken()) );
+	}
+	
+
+	/*
+	 * */
+	@ProxyEvent
+	@Override
+	public void onLoginAuthenticated(LoginAuthenticatedEvent event) {
+		//
+		this.curUser = event.getCurrentUser();
 	}
 
 }

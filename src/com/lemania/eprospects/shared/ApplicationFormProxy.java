@@ -8,9 +8,11 @@ import com.lemania.eprospects.server.ObjectifyLocator;
 @ProxyFor(value=ApplicationForm.class, locator=ObjectifyLocator.class)
 public interface ApplicationFormProxy extends EntityProxy {
 	//
+	
 	Long getId();
 	
 	//
+	
 	public String getApplicationID();
 	public void setApplicationID(String applicationID);
 
@@ -24,6 +26,7 @@ public interface ApplicationFormProxy extends EntityProxy {
 	public void setCompleted(boolean isCompleted);
 	
 	// step 1
+	
 	public String getGenderCode();
 	public void setGenderCode(String genderCode);
 
@@ -103,6 +106,7 @@ public interface ApplicationFormProxy extends EntityProxy {
 	public void setCountry_Invoice(String country_Invoice);
 	
 	// step 2
+	
 	public boolean isChkApplicaitonFee();
 	public void setChkApplicaitonFee(boolean chkApplicaitonFee);
 
@@ -156,4 +160,122 @@ public interface ApplicationFormProxy extends EntityProxy {
 	
 	public boolean isChkContinueAfter();
 	public void setChkContinueAfter(boolean chkContinueAfter);
+	
+	// step 3
+	
+	public String getLstAirportDirection();
+	public void setLstAirportDirection(String lstAirportDirection);
+
+	public boolean getOptPrivateCourse();
+	public void setOptPrivateCourse(boolean optPrivateCourse);
+
+	public String getTxtPrivateCoursePeriod();
+	public void setTxtPrivateCoursePeriod(String txtPrivateCoursePeriod);
+
+	public boolean getChkGeneveOneway();
+	public void setChkGeneveOneway(boolean chkGeneveOneway);
+
+	public boolean getChkZurichOneway();
+	public void setChkZurichOneway(boolean chkZurichOneway);
+
+	public boolean getChkGeneveRoundtrip();
+	public void setChkGeneveRoundtrip(boolean chkGeneveRoundtrip);
+
+	public boolean getChkZurichRoundtrip();	
+	public void setChkZurichRoundtrip(boolean chkZurichRoundtrip);
+
+	public String getTxtAirlineName();
+	public void setTxtAirlineName(String txtAirlineName);
+
+	public String getTxtArriveVol();
+	public void setTxtArriveVol(String txtArriveVol);
+
+	public String getTxtArriveTime();
+	public void setTxtArriveTime(String txtArriveTime);
+
+	public String getTxtDepartVol();
+	public void setTxtDepartVol(String txtDepartVol);
+
+	public String getTxtDepartTime();
+	public void setTxtDepartTime(String txtDepartTime);
+
+	public boolean getChkVisaLetterRequest();
+	public void setChkVisaLetterRequest(boolean chkVisaLetterRequest);
+
+	public boolean getOptMoneyDepositYes();
+	public void setOptMoneyDepositYes(boolean optMoneyDepositYes);
+
+	public boolean getOptMoneyDepositNo();
+	public void setOptMoneyDepositNo(boolean optMoneyDepositNo);
+
+	public String getTxtMoneyDepositAmount();
+	public void setTxtMoneyDepositAmount(String txtMoneyDepositAmount);
+
+	public boolean getChkMealPackage();
+	public void setChkMealPackage(boolean chkMealPackage);
+
+	public boolean getChkActivitiesPackage();
+	public void setChkActivitiesPackage(boolean chkActivitiesPackage);
+	
+	//
+
+	public boolean isOptHealthProblemYes();
+	public void setOptHealthProblemYes(boolean optHealthProblemYes);
+
+	public boolean isOptHealProblemNo();
+	public void setOptHealProblemNo(boolean optHealProblemNo);
+
+	public String getTxtHealthProblem();
+	public void setTxtHealthProblem(String txtHealthProblem);
+
+	public boolean isOptAllergyYes();
+	public void setOptAllergyYes(boolean optAllergyYes);
+
+	public boolean isOptAllergyNo();
+	public void setOptAllergyNo(boolean optAllergyNo);
+
+	public String getTxtAllergy();
+	public void setTxtAllergy(String txtAllergy);
+
+	public boolean isOptMedicalYes();
+	public void setOptMedicalYes(boolean optMedicalYes);
+
+	public boolean isOptMedicalNo();
+	public void setOptMedicalNo(boolean optMedicalNo);
+
+	public String getTxtMedical();
+	public void setTxtMedical(String txtMedical);
+
+	public String getTxtOther();
+	public void setTxtOther(String txtOther);
+	
+	//
+	
+	public boolean isChkConditionAgreement();	
+	public void setChkConditionAgreement(boolean chkConditionAgreement);
+
+	public String getTxtDatePlace();
+	public void setTxtDatePlace(String txtDatePlace);
+
+	public String getTxtFullName();
+	public void setTxtFullName(String txtFullName);
+	
+	//
+	
+	public boolean isOptPaypal();
+	public void setOptPaypal(boolean optPaypal);
+
+	public boolean isOptPayDirect();
+	public void setOptPayDirect(boolean optPayDirect);
+
+	public boolean isOptBankTransfer();
+	public void setOptBankTransfer(boolean optBankTransfer);
+
+	public boolean isOptDirectCash();
+	public void setOptDirectCash(boolean optDirectCash);
+
+	public boolean isOptDirectCard();
+	public void setOptDirectCard(boolean optDirectCard);
+	
+	//
 }

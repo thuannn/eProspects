@@ -1,12 +1,17 @@
 package com.lemania.eprospects.client.presenter.applicationstep4;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.requestfactory.shared.Receiver;
+import com.google.web.bindery.requestfactory.shared.ServerFailure;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
+import com.gwtplatform.mvp.client.annotations.ProxyEvent;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
@@ -15,16 +20,34 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.lemania.eprospects.client.CurrentUser;
+import com.lemania.eprospects.client.event.ApplicationStep3CompletedEvent;
 import com.lemania.eprospects.client.event.ApplicationStep4CompletedEvent;
 import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
+import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
+import com.lemania.eprospects.client.event.LoginAuthenticatedEvent.LoginAuthenticatedHandler;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.place.NameTokens;
+import com.lemania.eprospects.shared.ApplicationFormProxy;
+import com.lemania.eprospects.shared.service.ApplicationFormRequestFactory;
+import com.lemania.eprospects.shared.service.EventSourceRequestTransport;
+import com.lemania.eprospects.shared.service.ApplicationFormRequestFactory.ApplicationFormRequestContext;
 
 public class ApplicationStep4Presenter
 		extends
 		Presenter<ApplicationStep4Presenter.MyView, ApplicationStep4Presenter.MyProxy>
-		implements ApplicationStep4UiHandlers {
+		implements 
+			ApplicationStep4UiHandlers,
+			LoginAuthenticatedHandler {
+	
+	//
+	private CurrentUser curUser;
+	
+	//
+	
 	interface MyView extends View, HasUiHandlers<ApplicationStep4UiHandlers> {
+		//
+		void showApplicationDetails( ApplicationFormProxy app );
 	}
 
 	@ContentSlot
@@ -49,16 +72,34 @@ public class ApplicationStep4Presenter
 
 	protected void onReset() {
 		super.onReset();
+		//
+		loadCurrentApplication();
 	}
 
+	
 	/*
 	 * */
-	@Override
-	public void nextStep() {
+	private void loadCurrentApplication() {
 		//
-		getEventBus().fireEvent( new ApplicationStep4CompletedEvent() );
+		ApplicationFormRequestFactory rf = GWT.create(ApplicationFormRequestFactory.class);
+		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
+		ApplicationFormRequestContext rc = rf.applicationFormRequest();
+		
+		rc.loadAndReturn( curUser.getUserEmail(), curUser.getApplicationId()).fire( new Receiver<ApplicationFormProxy>() {
+			@Override
+			public void onSuccess(ApplicationFormProxy app){
+				// show result
+				getView().showApplicationDetails(app);
+			}
+			@Override
+			public void onFailure(ServerFailure error){
+				Window.alert(error.getMessage());
+			}
+		});
 	}
+	
 
+	
 	/*
 	 * */
 	@Override
@@ -67,4 +108,74 @@ public class ApplicationStep4Presenter
 		getEventBus().fireEvent( new GotoPreviousPageEvent(History.getToken()) );
 	}
 
+	@Override
+	public void nextStep(boolean optHealthProblemYes, boolean optHealProblemNo,
+			String txtHealthProblem, boolean optAllergyYes,
+			boolean optAllergyNo, String txtAllergy, boolean optMedicalYes,
+			boolean optMedicalNo, String txtMedical, String txtOther) {
+			//validate data
+			if ( !formCompleted (
+					 optHealthProblemYes,
+					 optHealProblemNo,
+					 txtHealthProblem,
+					 optAllergyYes,
+					 optAllergyNo,
+					 txtAllergy,
+					 optMedicalYes,
+					 optMedicalNo,
+					 txtMedical,
+					 txtOther ) )
+				return;
+			// save data
+			ApplicationFormRequestFactory rf = GWT.create(ApplicationFormRequestFactory.class);
+			rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
+			ApplicationFormRequestContext rc = rf.applicationFormRequest();
+			
+			rc.saveStep4( curUser.getUserEmail(), curUser.getApplicationId(), 
+					optHealthProblemYes,
+					optHealProblemNo,
+					txtHealthProblem,
+					optAllergyYes,
+					optAllergyNo,
+					txtAllergy,
+					optMedicalYes,
+					optMedicalNo,
+					txtMedical,
+					txtOther )
+			.fire( new Receiver<Boolean>() {
+				@Override
+				public void onSuccess(Boolean saved){
+					// Go to the next page
+					getEventBus().fireEvent( new ApplicationStep4CompletedEvent() );
+				}
+				@Override
+				public void onFailure(ServerFailure error){
+					Window.alert(error.getMessage());
+				}
+			});
+			//	
+	}
+
+	
+	
+	/*
+	 * */
+	private boolean formCompleted(boolean optHealthProblemYes,
+			boolean optHealProblemNo, String txtHealthProblem,
+			boolean optAllergyYes, boolean optAllergyNo, String txtAllergy,
+			boolean optMedicalYes, boolean optMedicalNo, String txtMedical,
+			String txtOther) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	
+	/*
+	 * */
+	@ProxyEvent
+	@Override
+	public void onLoginAuthenticated(LoginAuthenticatedEvent event) {
+		//
+		this.curUser = event.getCurrentUser();
+	}
 }

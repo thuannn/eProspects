@@ -9,10 +9,10 @@
     			<g:HorizontalPanel width="100%" spacing="10">
     			<g:VerticalPanel width="100%">
     				<g:Label text="Cours privé" styleName="sectionTitle"/>
-    				<g:CheckBox text="Cours privé de langue 90 CHF par période" styleName="fieldTitle"/>
+    				<g:CheckBox text="Cours privé de langue 90 CHF par période" styleName="fieldTitle" ui:field="optPrivateCourse"/>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Si OUI, veuillez préciser le nombre de prériodes souhaitées par semaine :"/>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtPrivateCoursePeriod"/>
     				</g:HorizontalPanel>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Service de Limousine" styleName="sectionTitle"/>
@@ -20,19 +20,19 @@
     					<g:Label text="Aller simple"/>
     					<g:ListBox ui:field="lstAirportDirection"/>
     					<g:Label text="l&apos;aeroport de"/>
-    					<g:CheckBox text="Genève, CHF 260.- / trajet"/>
-    					<g:CheckBox text="Zurich, CHF 960.- / trajet"/>
+    					<g:CheckBox text="Genève, CHF 260.- / trajet" ui:field="chkGeneveOneway"/>
+    					<g:CheckBox text="Zurich, CHF 960.- / trajet" ui:field="chkZurichOneway"/>
     				</g:HorizontalPanel>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Aller-retour vers l&apos;aeroport de"/>
-    					<g:CheckBox text="Genève, CHF 520.-"/>
-    					<g:CheckBox text="Zurich, CHF 1&apos;920.-"/>
+    					<g:CheckBox text="Genève, CHF 520.-" ui:field="chkGeneveRoundtrip"/>
+    					<g:CheckBox text="Zurich, CHF 1&apos;920.-" ui:field="chkZurichRoundtrip"/>
     				</g:HorizontalPanel>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Information du vol pour le transfert aéroport, si déjà connus"/>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Nom de la compagnie" styleName="fieldTitle"/>
-    					<g:TextBox styleName="sis_textbox"/>
+    					<g:TextBox styleName="sis_textbox" ui:field="txtAirlineName"/>
     				</g:HorizontalPanel>
     				<g:Grid width="100%">
     					<g:row>
@@ -43,13 +43,13 @@
     							<g:Label text="Numéro de vol"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:TextBox/>
+    							<g:TextBox ui:field="txtArriveVol"/>
     						</g:customCell>
     						<g:customCell>
     							<g:Label text="Heure d&apos;arrivée"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:TextBox/>
+    							<g:TextBox ui:field="txtArriveTime"/>
     						</g:customCell>
     					</g:row>
     					<g:row>
@@ -60,37 +60,36 @@
     							<g:Label text="Numéro de vol"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:TextBox/>
+    							<g:TextBox ui:field="txtDepartVol"/>
     						</g:customCell>
     						<g:customCell>
     							<g:Label text="Heure de départ"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:TextBox/>
+    							<g:TextBox ui:field="txtDepartTime"/>
     						</g:customCell>
     					</g:row>
     				</g:Grid>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Lettre de Visa" styleName="sectionTitle"/>
-    				<g:CheckBox text="Envoi par courrier express de la lettre de Visa, facture ou lettre de confirmation : CHF 80.-"/>
+    				<g:CheckBox text="Envoi par courrier express de la lettre de Visa, facture ou lettre de confirmation : CHF 80.-" ui:field="chkVisaLetterRequest"/>
     				<g:Label text="Note : La lettre de visa pour les étudiants étrangers (hors UE) est nécessaire. Par courrier normal (envoie gratuit), cela prend 5-7 jours minimum ouvrés pour recevoir la lettre depuis la Suisse vers l&apos;étranger. Veuillez tenir compte des délais d&apos;obtention du visa, votre demande d&apos;inscription et le paiement doivent, si possible, nous parvenir au minimum quatre semaines avant votre date d&apos;arrivée pour les cours d&apos;été."/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Argent de poche en dépôt" styleName="sectionTitle"/>
     				<g:Label text="Pour les étudiants internes seulement : Argent de poche en dépôt"/>
     				<g:Label text="Souhaitez-vous verser de l&apos;argent de poche supplémentaire au profit de votre enfant ?"/>
     				<g:HorizontalPanel width="100%">
-    					<g:RadioButton name="new name" text="Oui"/>
-    					<g:RadioButton name="new name" text="Non"/>
+    					<g:RadioButton name="new name" text="Oui" ui:field="optMoneyDepositYes"/>
+    					<g:RadioButton name="new name" text="Non" ui:field="optMoneyDepositNo"/>
     					<g:Label text="Si oui, montant en CHF"/>
-    					<g:TextBox/>
+    					<g:TextBox ui:field="txtMoneyDepositAmount"/>
     				</g:HorizontalPanel>
     				<g:Label text="L&apos;école conserve cet argent dans un coffre-fort et donne le montant nécessaire à l&apos;élève en cas de besoin."/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Forfait supplémentaire" styleName="sectionTitle"/>
     				<g:Label text="Pour les étudiants externes seulement"/>
-    				<g:CheckBox text="Forfait 5 repas du midi pour les externes : CHF 80.- par semaine"/>
-    				<g:CheckBox text="Pack d&apos;activités pour les élèves externes : 5-6 activités, du lundi au vendredi et/ou samedi, les après-midi : CHF 230.-"/>
-    				<g:CheckBox text="Assurance santé facultative CHF 190.-"/>
+    				<g:CheckBox text="Forfait 5 repas du midi pour les externes : CHF 80.- par semaine" ui:field="chkMealPackage"/>
+    				<g:CheckBox text="Pack d&apos;activités pour les élèves externes : 5-6 activités, du lundi au vendredi et/ou samedi, les après-midi : CHF 230.-" ui:field="chkActivitiesPackage"/>
     				<g:Label text="Note : Toutes les activités et repas sont inclus pour les élèves internes."/>
     			</g:VerticalPanel>
     			<g:VerticalPanel width="250px" styleName="subSection">

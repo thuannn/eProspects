@@ -72,6 +72,50 @@ public interface ApplicationFormRequestFactory extends RequestFactory {
 				boolean optKeyDepositEuro,
 				boolean optKeyDepositUSD );
 		//
+		Request<Boolean> saveStep3 ( String emailAddress, String appId,
+				String lstAirportDirection,
+				boolean optPrivateCourse,
+				String txtPrivateCoursePeriod,
+				boolean chkGeneveOneway,
+				boolean chkZurichOneway,
+				boolean chkGeneveRoundtrip,
+				boolean chkZurichRoundtrip,
+				String txtAirlineName,
+				String txtArriveVol,
+				String txtArriveTime,
+				String txtDepartVol,
+				String txtDepartTime,
+				boolean chkVisaLetterRequest,
+				boolean optMoneyDepositYes,
+				boolean optMoneyDepositNo,
+				String txtMoneyDepositAmount,
+				boolean chkMealPackage,
+				boolean chkActivitiesPackage );
+		//
+		Request<Boolean> saveStep4 ( String emailAddress, String appId,
+				boolean optHealthProblemYes,
+				boolean optHealProblemNo,
+				String 	txtHealthProblem,
+				boolean optAllergyYes,
+				boolean optAllergyNo,
+				String 	txtAllergy,
+				boolean optMedicalYes,
+				boolean optMedicalNo,
+				String 	txtMedical,
+				String 	txtOther );
+		//
+		Request<Boolean> saveStep5 ( String emailAddress, String appId,
+				boolean chkConditionAgreement,
+				String txtDatePlace,
+				String txtFullName );
+		//
+		Request<Boolean> savePaymentStep ( String emailAddress, String appId,
+				boolean optPaypal,
+				boolean optPayDirect,
+				boolean optBankTransfer,
+				boolean optDirectCash,
+				boolean optDirectCard );
+		//
 		Request<Void> initialize();
 	}
 	

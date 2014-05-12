@@ -17,20 +17,21 @@
     			</g:VerticalPanel>
     			</g:VerticalPanel>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:CheckBox text="J&apos;ai lu, compris et signé les conditions financières et générale, la politique d&apos;annulaltion et/ou les politiques de départ anticipé." width=""/>
+    				<g:CheckBox text="J&apos;ai lu, compris et signé les conditions financières et générale, la politique d&apos;annulaltion et/ou les politiques de départ anticipé." width="" ui:field="chkConditionAgreement"/>
+    				<g:Label text="." styleName="hiddenText"/>
     				<g:Grid width="80%">
     					<g:row>
     						<g:customCell>
     							<g:Label text="Lieu / Date" styleName="fieldTitle"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:TextBox styleName="sis_textbox"/>
+    							<g:TextBox styleName="sis_textbox" ui:field="txtDatePlace"/>
     						</g:customCell>
     						<g:customCell>
     							<g:Label text="Nom / Prénom" styleName="fieldTitle"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:TextBox styleName="sis_textbox"/>
+    							<g:TextBox styleName="sis_textbox" ui:field="txtFullName"/>
     						</g:customCell>
     					</g:row>
     				</g:Grid>

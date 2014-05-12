@@ -7,7 +7,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -15,6 +14,7 @@ import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.lemania.eprospects.shared.ApplicationFormProxy;
 
 public class ApplicationPaymentView extends
 		ViewWithUiHandlers<ApplicationPaymentUiHandlers> implements
@@ -24,12 +24,16 @@ public class ApplicationPaymentView extends
 
 	@UiField
 	SimplePanel main;
-	@UiField RadioButton optionDirect;
-	@UiField RadioButton optionPaypal;
+	@UiField HorizontalPanel pnlOptionDirect;
 	@UiField Button cmdNextStep;
 	@UiField HTML htmlPaypalButton;
 	@UiField Button cmdPreviousStep;
-	@UiField HorizontalPanel pnlOptionDirect;
+	
+	@UiField RadioButton optPaypal;
+	@UiField RadioButton optPayDirect;
+	@UiField RadioButton optBankTransfer;
+	@UiField RadioButton optDirectCash;
+	@UiField RadioButton optDirectCard;
 
 	@Inject
 	ApplicationPaymentView(Binder uiBinder) {
@@ -45,32 +49,47 @@ public class ApplicationPaymentView extends
 		}
 	}
 	
+	
 	/*
 	 * */
 	@UiHandler("cmdNextStep")
 	void onCmdNextStepClick(ClickEvent event) {
-		getUiHandlers().nextStep();
+		//
+		getUiHandlers().nextStep(
+				 optPaypal.getValue(),
+				 optPayDirect.getValue(),
+				 optBankTransfer.getValue(),
+				 optDirectCash.getValue(),
+				 optDirectCard.getValue() );
 	}
 	
+	
+	/*
+	 * */
 	void showOptionDirect(boolean show){
 		cmdNextStep.setVisible( show );
 		pnlOptionDirect.setVisible( show );
 	}
 	
-	/*
-	 * */
-	@UiHandler("optionDirect")
-	void onOptionDirectClick(ClickEvent event) {
-		showOptionDirect( true );
-	}
 	
 	/*
 	 * */
-	@UiHandler("optionPaypal")
-	void onOptionPaypalClick(ClickEvent event) {
+	@UiHandler("optPayDirect")
+	void onOptPayDirectClick(ClickEvent event) {
+		showOptionDirect( true );
+	}
+	
+	
+	/*
+	 * */
+	@UiHandler("optPaypal")
+	void onOptPaypalClick(ClickEvent event) {
 		showOptionDirect( false );
 	}
+	
 
+	/*
+	 * */
 	@Override
 	public void initializeUI() {
 		//
@@ -94,11 +113,34 @@ public class ApplicationPaymentView extends
 		);
 	}
 	
+	
 	/*
 	 * */
 	@UiHandler("cmdPreviousStep")
 	void onCmdPreviousStepClick(ClickEvent event) {
 		//
 		getUiHandlers().previousStep();
+	}
+	
+	
+	/*
+	 * */
+	@UiHandler("optBankTransfer")
+	void onOptBankTransferClick(ClickEvent event) {
+		//
+		
+	}
+
+	
+	/*
+	 * */
+	@Override
+	public void showApplicationDetails(ApplicationFormProxy app) {
+		//
+		 optPaypal.setValue( app.isOptPaypal() );
+		 optPayDirect.setValue( app.isOptPayDirect() );
+		 optBankTransfer.setValue( app.isOptBankTransfer() );
+		 optDirectCash.setValue( app.isOptDirectCash() );
+		 optDirectCard.setValue( app.isOptDirectCard() );
 	}
 }

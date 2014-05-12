@@ -7,11 +7,13 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.TextBox;
+import com.lemania.eprospects.shared.ApplicationFormProxy;
 
 public class ApplicationStep5View extends
 		ViewWithUiHandlers<ApplicationStep5UiHandlers> implements
@@ -23,6 +25,9 @@ public class ApplicationStep5View extends
 	SimplePanel main;
 	@UiField Button cmdNextStep;
 	@UiField Button cmdPreviousStep;
+	@UiField CheckBox chkConditionAgreement;
+	@UiField TextBox txtDatePlace;
+	@UiField TextBox txtFullName;
 
 	@Inject
 	ApplicationStep5View(Binder uiBinder) {
@@ -42,7 +47,10 @@ public class ApplicationStep5View extends
 	 * */
 	@UiHandler("cmdNextStep")
 	void onCmdNextStepClick(ClickEvent event) {
-		getUiHandlers().nextStep();
+		getUiHandlers().nextStep(
+				chkConditionAgreement.getValue(),
+				txtDatePlace.getText(),
+				txtFullName.getText());
 	}
 	
 	/*
@@ -50,5 +58,16 @@ public class ApplicationStep5View extends
 	@UiHandler("cmdPreviousStep")
 	void onCmdPreviousStepClick(ClickEvent event) {
 		getUiHandlers().previousStep();
+	}
+
+	
+	/*
+	 * */
+	@Override
+	public void showApplicationDetails(ApplicationFormProxy app) {
+		//
+		chkConditionAgreement.setValue( app.isChkConditionAgreement() );
+		txtDatePlace.setText( app.getTxtDatePlace() );
+		txtFullName.setText( app.getTxtFullName() );
 	}
 }

@@ -53,7 +53,8 @@ public class ApplicationFormDao extends MyDAOBase {
 		//
 		Calendar cal = Calendar.getInstance();
 		app.setApplicationID( "LM" 
-				+ Integer.toString( cal.get(Calendar.YEAR) + cal.get(Calendar.MONTH) + cal.get(Calendar.DAY_OF_MONTH) + cal.get(Calendar.HOUR_OF_DAY) + cal.get(Calendar.MINUTE) ) );
+				+ Integer.toString( cal.get(Calendar.YEAR) + cal.get(Calendar.MONTH) + cal.get(Calendar.DAY_OF_MONTH))
+				+ Integer.toString( cal.get(Calendar.HOUR_OF_DAY) + cal.get(Calendar.MINUTE) ) );
 		//
 		try {
 			this.ofy().put(app);
@@ -200,6 +201,179 @@ public class ApplicationFormDao extends MyDAOBase {
 	}
 	
 	
+
+	/*
+	 * */
+	public boolean saveStep3 ( String emailAddress, String appId,
+			String lstAirportDirection,
+			boolean optPrivateCourse,
+			String txtPrivateCoursePeriod,
+			boolean chkGeneveOneway,
+			boolean chkZurichOneway,
+			boolean chkGeneveRoundtrip,
+			boolean chkZurichRoundtrip,
+			String txtAirlineName,
+			String txtArriveVol,
+			String txtArriveTime,
+			String txtDepartVol,
+			String txtDepartTime,
+			boolean chkVisaLetterRequest,
+			boolean optMoneyDepositYes,
+			boolean optMoneyDepositNo,
+			String txtMoneyDepositAmount,
+			boolean chkMealPackage,
+			boolean chkActivitiesPackage ){
+		//
+		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+				.filter( "applicationID", appId )
+				.filter( "emailAddress", emailAddress );
+		ApplicationForm app;
+		if (q.count()>0) {
+			//
+			app = q.list().get(0);
+			app.setLstAirportDirection(lstAirportDirection);
+			app.setOptPrivateCourse(optPrivateCourse);
+			app.setTxtPrivateCoursePeriod(txtPrivateCoursePeriod);
+			app.setChkGeneveOneway(chkGeneveOneway);
+			app.setChkZurichOneway(chkZurichOneway);
+			app.setChkGeneveRoundtrip(chkGeneveRoundtrip);
+			app.setChkZurichRoundtrip(chkZurichRoundtrip);
+			app.setTxtAirlineName(txtAirlineName);
+			app.setTxtArriveVol(txtArriveVol);
+			app.setTxtArriveTime(txtArriveTime);
+			app.setTxtDepartVol(txtDepartVol);
+			app.setTxtDepartTime(txtDepartTime);
+			app.setChkVisaLetterRequest(chkVisaLetterRequest);
+			app.setOptMoneyDepositYes(optMoneyDepositYes);
+			app.setOptMoneyDepositNo(optMoneyDepositNo);
+			app.setTxtMoneyDepositAmount(txtMoneyDepositAmount);
+			app.setChkMealPackage(chkMealPackage);
+			app.setChkActivitiesPackage(chkActivitiesPackage);
+ 			//
+			try {
+				this.ofy().put(app);
+				return true;
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+		else
+			return false;
+	}
+
+	
+	
+	/*
+	 * */
+	public boolean saveStep4 ( String emailAddress, String appId,
+			boolean optHealthProblemYes,
+			boolean optHealProblemNo,
+			String 	txtHealthProblem,
+			boolean optAllergyYes,
+			boolean optAllergyNo,
+			String 	txtAllergy,
+			boolean optMedicalYes,
+			boolean optMedicalNo,
+			String 	txtMedical,
+			String 	txtOther ){
+		//
+		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+				.filter( "applicationID", appId )
+				.filter( "emailAddress", emailAddress );
+		ApplicationForm app;
+		if (q.count()>0) {
+			//
+			app = q.list().get(0);
+			app.setOptHealthProblemYes(optHealthProblemYes);
+			app.setOptHealProblemNo(optHealProblemNo);
+			app.setTxtHealthProblem(txtHealthProblem);
+			app.setOptAllergyYes(optAllergyYes);
+			app.setOptAllergyNo(optAllergyNo);
+			app.setTxtAllergy(txtAllergy);
+			app.setOptMedicalYes(optMedicalYes);
+			app.setOptMedicalNo(optMedicalNo);
+			app.setTxtMedical(txtMedical);
+			app.setTxtOther(txtOther);
+ 			//
+			try {
+				this.ofy().put(app);
+				return true;
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+		else
+			return false;
+	}
+	
+	
+	
+	/*
+	 * */
+	public boolean saveStep5 ( String emailAddress, String appId,
+			boolean chkConditionAgreement,
+			String txtDatePlace,
+			String txtFullName ){
+		//
+		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+				.filter( "applicationID", appId )
+				.filter( "emailAddress", emailAddress );
+		ApplicationForm app;
+		if (q.count()>0) {
+			//
+			app = q.list().get(0);
+			app.setChkConditionAgreement(chkConditionAgreement);
+			app.setTxtDatePlace(txtDatePlace);
+			app.setTxtFullName(txtFullName);
+ 			//
+			try {
+				this.ofy().put(app);
+				return true;
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+		else
+			return false;
+	}
+	
+	
+	
+	/*
+	 * */
+	public boolean savePaymentStep ( String emailAddress, String appId,
+			boolean optPaypal,
+			boolean optPayDirect,
+			boolean optBankTransfer,
+			boolean optDirectCash,
+			boolean optDirectCard ){
+		//
+		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+				.filter( "applicationID", appId )
+				.filter( "emailAddress", emailAddress );
+		ApplicationForm app;
+		if (q.count()>0) {
+			//
+			app = q.list().get(0);
+			app.setOptPaypal(optPaypal);
+			app.setOptPayDirect(optPayDirect);
+			app.setOptBankTransfer(optBankTransfer);
+			app.setOptDirectCard(optDirectCard);
+			app.setOptDirectCash(optDirectCash);
+ 			//
+			try {
+				this.ofy().put(app);
+				return true;
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+		else
+			return false;
+	}
+	
+	
+	
 	/*
 	 * */
 	public boolean checkExistence(String emailAddress){
@@ -210,6 +384,7 @@ public class ApplicationFormDao extends MyDAOBase {
 		else
 			return false;
 	}
+	
 	
 	
 	/*

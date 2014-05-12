@@ -4,6 +4,11 @@ import com.gwtplatform.mvp.client.UiHandlers;
 
 public interface ApplicationStep5UiHandlers extends UiHandlers {
 	//
-	void nextStep();
+	void nextStep(
+			boolean chkConditionAgreement,
+			String txtDatePlace,
+			String txtFullName
+		);
+	//
 	void previousStep();
 }

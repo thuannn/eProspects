@@ -7,11 +7,14 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.RadioButton;
+import com.google.gwt.user.client.ui.TextArea;
+import com.lemania.eprospects.client.FieldValidation;
+import com.lemania.eprospects.shared.ApplicationFormProxy;
 
 public class ApplicationStep4View extends
 		ViewWithUiHandlers<ApplicationStep4UiHandlers> implements
@@ -23,11 +26,22 @@ public class ApplicationStep4View extends
 	SimplePanel main;
 	@UiField Button cmdNextStep;
 	@UiField Button cmdPreviousStep;
+	@UiField RadioButton optHealthProblemYes;
+	@UiField RadioButton optHealProblemNo;
+	@UiField TextArea txtHealthProblem;
+	@UiField RadioButton optAllergyYes;
+	@UiField RadioButton optAllergyNo;
+	@UiField TextArea txtAllergy;
+	@UiField RadioButton optMedicalYes;
+	@UiField RadioButton optMedicalNo;
+	@UiField TextArea txtMedical;
+	@UiField TextArea txtOther;
 
 	@Inject
 	ApplicationStep4View(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
+	
 
 	@Override
 	public void setInSlot(Object slot, IsWidget content) {
@@ -38,12 +52,25 @@ public class ApplicationStep4View extends
 		}
 	}
 	
+	
 	/*
 	 * */
 	@UiHandler("cmdNextStep")
 	void onCmdNextStepClick(ClickEvent event) {
-		getUiHandlers().nextStep();
+		getUiHandlers().nextStep(
+				optHealthProblemYes.getValue(),
+				optHealProblemNo.getValue(),
+				txtHealthProblem.getText(),
+				optAllergyYes.getValue(),
+				optAllergyNo.getValue(),
+				txtAllergy.getText(),
+				optMedicalYes.getValue(),
+				optMedicalNo.getValue(),
+				txtMedical.getText(),
+				txtOther.getText()
+		);
 	}
+	
 	
 	/*
 	 * */
@@ -51,5 +78,23 @@ public class ApplicationStep4View extends
 	void onCmdPreviousStepClick(ClickEvent event) {
 		//
 		getUiHandlers().previousStep();
+	}
+	
+	
+	/*
+	 * */
+	@Override
+	public void showApplicationDetails(ApplicationFormProxy app) {
+		//
+		optHealthProblemYes.setValue( app.isOptHealthProblemYes() );
+		optHealProblemNo.setValue( app.isOptHealProblemNo() );
+		txtHealthProblem.setText( app.getTxtHealthProblem() );
+		optAllergyYes.setValue( app.isOptAllergyYes() );
+		optAllergyNo.setValue( app.isOptAllergyNo() );
+		txtAllergy.setText( app.getTxtAllergy() );
+		optMedicalYes.setValue( app.isOptMedicalYes() );
+		optMedicalNo.setValue( app.isOptMedicalNo() );
+		txtMedical.setText( app.getTxtMedical() );
+		txtOther.setText( app.getTxtOther() );
 	}
 }

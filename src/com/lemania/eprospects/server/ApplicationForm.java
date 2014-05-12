@@ -56,6 +56,50 @@ public class ApplicationForm extends DatastoreObject {
 	boolean optKeyDepositEuro;
 	boolean optKeyDepositUSD;
 	
+	// step 3
+	String lstAirportDirection;
+	boolean optPrivateCourse;
+	String txtPrivateCoursePeriod;
+	boolean chkGeneveOneway;
+	boolean chkZurichOneway;
+	boolean chkGeneveRoundtrip;
+	boolean chkZurichRoundtrip;
+	String txtAirlineName;
+	String txtArriveVol;
+	String txtArriveTime;
+	String txtDepartVol;
+	String txtDepartTime;
+	boolean chkVisaLetterRequest;
+	boolean optMoneyDepositYes;
+	boolean optMoneyDepositNo;
+	String txtMoneyDepositAmount;
+	boolean chkMealPackage;
+	boolean chkActivitiesPackage;
+	
+	// step 4
+	boolean optHealthProblemYes;
+	boolean optHealProblemNo;
+	String 	txtHealthProblem;
+	boolean optAllergyYes;
+	boolean optAllergyNo;
+	String 	txtAllergy;
+	boolean optMedicalYes;
+	boolean optMedicalNo;
+	String 	txtMedical;
+	String 	txtOther;
+	
+	// step 5
+	boolean chkConditionAgreement;
+	String txtDatePlace;
+	String txtFullName;
+	
+	// payment step
+	boolean optPaypal;
+	boolean optPayDirect;
+	boolean optBankTransfer;
+	boolean optDirectCash;
+	boolean optDirectCard;
+	
 	//
 	private boolean isPaid = false;
 	private boolean isCompleted = false;
@@ -443,5 +487,293 @@ public class ApplicationForm extends DatastoreObject {
 
 	public void setChkContinueAfter(boolean chkContinueAfter) {
 		this.chkContinueAfter = chkContinueAfter;
+	}
+
+	public String getLstAirportDirection() {
+		return lstAirportDirection;
+	}
+
+	public void setLstAirportDirection(String lstAirportDirection) {
+		this.lstAirportDirection = lstAirportDirection;
+	}
+
+	public boolean getOptPrivateCourse() {
+		return optPrivateCourse;
+	}
+
+	public void setOptPrivateCourse(boolean optPrivateCourse) {
+		this.optPrivateCourse = optPrivateCourse;
+	}
+
+	public String getTxtPrivateCoursePeriod() {
+		return txtPrivateCoursePeriod;
+	}
+
+	public void setTxtPrivateCoursePeriod(String txtPrivateCoursePeriod) {
+		this.txtPrivateCoursePeriod = txtPrivateCoursePeriod;
+	}
+
+	public boolean getChkGeneveOneway() {
+		return chkGeneveOneway;
+	}
+
+	public void setChkGeneveOneway(boolean chkGeneveOneway) {
+		this.chkGeneveOneway = chkGeneveOneway;
+	}
+
+	public boolean getChkZurichOneway() {
+		return chkZurichOneway;
+	}
+
+	public void setChkZurichOneway(boolean chkZurichOneway) {
+		this.chkZurichOneway = chkZurichOneway;
+	}
+
+	public boolean getChkGeneveRoundtrip() {
+		return chkGeneveRoundtrip;
+	}
+
+	public void setChkGeneveRoundtrip(boolean chkGeneveRoundtrip) {
+		this.chkGeneveRoundtrip = chkGeneveRoundtrip;
+	}
+
+	public boolean getChkZurichRoundtrip() {
+		return chkZurichRoundtrip;
+	}
+
+	public void setChkZurichRoundtrip(boolean chkZurichRoundtrip) {
+		this.chkZurichRoundtrip = chkZurichRoundtrip;
+	}
+
+	public String getTxtAirlineName() {
+		return txtAirlineName;
+	}
+
+	public void setTxtAirlineName(String txtAirlineName) {
+		this.txtAirlineName = txtAirlineName;
+	}
+
+	public String getTxtArriveVol() {
+		return txtArriveVol;
+	}
+
+	public void setTxtArriveVol(String txtArriveVol) {
+		this.txtArriveVol = txtArriveVol;
+	}
+
+	public String getTxtArriveTime() {
+		return txtArriveTime;
+	}
+
+	public void setTxtArriveTime(String txtArriveTime) {
+		this.txtArriveTime = txtArriveTime;
+	}
+
+	public String getTxtDepartVol() {
+		return txtDepartVol;
+	}
+
+	public void setTxtDepartVol(String txtDepartVol) {
+		this.txtDepartVol = txtDepartVol;
+	}
+
+	public String getTxtDepartTime() {
+		return txtDepartTime;
+	}
+
+	public void setTxtDepartTime(String txtDepartTime) {
+		this.txtDepartTime = txtDepartTime;
+	}
+
+	public boolean getChkVisaLetterRequest() {
+		return chkVisaLetterRequest;
+	}
+
+	public void setChkVisaLetterRequest(boolean chkVisaLetterRequest) {
+		this.chkVisaLetterRequest = chkVisaLetterRequest;
+	}
+
+	public boolean getOptMoneyDepositYes() {
+		return optMoneyDepositYes;
+	}
+
+	public void setOptMoneyDepositYes(boolean optMoneyDepositYes) {
+		this.optMoneyDepositYes = optMoneyDepositYes;
+	}
+
+	public boolean getOptMoneyDepositNo() {
+		return optMoneyDepositNo;
+	}
+
+	public void setOptMoneyDepositNo(boolean optMoneyDepositNo) {
+		this.optMoneyDepositNo = optMoneyDepositNo;
+	}
+
+	public String getTxtMoneyDepositAmount() {
+		return txtMoneyDepositAmount;
+	}
+
+	public void setTxtMoneyDepositAmount(String txtMoneyDepositAmount) {
+		this.txtMoneyDepositAmount = txtMoneyDepositAmount;
+	}
+
+	public boolean getChkMealPackage() {
+		return chkMealPackage;
+	}
+
+	public void setChkMealPackage(boolean chkMealPackage) {
+		this.chkMealPackage = chkMealPackage;
+	}
+
+	public boolean getChkActivitiesPackage() {
+		return chkActivitiesPackage;
+	}
+
+	public void setChkActivitiesPackage(boolean chkActivitiesPackage) {
+		this.chkActivitiesPackage = chkActivitiesPackage;
+	}
+
+	public boolean isOptHealthProblemYes() {
+		return optHealthProblemYes;
+	}
+
+	public void setOptHealthProblemYes(boolean optHealthProblemYes) {
+		this.optHealthProblemYes = optHealthProblemYes;
+	}
+
+	public boolean isOptHealProblemNo() {
+		return optHealProblemNo;
+	}
+
+	public void setOptHealProblemNo(boolean optHealProblemNo) {
+		this.optHealProblemNo = optHealProblemNo;
+	}
+
+	public String getTxtHealthProblem() {
+		return txtHealthProblem;
+	}
+
+	public void setTxtHealthProblem(String txtHealthProblem) {
+		this.txtHealthProblem = txtHealthProblem;
+	}
+
+	public boolean isOptAllergyYes() {
+		return optAllergyYes;
+	}
+
+	public void setOptAllergyYes(boolean optAllergyYes) {
+		this.optAllergyYes = optAllergyYes;
+	}
+
+	public boolean isOptAllergyNo() {
+		return optAllergyNo;
+	}
+
+	public void setOptAllergyNo(boolean optAllergyNo) {
+		this.optAllergyNo = optAllergyNo;
+	}
+
+	public String getTxtAllergy() {
+		return txtAllergy;
+	}
+
+	public void setTxtAllergy(String txtAllergy) {
+		this.txtAllergy = txtAllergy;
+	}
+
+	public boolean isOptMedicalYes() {
+		return optMedicalYes;
+	}
+
+	public void setOptMedicalYes(boolean optMedicalYes) {
+		this.optMedicalYes = optMedicalYes;
+	}
+
+	public boolean isOptMedicalNo() {
+		return optMedicalNo;
+	}
+
+	public void setOptMedicalNo(boolean optMedicalNo) {
+		this.optMedicalNo = optMedicalNo;
+	}
+
+	public String getTxtMedical() {
+		return txtMedical;
+	}
+
+	public void setTxtMedical(String txtMedical) {
+		this.txtMedical = txtMedical;
+	}
+
+	public String getTxtOther() {
+		return txtOther;
+	}
+
+	public void setTxtOther(String txtOther) {
+		this.txtOther = txtOther;
+	}
+
+	public boolean isChkConditionAgreement() {
+		return chkConditionAgreement;
+	}
+
+	public void setChkConditionAgreement(boolean chkConditionAgreement) {
+		this.chkConditionAgreement = chkConditionAgreement;
+	}
+
+	public String getTxtDatePlace() {
+		return txtDatePlace;
+	}
+
+	public void setTxtDatePlace(String txtDatePlace) {
+		this.txtDatePlace = txtDatePlace;
+	}
+
+	public String getTxtFullName() {
+		return txtFullName;
+	}
+
+	public void setTxtFullName(String txtFullName) {
+		this.txtFullName = txtFullName;
+	}
+
+	public boolean isOptPaypal() {
+		return optPaypal;
+	}
+
+	public void setOptPaypal(boolean optPaypal) {
+		this.optPaypal = optPaypal;
+	}
+
+	public boolean isOptPayDirect() {
+		return optPayDirect;
+	}
+
+	public void setOptPayDirect(boolean optPayDirect) {
+		this.optPayDirect = optPayDirect;
+	}
+
+	public boolean isOptBankTransfer() {
+		return optBankTransfer;
+	}
+
+	public void setOptBankTransfer(boolean optBankTransfer) {
+		this.optBankTransfer = optBankTransfer;
+	}
+
+	public boolean isOptDirectCash() {
+		return optDirectCash;
+	}
+
+	public void setOptDirectCash(boolean optDirectCash) {
+		this.optDirectCash = optDirectCash;
+	}
+
+	public boolean isOptDirectCard() {
+		return optDirectCard;
+	}
+
+	public void setOptDirectCard(boolean optDirectCard) {
+		this.optDirectCard = optDirectCard;
 	}
 }
