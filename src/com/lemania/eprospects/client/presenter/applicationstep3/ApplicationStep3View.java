@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.Label;
 
 public class ApplicationStep3View extends
 		ViewWithUiHandlers<ApplicationStep3UiHandlers> implements
@@ -52,6 +53,7 @@ public class ApplicationStep3View extends
 	@UiField CheckBox chkMealPackage;
 	@UiField CheckBox chkActivitiesPackage;
 	@UiField FlexTable tblItems;
+	@UiField Label lblTotalAmount;
 
 	@Inject
 	ApplicationStep3View(Binder uiBinder) {
@@ -144,9 +146,14 @@ public class ApplicationStep3View extends
 	@Override
 	public void showSelectedItems(List<ApplicationItemProxy> ais) {
 		//
+		tblItems.removeAllRows();
+		//
+		double totalAmount = 0.0;
 		for (int i=0; i<ais.size(); i++) {
 			tblItems.setText(i, 0, ais.get(i).getItemDescription());
 			tblItems.setText(i, 1, ais.get(i).getItemAmount().toString());
+			totalAmount = totalAmount + ais.get(i).getItemAmount();
 		}
+		lblTotalAmount.setText( Double.toString(totalAmount));
 	}
 }

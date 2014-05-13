@@ -4,7 +4,7 @@ import com.gwtplatform.mvp.client.UiHandlers;
 
 public interface ApplicationStep2UiHandlers extends UiHandlers {
 	//
-	void nextStep(
+	void nextStep (
 			boolean chkApplicaitonFee,
 			boolean chkPackAssurance,
 			String programmesCode,
@@ -22,8 +22,21 @@ public interface ApplicationStep2UiHandlers extends UiHandlers {
 			boolean optStandardShare,
 			boolean optKeyDepositCHF,
 			boolean optKeyDepositEuro,
-			boolean optKeyDepositUSD
-			);
+			boolean optKeyDepositUSD );
+	//
+	void calculatePrice (
+			String programmesCode,
+			String courseCode,
+			String startDate,
+			String weekNumber,
+			String txtJulyWeek,
+			String txtAugustWeek,
+			boolean optConfortPlusPrivate,
+			boolean optConfortPrivate,
+			boolean optStandardPrivate,
+			boolean optConfortPlusShare,
+			boolean optConfortShare,
+			boolean optStandardShare );
 	//
 	void previousStep();
 }

@@ -38,7 +38,7 @@ public class ApplicationForm extends DatastoreObject {
 	String country_Invoice;
 	
 	// step 2
-	boolean chkApplicaitonFee;
+	boolean chkApplicationFee = true;
 	boolean chkPackAssurance;
 	String programmesCode;
 	String courseCode;
@@ -346,12 +346,12 @@ public class ApplicationForm extends DatastoreObject {
 		this.country_Invoice = country_Invoice;
 	}
 
-	public boolean isChkApplicaitonFee() {
-		return chkApplicaitonFee;
+	public boolean isChkApplicationFee() {
+		return chkApplicationFee;
 	}
 
-	public void setChkApplicaitonFee(boolean chkApplicaitonFee) {
-		this.chkApplicaitonFee = chkApplicaitonFee;
+	public void setChkApplicaitonFee(boolean chkApplicationFee) {
+		this.chkApplicationFee = chkApplicationFee;
 	}
 
 	public boolean isChkPackAssurance() {

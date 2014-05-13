@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
 import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.Label;
 
 public class ApplicationStep5View extends
 		ViewWithUiHandlers<ApplicationStep5UiHandlers> implements
@@ -33,6 +34,7 @@ public class ApplicationStep5View extends
 	@UiField TextBox txtDatePlace;
 	@UiField TextBox txtFullName;
 	@UiField FlexTable tblItems;
+	@UiField Label lblTotalAmount;
 
 	@Inject
 	ApplicationStep5View(Binder uiBinder) {
@@ -82,9 +84,14 @@ public class ApplicationStep5View extends
 	@Override
 	public void showSelectedItems(List<ApplicationItemProxy> ais) {
 		//
+		tblItems.removeAllRows();
+		//
+		double totalAmount = 0.0;
 		for (int i=0; i<ais.size(); i++) {
 			tblItems.setText(i, 0, ais.get(i).getItemDescription());
 			tblItems.setText(i, 1, ais.get(i).getItemAmount().toString());
+			totalAmount = totalAmount + ais.get(i).getItemAmount();
 		}
+		lblTotalAmount.setText( Double.toString(totalAmount));
 	}
 }

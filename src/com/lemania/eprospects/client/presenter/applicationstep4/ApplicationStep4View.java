@@ -19,6 +19,7 @@ import com.lemania.eprospects.client.FieldValidation;
 import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
 import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.Label;
 
 public class ApplicationStep4View extends
 		ViewWithUiHandlers<ApplicationStep4UiHandlers> implements
@@ -41,6 +42,7 @@ public class ApplicationStep4View extends
 	@UiField TextArea txtMedical;
 	@UiField TextArea txtOther;
 	@UiField FlexTable tblItems;
+	@UiField Label lblTotalAmount;
 
 	@Inject
 	ApplicationStep4View(Binder uiBinder) {
@@ -109,9 +111,14 @@ public class ApplicationStep4View extends
 	@Override
 	public void showSelectedItems(List<ApplicationItemProxy> ais) {
 		//
+		tblItems.removeAllRows();
+		//
+		double totalAmount = 0.0;
 		for (int i=0; i<ais.size(); i++) {
 			tblItems.setText(i, 0, ais.get(i).getItemDescription());
 			tblItems.setText(i, 1, ais.get(i).getItemAmount().toString());
+			totalAmount = totalAmount + ais.get(i).getItemAmount();
 		}
+		lblTotalAmount.setText( Double.toString(totalAmount));
 	}
 }

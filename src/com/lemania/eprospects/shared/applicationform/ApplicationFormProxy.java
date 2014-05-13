@@ -107,8 +107,8 @@ public interface ApplicationFormProxy extends EntityProxy {
 	
 	// step 2
 	
-	public boolean isChkApplicaitonFee();
-	public void setChkApplicaitonFee(boolean chkApplicaitonFee);
+	public boolean isChkApplicationFee();
+	public void setChkApplicaitonFee(boolean chkApplicationFee);
 
 	public boolean isChkPackAssurance();
 	public void setChkPackAssurance(boolean chkPackAssurance);

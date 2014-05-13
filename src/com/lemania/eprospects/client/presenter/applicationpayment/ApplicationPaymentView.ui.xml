@@ -12,7 +12,7 @@
     				<g:FlexTable width="100%" ui:field="tblItems"/>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Total" styleName="lablel_TotalAmount"/>
-    					<g:Label text="Amount" styleName="lablel_TotalAmount"/>
+    					<g:Label text="." styleName="lablel_TotalAmount" horizontalAlignment="ALIGN_RIGHT" ui:field="lblTotalAmount"/>
     				</g:HorizontalPanel>
     			</g:VerticalPanel>
     				<g:VerticalPanel width="100%" spacing="10">

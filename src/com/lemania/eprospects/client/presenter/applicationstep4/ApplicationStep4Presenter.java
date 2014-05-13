@@ -200,7 +200,7 @@ public class ApplicationStep4Presenter
 		ApplicationItemRequestFactory rf = GWT.create(ApplicationItemRequestFactory.class);
 		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
 		ApplicationItemRequestContext rc = rf.applicationItemRequest();
-		rc.listAll().fire( new Receiver<List<ApplicationItemProxy>>() {
+		rc.listAll( curUser.getUserEmail(), curUser.getApplicationId() ).fire( new Receiver<List<ApplicationItemProxy>>() {
 			@Override
 			public void onSuccess(List<ApplicationItemProxy> ais){
 				// show selected items

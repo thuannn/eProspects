@@ -8,9 +8,12 @@
     		<g:FlowPanel width="900px">
     			<g:HorizontalPanel width="100%" spacing="10">
     			<g:VerticalPanel width="100%">
-    				<g:Label text="PROGRAMMES" styleName="sectionTitle"/>
+    				<g:Label styleName="sectionTitle" text="INSCRIPTION"/>
+    				<g:Label styleName="hiddenText" text="."/>
     				<g:CheckBox text="Frais d&apos;inscription, CHF 100.-" checked="true" enabled="false" ui:field="chkApplicaitonFee"/>
     				<g:CheckBox text="Pack Assurance santé CHF 190.- (obligatoire pour les internes sauf les résidents en Suisse)" ui:field="chkPackAssurance"/>
+    				<g:Label styleName="hiddenText" text="."/>
+    				<g:Label text="PROGRAMMES" styleName="sectionTitle"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Grid width="100%">
     					<g:row>
@@ -70,10 +73,10 @@
     							<g:Label text="." styleName="hiddenText"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtJulyWeek"/>
+    							<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtJulyWeek" readOnly="true"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtAugustWeek"/>
+    							<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtAugustWeek" readOnly="true"/>
     						</g:customCell>
     					</g:row>
     					<g:row>
@@ -146,7 +149,10 @@
     			<g:VerticalPanel width="250px" styleName="subSection">
     				<g:Label text="ELEMENTS CHOISIS" styleName="sectionTitle"/>
     				<g:FlexTable width="100%" ui:field="tblItems"/>
-    				<g:Label text="Total"/>
+    				<g:HorizontalPanel width="100%">
+    					<g:Label text="Total" styleName="lablel_TotalAmount"/>
+    					<g:Label text="." styleName="lablel_TotalAmount" horizontalAlignment="ALIGN_RIGHT" ui:field="lblTotalAmount"/>
+    				</g:HorizontalPanel>
     			</g:VerticalPanel>
     		</g:HorizontalPanel>
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">

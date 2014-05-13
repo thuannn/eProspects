@@ -17,8 +17,10 @@ public interface ApplicationItemRequestFactory extends RequestFactory {
 		Request<Void> save(ApplicationItemProxy ai);
 		Request<List<ApplicationItemProxy>> listAll();
 		Request<ApplicationItemProxy> saveAndReturn(ApplicationItemProxy app);
-		
+		//
+		Request<List<ApplicationItemProxy>> listAll( String email, String appId );
 		Request<ApplicationItemProxy> saveAndReturn(String emailAddress, String appId, String itemCode, String itemDesc, Double itemAmount);
+		//
 	}
 
 	ApplicationItemRequestContext applicationItemRequest();

@@ -21,6 +21,7 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.lemania.eprospects.client.ApplicationItem;
 import com.lemania.eprospects.client.CurrentUser;
+import com.lemania.eprospects.client.NotificationTypes;
 import com.lemania.eprospects.client.SummerCampSettingValues;
 import com.lemania.eprospects.client.event.ApplicationItemSavedEvent;
 import com.lemania.eprospects.client.event.ApplicationItemSavedEvent.ApplicationItemSavedHandler;
@@ -88,9 +89,24 @@ public class ApplicationStep2Presenter
 		super.onReset();
 		//
 		loadCurrentApplication();
+		//
+		addApplicationFee();
 	}
 	
 	
+	
+	/*
+	 * */
+	private void addApplicationFee() {
+		//
+		getEventBus().fireEvent( 
+				new ApplicationItemSelectedEvent( 
+						new ApplicationItem( 
+								SummerCampSettingValues.item_applicationfee_code,
+								SummerCampSettingValues.item_applicationfee,
+								SummerCampSettingValues.item_applicationfee_amount )));
+	}
+
 	/*
 	 * */
 	private void loadCurrentApplication() {
@@ -104,13 +120,6 @@ public class ApplicationStep2Presenter
 			public void onSuccess(ApplicationFormProxy app){
 				// show result
 				getView().showApplicationDetails(app);
-				//
-				getEventBus().fireEvent( 
-						new ApplicationItemSelectedEvent( 
-								new ApplicationItem( 
-										SummerCampSettingValues.item_applicationfee_code,
-										SummerCampSettingValues.item_applicationfee,
-										SummerCampSettingValues.item_applicationfee_amount )));
 			}
 			@Override
 			public void onFailure(ServerFailure error){
@@ -202,6 +211,8 @@ public class ApplicationStep2Presenter
 	}
 
 	
+	/*
+	 * */
 	private boolean formCompleted(boolean chkApplicaitonFee,
 			boolean chkPackAssurance, String programmesCode, String courseCode,
 			String startDate, String weekNumber, String txtJulyWeek,
@@ -210,7 +221,29 @@ public class ApplicationStep2Presenter
 			boolean optConfortPlusShare, boolean optConfortShare,
 			boolean optStandardShare, boolean optKeyDepositCHF,
 			boolean optKeyDepositEuro, boolean optKeyDepositUSD) {
-		// TODO Auto-generated method stub
+		//
+		if (programmesCode.equals("")) {
+			Window.alert( NotificationTypes.invalid_input + " Programme");
+			return false;
+		}
+		//
+		if (courseCode.equals("")){
+			Window.alert( NotificationTypes.invalid_input + " Combination du cours");
+			return false;
+		}
+		//
+		if (startDate.equals("")){
+			Window.alert( NotificationTypes.invalid_input + " Date de début");
+			return false;
+		}
+		//
+		if (programmesCode.equals( SummerCampSettingValues.programme_code_summercamp)){
+			if (!optConfortPlusPrivate && !optConfortPrivate && !optStandardPrivate
+				&& !optConfortPlusShare && !optConfortShare && !optStandardShare ) {
+				Window.alert( NotificationTypes.invalid_input + " Merci de choisir un choix de chambre.");
+				return false;
+			}	
+		}
 		return true;
 	}
 
@@ -242,7 +275,7 @@ public class ApplicationStep2Presenter
 		ApplicationItemRequestFactory rf = GWT.create(ApplicationItemRequestFactory.class);
 		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
 		ApplicationItemRequestContext rc = rf.applicationItemRequest();
-		rc.listAll().fire( new Receiver<List<ApplicationItemProxy>>() {
+		rc.listAll( curUser.getUserEmail(), curUser.getApplicationId() ).fire( new Receiver<List<ApplicationItemProxy>>() {
 			@Override
 			public void onSuccess(List<ApplicationItemProxy> ais){
 				// show selected items
@@ -255,4 +288,249 @@ public class ApplicationStep2Presenter
 		});
 	}
 
+	
+	/*
+	 * */
+	@Override
+	public void calculatePrice(String programmesCode, String courseCode,
+			String startDate, String weekNumber, String txtJulyWeek,
+			String txtAugustWeek, boolean optConfortPlusPrivate,
+			boolean optConfortPrivate,
+			boolean optStandardPrivate,
+			boolean optConfortPlusShare,
+			boolean optConfortShare,
+			boolean optStandardShare ) {
+		// for summer COURSES
+		if ( programmesCode.equals( SummerCampSettingValues.programme_code_summercourse ))
+		{
+			// without conversation
+			if (courseCode.equals( SummerCampSettingValues.course_code_noconversation )) {
+				getEventBus().fireEvent( 
+						new ApplicationItemSelectedEvent( 
+								new ApplicationItem( 
+										SummerCampSettingValues.item_summercourse20_code,
+										SummerCampSettingValues.item_summercourse20_text,
+										SummerCampSettingValues.item_summercourse20_amount * Integer.parseInt(txtJulyWeek) )));
+				getEventBus().fireEvent( 
+						new ApplicationItemSelectedEvent( 
+								new ApplicationItem( 
+										SummerCampSettingValues.item_summercourse25_code,
+										SummerCampSettingValues.item_summercourse25_text,
+										SummerCampSettingValues.item_summercourse25_amount * Integer.parseInt(txtAugustWeek) )));
+			}
+			// with conversation
+			if (courseCode.equals( SummerCampSettingValues.course_code_withconversation )) {
+				getEventBus().fireEvent( 
+						new ApplicationItemSelectedEvent( 
+								new ApplicationItem( 
+										SummerCampSettingValues.item_summercourse205_code,
+										SummerCampSettingValues.item_summercourse205_text,
+										SummerCampSettingValues.item_summercourse205_amount * Integer.parseInt(txtJulyWeek) )));
+				if (!txtAugustWeek.equals("")){
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse2510_code,
+											SummerCampSettingValues.item_summercourse2510_text,
+											SummerCampSettingValues.item_summercourse2510_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+			}
+		}
+		// for summer CAMP
+		if ( programmesCode.equals( SummerCampSettingValues.programme_code_summercamp )) {
+			//
+			if (programmesCode.equals( SummerCampSettingValues.programme_code_summercamp)){
+				if (!optConfortPlusPrivate && !optConfortPrivate && !optStandardPrivate
+					&& !optConfortPlusShare && !optConfortShare && !optStandardShare ) {
+					return;
+				}	
+			}
+			// without conversation
+			if (courseCode.equals( SummerCampSettingValues.course_code_noconversation )) {
+				//
+				if (optConfortPlusPrivate) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse20_confortplus_private_code,
+											SummerCampSettingValues.item_summercourse20_confortplus_private_text,
+											SummerCampSettingValues.item_summercourse20_confortplus_private_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse25_confortplus_private_code,
+											SummerCampSettingValues.item_summercourse25_confortplus_private_text,
+											SummerCampSettingValues.item_summercourse25_confortplus_private_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+				//
+				if (optConfortPrivate) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse20_confort_private_code,
+											SummerCampSettingValues.item_summercourse20_confort_private_text,
+											SummerCampSettingValues.item_summercourse20_confort_private_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse25_confort_private_code,
+											SummerCampSettingValues.item_summercourse25_confort_private_text,
+											SummerCampSettingValues.item_summercourse25_confort_private_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+				//
+				if (optStandardPrivate) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse20_standard_private_code,
+											SummerCampSettingValues.item_summercourse20_standard_private_text,
+											SummerCampSettingValues.item_summercourse20_standard_private_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse25_standard_private_code,
+											SummerCampSettingValues.item_summercourse25_standard_private_text,
+											SummerCampSettingValues.item_summercourse25_standard_private_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+				//
+				if (optConfortPlusShare) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse20_confortplus_share_code,
+											SummerCampSettingValues.item_summercourse20_confortplus_share_text,
+											SummerCampSettingValues.item_summercourse20_confortplus_share_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse25_confortplus_share_code,
+											SummerCampSettingValues.item_summercourse25_confortplus_share_text,
+											SummerCampSettingValues.item_summercourse25_confortplus_share_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+				//
+				if (optConfortShare) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse20_confort_share_code,
+											SummerCampSettingValues.item_summercourse20_confort_share_text,
+											SummerCampSettingValues.item_summercourse20_confort_share_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse25_confort_share_code,
+											SummerCampSettingValues.item_summercourse25_confort_share_text,
+											SummerCampSettingValues.item_summercourse25_confort_share_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+				//
+				if (optStandardShare) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse20_standard_share_code,
+											SummerCampSettingValues.item_summercourse20_standard_share_text,
+											SummerCampSettingValues.item_summercourse20_standard_share_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse25_standard_share_code,
+											SummerCampSettingValues.item_summercourse25_standard_share_text,
+											SummerCampSettingValues.item_summercourse25_standard_share_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+			}
+			// with conversation
+			if (courseCode.equals( SummerCampSettingValues.course_code_withconversation )) {
+				//
+				if (optConfortPlusPrivate) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse205_confortplus_private_code,
+											SummerCampSettingValues.item_summercourse205_confortplus_private_text,
+											SummerCampSettingValues.item_summercourse205_confortplus_private_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse2510_confortplus_private_code,
+											SummerCampSettingValues.item_summercourse2510_confortplus_private_text,
+											SummerCampSettingValues.item_summercourse2510_confortplus_private_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+				//
+				if (optConfortPrivate) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse205_confort_private_code,
+											SummerCampSettingValues.item_summercourse205_confort_private_text,
+											SummerCampSettingValues.item_summercourse205_confort_private_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse2510_confort_private_code,
+											SummerCampSettingValues.item_summercourse2510_confort_private_text,
+											SummerCampSettingValues.item_summercourse2510_confort_private_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+				//
+				if (optStandardPrivate) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse205_standard_private_code,
+											SummerCampSettingValues.item_summercourse205_standard_private_text,
+											SummerCampSettingValues.item_summercourse205_standard_private_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse2510_standard_private_code,
+											SummerCampSettingValues.item_summercourse2510_standard_private_text,
+											SummerCampSettingValues.item_summercourse2510_standard_private_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+				//
+				if (optConfortPlusShare) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse205_confortplus_share_code,
+											SummerCampSettingValues.item_summercourse205_confortplus_share_text,
+											SummerCampSettingValues.item_summercourse205_confortplus_share_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse2510_confortplus_share_code,
+											SummerCampSettingValues.item_summercourse2510_confortplus_share_text,
+											SummerCampSettingValues.item_summercourse2510_confortplus_share_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+				//
+				if (optConfortShare) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse205_confort_share_code,
+											SummerCampSettingValues.item_summercourse205_confort_share_text,
+											SummerCampSettingValues.item_summercourse205_confort_share_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse2510_confort_share_code,
+											SummerCampSettingValues.item_summercourse2510_confort_share_text,
+											SummerCampSettingValues.item_summercourse2510_confort_share_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+				//
+				if (optStandardShare) {
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse205_standard_share_code,
+											SummerCampSettingValues.item_summercourse205_standard_share_text,
+											SummerCampSettingValues.item_summercourse205_standard_share_amount * Integer.parseInt(txtJulyWeek) )));
+					getEventBus().fireEvent( 
+							new ApplicationItemSelectedEvent( 
+									new ApplicationItem( 
+											SummerCampSettingValues.item_summercourse2510_standard_share_code,
+											SummerCampSettingValues.item_summercourse2510_standard_share_text,
+											SummerCampSettingValues.item_summercourse2510_standard_share_amount * Integer.parseInt(txtAugustWeek) )));
+				}
+			}
+		}
+	}
 }

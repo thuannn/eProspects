@@ -33,6 +33,31 @@ public class ApplicationItemDao extends MyDAOBase {
 		return returnList;
 	}
 	
+	
+	
+	/*
+	 * */
+	public List<ApplicationItem> listAll( String emailAddress, String appId ){
+		// check if the current application is valid
+		Query<ApplicationForm> qa = this.ofy().query(ApplicationForm.class)
+				.filter( "applicationID", appId )
+				.filter( "emailAddress", emailAddress );
+		if (qa.count()<1)
+			throw new RuntimeException( new Exception("Application not found") );
+		
+		// check if this item is already existed
+		Query<ApplicationItem> qi = this.ofy().query(ApplicationItem.class)
+				.filter( "app", qa.getKey() );
+		//
+		List<ApplicationItem> returnList = new ArrayList<ApplicationItem>();
+		for (ApplicationItem ai : qi){
+			returnList.add(ai);
+		}
+		return returnList;
+	}
+	
+	
+	
 	/*
 	 * */
 	public ApplicationItem saveAndReturn(ApplicationItem app){
@@ -60,8 +85,9 @@ public class ApplicationItemDao extends MyDAOBase {
 		Query<ApplicationItem> qi = this.ofy().query(ApplicationItem.class)
 				.filter( "app", q.getKey() )
 				.filter( "itemCode", itemCode );
+		ApplicationItem ai;
 		if (qi.count() <1) {
-			ApplicationItem ai = new ApplicationItem();
+			ai = new ApplicationItem();
 			ai.setItemCode(itemCode);
 			ai.setItemDescription(itemDesc);
 			ai.setItemAmount(itemAmount);
@@ -74,6 +100,18 @@ public class ApplicationItemDao extends MyDAOBase {
 				throw new RuntimeException(e);
 			}
 		}
-		return qi.get();
+		else {
+			ai = qi.get();
+			ai.setItemDescription(itemDesc);
+			ai.setItemAmount(itemAmount);
+			ai.setApp( q.getKey() );
+			//
+			Key<ApplicationItem> key = this.ofy().put(ai);
+			try {
+				return this.ofy().get(key);
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
 	}
 }

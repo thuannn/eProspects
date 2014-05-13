@@ -10,7 +10,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -27,6 +26,7 @@ import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
 import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.Label;
 
 public class ApplicationStep2View extends
 		ViewWithUiHandlers<ApplicationStep2UiHandlers> implements
@@ -57,6 +57,7 @@ public class ApplicationStep2View extends
 	@UiField RadioButton optKeyDepositUSD;
 	@UiField CheckBox chkContinueAfter;
 	@UiField FlexTable tblItems;
+	@UiField Label lblTotalAmount;
 
 	@Inject
 	ApplicationStep2View(Binder uiBinder) {
@@ -112,7 +113,7 @@ public class ApplicationStep2View extends
 		// date and weeks
 		int maxWeek = SummerCampSettingValues.maxWeek;
 		
-		lstStartDate.addItem("Veuillez choisir","");
+		lstStartDate.addItem("","");
 		while (beginDate.before(lastDate)) {
 			CalendarUtil.addDaysToDate(beginDate, 7);
 			if (beginDate.before(today))
@@ -130,13 +131,20 @@ public class ApplicationStep2View extends
 		lstCourses.addItem("Veuillez choisir","");
 		lstCourses.addItem( SummerCampSettingValues.course_name_noconversation,SummerCampSettingValues.course_code_noconversation );
 		lstCourses.addItem( SummerCampSettingValues.course_name_withconversation,SummerCampSettingValues.course_code_withconversation );
+		
+		//
+		lstWeekNumber.addItem("","");
 	}
+	
 	
 	/*
 	 * Depends on the start date, the number of week changes
 	 * */
 	@UiHandler("lstStartDate")
 	void onLstStartDateChange(ChangeEvent event) {
+		//
+		if (lstStartDate.getValue( lstStartDate.getSelectedIndex() ).equals(""))
+			return;
 		//
 		lstWeekNumber.clear();
 		//
@@ -152,20 +160,46 @@ public class ApplicationStep2View extends
 		onLstWeekNumberChange(null);
 	}
 	
+	
 	/*
 	 * */
 	@UiHandler("lstWeekNumber")
 	void onLstWeekNumberChange(ChangeEvent event) {
 		//
+		int maxJuly = Integer.parseInt( lstStartDate.getValue(lstStartDate.getSelectedIndex()) ) - 2;
 		int weekNumber = Integer.parseInt( lstWeekNumber.getValue(lstWeekNumber.getSelectedIndex()));
-		if (weekNumber>5) {
-			txtAugustWeek.setText( Integer.toString(weekNumber-5) );
-			txtJulyWeek.setText("5");
-		} else {
-			txtAugustWeek.setText("");
-			txtJulyWeek.setText( Integer.toString(weekNumber) );
+		//
+		if (maxJuly >0){
+			if (weekNumber - maxJuly > 0) {
+				txtJulyWeek.setText( Integer.toString(maxJuly) );
+				txtAugustWeek.setText( Integer.toString( weekNumber - maxJuly) );
+			}
+			else {
+				txtJulyWeek.setText( Integer.toString(weekNumber) );
+				txtAugustWeek.setText( "0" );
+			}
 		}
+		else {
+			txtJulyWeek.setText( "0" );
+			txtAugustWeek.setText( Integer.toString( weekNumber ) );
+		}
+			
+		//
+		getUiHandlers().calculatePrice (
+				lstProgrammes.getValue( lstProgrammes.getSelectedIndex() ),
+				lstCourses.getValue( lstCourses.getSelectedIndex() ),
+				lstStartDate.getItemText( lstStartDate.getSelectedIndex() ),
+				lstWeekNumber.getItemText( lstWeekNumber.getSelectedIndex() ),
+				txtJulyWeek.getText(),
+				txtAugustWeek.getText(),
+				optConfortPlusPrivate.getValue(),
+				optConfortPrivate.getValue(),
+				optStandardPrivate.getValue(),
+				optConfortPlusShare.getValue(),
+				optConfortShare.getValue(),
+				optStandardShare.getValue() );
 	}
+	
 	
 	/*
 	 * */
@@ -180,7 +214,7 @@ public class ApplicationStep2View extends
 	@Override
 	public void showApplicationDetails(ApplicationFormProxy app) {
 		// 
-		chkApplicaitonFee.setValue( app.isChkApplicaitonFee() );
+		chkApplicaitonFee.setValue( app.isChkApplicationFee() );
 		chkPackAssurance.setValue( app.isChkPackAssurance());
 		FieldValidation.selectItemFromList( lstProgrammes, app.getProgrammesCode() );
 		FieldValidation.selectItemFromList( lstCourses, app.getCourseCode() );
@@ -209,9 +243,184 @@ public class ApplicationStep2View extends
 	@Override
 	public void showSelectedItems(List<ApplicationItemProxy> ais) {
 		//
+		tblItems.removeAllRows();
+		//
+		double totalAmount = 0.0;
 		for (int i=0; i<ais.size(); i++) {
 			tblItems.setText(i, 0, ais.get(i).getItemDescription());
 			tblItems.setText(i, 1, ais.get(i).getItemAmount().toString());
+			totalAmount = totalAmount + ais.get(i).getItemAmount();
+			//
+			tblItems.getCellFormatter().setStyleName(i, 0, "brancheLine");
+			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine");
 		}
+		lblTotalAmount.setText( Double.toString(totalAmount));
+	}
+	
+	
+	/*
+	 * */
+	@UiHandler("lstProgrammes")
+	void onLstProgrammesChange(ChangeEvent event) {
+		//
+		getUiHandlers().calculatePrice (
+				lstProgrammes.getValue( lstProgrammes.getSelectedIndex() ),
+				lstCourses.getValue( lstCourses.getSelectedIndex() ),
+				lstStartDate.getItemText( lstStartDate.getSelectedIndex() ),
+				lstWeekNumber.getItemText( lstWeekNumber.getSelectedIndex() ),
+				txtJulyWeek.getText(),
+				txtAugustWeek.getText(),
+				optConfortPlusPrivate.getValue(),
+				optConfortPrivate.getValue(),
+				optStandardPrivate.getValue(),
+				optConfortPlusShare.getValue(),
+				optConfortShare.getValue(),
+				optStandardShare.getValue() );
+	}
+	
+	
+	/*
+	 * */
+	@UiHandler("lstCourses")
+	void onLstCoursesChange(ChangeEvent event) {
+		//
+		getUiHandlers().calculatePrice (
+				lstProgrammes.getValue( lstProgrammes.getSelectedIndex() ),
+				lstCourses.getValue( lstCourses.getSelectedIndex() ),
+				lstStartDate.getItemText( lstStartDate.getSelectedIndex() ),
+				lstWeekNumber.getItemText( lstWeekNumber.getSelectedIndex() ),
+				txtJulyWeek.getText(),
+				txtAugustWeek.getText(),
+				optConfortPlusPrivate.getValue(),
+				optConfortPrivate.getValue(),
+				optStandardPrivate.getValue(),
+				optConfortPlusShare.getValue(),
+				optConfortShare.getValue(),
+				optStandardShare.getValue() );
+	}
+	
+	/*
+	 * */
+	@UiHandler("optConfortPlusPrivate")
+	void onOptConfortPlusPrivateClick(ClickEvent event) {
+		//
+		getUiHandlers().calculatePrice (
+				lstProgrammes.getValue( lstProgrammes.getSelectedIndex() ),
+				lstCourses.getValue( lstCourses.getSelectedIndex() ),
+				lstStartDate.getItemText( lstStartDate.getSelectedIndex() ),
+				lstWeekNumber.getItemText( lstWeekNumber.getSelectedIndex() ),
+				txtJulyWeek.getText(),
+				txtAugustWeek.getText(),
+				optConfortPlusPrivate.getValue(),
+				optConfortPrivate.getValue(),
+				optStandardPrivate.getValue(),
+				optConfortPlusShare.getValue(),
+				optConfortShare.getValue(),
+				optStandardShare.getValue() );
+	}
+	
+	
+	/*
+	 * */
+	@UiHandler("optConfortPrivate")
+	void onOptConfortPrivateClick(ClickEvent event) {
+		//
+		getUiHandlers().calculatePrice (
+				lstProgrammes.getValue( lstProgrammes.getSelectedIndex() ),
+				lstCourses.getValue( lstCourses.getSelectedIndex() ),
+				lstStartDate.getItemText( lstStartDate.getSelectedIndex() ),
+				lstWeekNumber.getItemText( lstWeekNumber.getSelectedIndex() ),
+				txtJulyWeek.getText(),
+				txtAugustWeek.getText(),
+				optConfortPlusPrivate.getValue(),
+				optConfortPrivate.getValue(),
+				optStandardPrivate.getValue(),
+				optConfortPlusShare.getValue(),
+				optConfortShare.getValue(),
+				optStandardShare.getValue() );
+	}
+	
+	
+	/*
+	 * */
+	@UiHandler("optStandardPrivate")
+	void onOptStandardPrivateClick(ClickEvent event) {
+		//
+		getUiHandlers().calculatePrice (
+				lstProgrammes.getValue( lstProgrammes.getSelectedIndex() ),
+				lstCourses.getValue( lstCourses.getSelectedIndex() ),
+				lstStartDate.getItemText( lstStartDate.getSelectedIndex() ),
+				lstWeekNumber.getItemText( lstWeekNumber.getSelectedIndex() ),
+				txtJulyWeek.getText(),
+				txtAugustWeek.getText(),
+				optConfortPlusPrivate.getValue(),
+				optConfortPrivate.getValue(),
+				optStandardPrivate.getValue(),
+				optConfortPlusShare.getValue(),
+				optConfortShare.getValue(),
+				optStandardShare.getValue() );
+	}
+	
+	
+	/*
+	 * */
+	@UiHandler("optConfortPlusShare")
+	void onOptConfortPlusShareClick(ClickEvent event) {
+		//
+		getUiHandlers().calculatePrice (
+				lstProgrammes.getValue( lstProgrammes.getSelectedIndex() ),
+				lstCourses.getValue( lstCourses.getSelectedIndex() ),
+				lstStartDate.getItemText( lstStartDate.getSelectedIndex() ),
+				lstWeekNumber.getItemText( lstWeekNumber.getSelectedIndex() ),
+				txtJulyWeek.getText(),
+				txtAugustWeek.getText(),
+				optConfortPlusPrivate.getValue(),
+				optConfortPrivate.getValue(),
+				optStandardPrivate.getValue(),
+				optConfortPlusShare.getValue(),
+				optConfortShare.getValue(),
+				optStandardShare.getValue() );
+	}
+	
+	
+	/*
+	 * */
+	@UiHandler("optConfortShare")
+	void onOptConfortShareClick(ClickEvent event) {
+		//
+		getUiHandlers().calculatePrice (
+				lstProgrammes.getValue( lstProgrammes.getSelectedIndex() ),
+				lstCourses.getValue( lstCourses.getSelectedIndex() ),
+				lstStartDate.getItemText( lstStartDate.getSelectedIndex() ),
+				lstWeekNumber.getItemText( lstWeekNumber.getSelectedIndex() ),
+				txtJulyWeek.getText(),
+				txtAugustWeek.getText(),
+				optConfortPlusPrivate.getValue(),
+				optConfortPrivate.getValue(),
+				optStandardPrivate.getValue(),
+				optConfortPlusShare.getValue(),
+				optConfortShare.getValue(),
+				optStandardShare.getValue() );
+	}
+	
+	
+	/*
+	 * */
+	@UiHandler("optStandardShare")
+	void onOptStandardShareClick(ClickEvent event) {
+		//
+		getUiHandlers().calculatePrice (
+				lstProgrammes.getValue( lstProgrammes.getSelectedIndex() ),
+				lstCourses.getValue( lstCourses.getSelectedIndex() ),
+				lstStartDate.getItemText( lstStartDate.getSelectedIndex() ),
+				lstWeekNumber.getItemText( lstWeekNumber.getSelectedIndex() ),
+				txtJulyWeek.getText(),
+				txtAugustWeek.getText(),
+				optConfortPlusPrivate.getValue(),
+				optConfortPrivate.getValue(),
+				optStandardPrivate.getValue(),
+				optConfortPlusShare.getValue(),
+				optConfortShare.getValue(),
+				optStandardShare.getValue() );
 	}
 }
