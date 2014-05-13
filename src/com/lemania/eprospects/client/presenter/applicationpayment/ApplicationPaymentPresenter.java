@@ -1,5 +1,7 @@
 package com.lemania.eprospects.client.presenter.applicationpayment;
 
+import java.util.List;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.user.client.History;
@@ -17,25 +19,34 @@ import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.lemania.eprospects.client.ApplicationItem;
 import com.lemania.eprospects.client.CurrentUser;
+import com.lemania.eprospects.client.event.ApplicationItemSavedEvent;
+import com.lemania.eprospects.client.event.ApplicationItemSavedEvent.ApplicationItemSavedHandler;
+import com.lemania.eprospects.client.event.ApplicationItemSelectedEvent;
+import com.lemania.eprospects.client.event.ApplicationItemSelectedEvent.ApplicationItemSelectedHandler;
 import com.lemania.eprospects.client.event.ApplicationPaymentEvent;
-import com.lemania.eprospects.client.event.ApplicationStep5CompletedEvent;
 import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent.LoginAuthenticatedHandler;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.place.NameTokens;
-import com.lemania.eprospects.shared.ApplicationFormProxy;
-import com.lemania.eprospects.shared.service.ApplicationFormRequestFactory;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormRequestFactory;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormRequestFactory.ApplicationFormRequestContext;
+import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
+import com.lemania.eprospects.shared.applicationitem.ApplicationItemRequestFactory;
+import com.lemania.eprospects.shared.applicationitem.ApplicationItemRequestFactory.ApplicationItemRequestContext;
 import com.lemania.eprospects.shared.service.EventSourceRequestTransport;
-import com.lemania.eprospects.shared.service.ApplicationFormRequestFactory.ApplicationFormRequestContext;
 
 public class ApplicationPaymentPresenter
 		extends
 		Presenter<ApplicationPaymentPresenter.MyView, ApplicationPaymentPresenter.MyProxy>
 		implements 
 				ApplicationPaymentUiHandlers,
-				LoginAuthenticatedHandler {
+				LoginAuthenticatedHandler,
+				ApplicationItemSelectedHandler,
+				ApplicationItemSavedHandler {
 	
 	//
 	private CurrentUser curUser;
@@ -46,6 +57,8 @@ public class ApplicationPaymentPresenter
 		void initializeUI();
 		//
 		void showApplicationDetails( ApplicationFormProxy app );
+		//
+		void showSelectedItems( List<ApplicationItemProxy> ais);
 	}
 
 	@ContentSlot
@@ -170,6 +183,60 @@ public class ApplicationPaymentPresenter
 	public void onLoginAuthenticated(LoginAuthenticatedEvent event) {
 		//
 		this.curUser = event.getCurrentUser();		
+	}
+
+	
+	/*
+	 * 
+	 * */
+	@ProxyEvent
+	@Override
+	public void onApplicationItemSelected(ApplicationItemSelectedEvent event) {
+		//
+		ApplicationItem ai = event.getAi();
+		ApplicationItemRequestFactory rf = GWT.create(ApplicationItemRequestFactory.class);
+		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
+		ApplicationItemRequestContext rc = rf.applicationItemRequest();
+		rc.saveAndReturn ( 
+				curUser.getUserEmail(), 
+				curUser.getApplicationId(), 
+				ai.getItemCode(), 
+				ai.getItemDescription(), 
+				ai.getItemAmount() )
+		.fire( new Receiver<ApplicationItemProxy>() {
+			@Override
+			public void onSuccess(ApplicationItemProxy ai){
+				// Go to the next page
+				getEventBus().fireEvent( new ApplicationItemSavedEvent() );
+			}
+			@Override
+			public void onFailure(ServerFailure error){
+				Window.alert(error.getMessage());
+			}
+		});
+	}
+	
+	
+	/*
+	 * */
+	@ProxyEvent
+	@Override
+	public void onApplicationItemSaved(ApplicationItemSavedEvent event) {
+		//
+		ApplicationItemRequestFactory rf = GWT.create(ApplicationItemRequestFactory.class);
+		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
+		ApplicationItemRequestContext rc = rf.applicationItemRequest();
+		rc.listAll().fire( new Receiver<List<ApplicationItemProxy>>() {
+			@Override
+			public void onSuccess(List<ApplicationItemProxy> ais){
+				// show selected items
+				getView().showSelectedItems(ais);
+			}
+			@Override
+			public void onFailure(ServerFailure error){
+				Window.alert(error.getMessage());
+			}
+		});
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.lemania.eprospects.server.service;
+package com.lemania.eprospects.server.applicationform;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Query;
-import com.lemania.eprospects.server.ApplicationForm;
+import com.lemania.eprospects.server.service.MyDAOBase;
 
 public class ApplicationFormDao extends MyDAOBase {
 	//

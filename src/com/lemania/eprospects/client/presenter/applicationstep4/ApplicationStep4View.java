@@ -1,5 +1,7 @@
 package com.lemania.eprospects.client.presenter.applicationstep4;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import com.google.gwt.uibinder.client.UiBinder;
@@ -14,7 +16,9 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.TextArea;
 import com.lemania.eprospects.client.FieldValidation;
-import com.lemania.eprospects.shared.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
+import com.google.gwt.user.client.ui.FlexTable;
 
 public class ApplicationStep4View extends
 		ViewWithUiHandlers<ApplicationStep4UiHandlers> implements
@@ -36,6 +40,7 @@ public class ApplicationStep4View extends
 	@UiField RadioButton optMedicalNo;
 	@UiField TextArea txtMedical;
 	@UiField TextArea txtOther;
+	@UiField FlexTable tblItems;
 
 	@Inject
 	ApplicationStep4View(Binder uiBinder) {
@@ -96,5 +101,17 @@ public class ApplicationStep4View extends
 		optMedicalNo.setValue( app.isOptMedicalNo() );
 		txtMedical.setText( app.getTxtMedical() );
 		txtOther.setText( app.getTxtOther() );
+	}
+	
+	
+	/*
+	 * */
+	@Override
+	public void showSelectedItems(List<ApplicationItemProxy> ais) {
+		//
+		for (int i=0; i<ais.size(); i++) {
+			tblItems.setText(i, 0, ais.get(i).getItemDescription());
+			tblItems.setText(i, 1, ais.get(i).getItemAmount().toString());
+		}
 	}
 }

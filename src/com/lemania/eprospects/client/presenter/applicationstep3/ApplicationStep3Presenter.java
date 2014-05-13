@@ -1,5 +1,7 @@
 package com.lemania.eprospects.client.presenter.applicationstep3;
 
+import java.util.List;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.user.client.History;
@@ -18,23 +20,29 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.annotations.ProxyEvent;
 import com.lemania.eprospects.client.CurrentUser;
+import com.lemania.eprospects.client.event.ApplicationItemSavedEvent;
+import com.lemania.eprospects.client.event.ApplicationItemSavedEvent.ApplicationItemSavedHandler;
 import com.lemania.eprospects.client.event.ApplicationStep3CompletedEvent;
 import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent.LoginAuthenticatedHandler;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.place.NameTokens;
-import com.lemania.eprospects.shared.ApplicationFormProxy;
-import com.lemania.eprospects.shared.service.ApplicationFormRequestFactory;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormRequestFactory;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormRequestFactory.ApplicationFormRequestContext;
+import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
+import com.lemania.eprospects.shared.applicationitem.ApplicationItemRequestFactory;
+import com.lemania.eprospects.shared.applicationitem.ApplicationItemRequestFactory.ApplicationItemRequestContext;
 import com.lemania.eprospects.shared.service.EventSourceRequestTransport;
-import com.lemania.eprospects.shared.service.ApplicationFormRequestFactory.ApplicationFormRequestContext;
 
 public class ApplicationStep3Presenter
 		extends
 		Presenter<ApplicationStep3Presenter.MyView, ApplicationStep3Presenter.MyProxy>
 		implements 
 				ApplicationStep3UiHandlers,
-				LoginAuthenticatedHandler {
+				LoginAuthenticatedHandler,
+				ApplicationItemSavedHandler {
 	
 	//
 	private CurrentUser curUser;
@@ -44,6 +52,8 @@ public class ApplicationStep3Presenter
 		void initializeUi();
 		//
 		void showApplicationDetails( ApplicationFormProxy app );
+		//
+		void showSelectedItems( List<ApplicationItemProxy> ais);
 	}
 
 	@ContentSlot
@@ -88,6 +98,7 @@ public class ApplicationStep3Presenter
 			public void onSuccess(ApplicationFormProxy app){
 				// show result
 				getView().showApplicationDetails(app);
+				getEventBus().fireEvent( new ApplicationItemSavedEvent() );
 			}
 			@Override
 			public void onFailure(ServerFailure error){
@@ -222,6 +233,29 @@ public class ApplicationStep3Presenter
 	public void onLoginAuthenticated(LoginAuthenticatedEvent event) {
 		//
 		this.curUser = event.getCurrentUser();
+	}
+	
+	
+	/*
+	 * */
+	@ProxyEvent
+	@Override
+	public void onApplicationItemSaved(ApplicationItemSavedEvent event) {
+		//
+		ApplicationItemRequestFactory rf = GWT.create(ApplicationItemRequestFactory.class);
+		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
+		ApplicationItemRequestContext rc = rf.applicationItemRequest();
+		rc.listAll().fire( new Receiver<List<ApplicationItemProxy>>() {
+			@Override
+			public void onSuccess(List<ApplicationItemProxy> ais){
+				// show selected items
+				getView().showSelectedItems(ais);
+			}
+			@Override
+			public void onFailure(ServerFailure error){
+				Window.alert(error.getMessage());
+			}
+		});
 	}
 
 }

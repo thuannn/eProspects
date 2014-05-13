@@ -2,7 +2,6 @@ package com.lemania.eprospects.server.service;
 
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.util.DAOBase;
-import com.lemania.eprospects.server.ApplicationForm;
 import com.lemania.eprospects.server.Assignment;
 import com.lemania.eprospects.server.Branche;
 import com.lemania.eprospects.server.Bulletin;
@@ -22,10 +21,14 @@ import com.lemania.eprospects.server.SettingOption;
 import com.lemania.eprospects.server.Student;
 import com.lemania.eprospects.server.Subject;
 import com.lemania.eprospects.server.User;
+import com.lemania.eprospects.server.applicationform.ApplicationForm;
+import com.lemania.eprospects.server.applicationitem.ApplicationItem;
+import com.lemania.eprospects.server.itemprice.ItemPrice;
 
 public class MyDAOBase extends DAOBase {
 
 	static {
+		//
 		try {
 			ObjectifyService.register(SettingOption.class);
 		} catch (Exception e){
@@ -142,6 +145,18 @@ public class MyDAOBase extends DAOBase {
 		
 		try {
         	ObjectifyService.register(ApplicationForm.class);
+        } catch (Exception e) {
+        	// do nothing
+        }	
+		
+		try {
+        	ObjectifyService.register(ItemPrice.class);
+        } catch (Exception e) {
+        	// do nothing
+        }	
+		
+		try {
+        	ObjectifyService.register(ApplicationItem.class);
         } catch (Exception e) {
         	// do nothing
         }	

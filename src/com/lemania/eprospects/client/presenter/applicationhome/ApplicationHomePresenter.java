@@ -23,9 +23,9 @@ import com.lemania.eprospects.client.event.DrawSchoolInterfaceEvent;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.place.NameTokens;
-import com.lemania.eprospects.shared.ApplicationFormProxy;
-import com.lemania.eprospects.shared.service.ApplicationFormRequestFactory;
-import com.lemania.eprospects.shared.service.ApplicationFormRequestFactory.ApplicationFormRequestContext;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormRequestFactory;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormRequestFactory.ApplicationFormRequestContext;
 import com.lemania.eprospects.shared.service.EventSourceRequestTransport;
 
 public class ApplicationHomePresenter

@@ -37,5 +37,9 @@ public class SummerCampSettingValues {
 	public static String airport_direction_to_description = "Vers";
 	public static String airport_direction_to_code = "TO";
 	
-	//
+	// item description
+	public static String item_applicationfee_code = "APPFEE";
+	public static String item_applicationfee = "Frais d'inscription";
+	public static Double item_applicationfee_amount = 100.0;
+	
 }

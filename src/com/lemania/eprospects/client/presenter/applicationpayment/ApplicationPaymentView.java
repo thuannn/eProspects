@@ -1,5 +1,7 @@
 package com.lemania.eprospects.client.presenter.applicationpayment;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import com.google.gwt.uibinder.client.UiBinder;
@@ -14,7 +16,9 @@ import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.lemania.eprospects.shared.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
+import com.google.gwt.user.client.ui.FlexTable;
 
 public class ApplicationPaymentView extends
 		ViewWithUiHandlers<ApplicationPaymentUiHandlers> implements
@@ -34,6 +38,7 @@ public class ApplicationPaymentView extends
 	@UiField RadioButton optBankTransfer;
 	@UiField RadioButton optDirectCash;
 	@UiField RadioButton optDirectCard;
+	@UiField FlexTable tblItems;
 
 	@Inject
 	ApplicationPaymentView(Binder uiBinder) {
@@ -128,7 +133,8 @@ public class ApplicationPaymentView extends
 	@UiHandler("optBankTransfer")
 	void onOptBankTransferClick(ClickEvent event) {
 		//
-		
+		showOptionDirect(false);
+		cmdNextStep.setVisible(true);
 	}
 
 	
@@ -142,5 +148,17 @@ public class ApplicationPaymentView extends
 		 optBankTransfer.setValue( app.isOptBankTransfer() );
 		 optDirectCash.setValue( app.isOptDirectCash() );
 		 optDirectCard.setValue( app.isOptDirectCard() );
+	}
+	
+	
+	/*
+	 * */
+	@Override
+	public void showSelectedItems(List<ApplicationItemProxy> ais) {
+		//
+		for (int i=0; i<ais.size(); i++) {
+			tblItems.setText(i, 0, ais.get(i).getItemDescription());
+			tblItems.setText(i, 1, ais.get(i).getItemAmount().toString());
+		}
 	}
 }

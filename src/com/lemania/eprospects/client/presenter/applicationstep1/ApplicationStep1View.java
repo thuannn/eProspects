@@ -14,7 +14,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.ListBox;
 import com.lemania.eprospects.client.FieldValidation;
 import com.lemania.eprospects.client.SummerCampSettingValues;
-import com.lemania.eprospects.shared.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 

@@ -1,5 +1,7 @@
 package com.lemania.eprospects.client.presenter.applicationstep5;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import com.google.gwt.uibinder.client.UiBinder;
@@ -13,7 +15,9 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.TextBox;
-import com.lemania.eprospects.shared.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
+import com.google.gwt.user.client.ui.FlexTable;
 
 public class ApplicationStep5View extends
 		ViewWithUiHandlers<ApplicationStep5UiHandlers> implements
@@ -28,6 +32,7 @@ public class ApplicationStep5View extends
 	@UiField CheckBox chkConditionAgreement;
 	@UiField TextBox txtDatePlace;
 	@UiField TextBox txtFullName;
+	@UiField FlexTable tblItems;
 
 	@Inject
 	ApplicationStep5View(Binder uiBinder) {
@@ -69,5 +74,17 @@ public class ApplicationStep5View extends
 		chkConditionAgreement.setValue( app.isChkConditionAgreement() );
 		txtDatePlace.setText( app.getTxtDatePlace() );
 		txtFullName.setText( app.getTxtFullName() );
+	}
+	
+
+	/*
+	 * */
+	@Override
+	public void showSelectedItems(List<ApplicationItemProxy> ais) {
+		//
+		for (int i=0; i<ais.size(); i++) {
+			tblItems.setText(i, 0, ais.get(i).getItemDescription());
+			tblItems.setText(i, 1, ais.get(i).getItemAmount().toString());
+		}
 	}
 }

@@ -1,6 +1,7 @@
 package com.lemania.eprospects.client.presenter.applicationstep2;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -22,8 +23,10 @@ import com.google.gwt.user.datepicker.client.CalendarUtil;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.lemania.eprospects.client.FieldValidation;
 import com.lemania.eprospects.client.SummerCampSettingValues;
-import com.lemania.eprospects.shared.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
+import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
 import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.FlexTable;
 
 public class ApplicationStep2View extends
 		ViewWithUiHandlers<ApplicationStep2UiHandlers> implements
@@ -53,6 +56,7 @@ public class ApplicationStep2View extends
 	@UiField RadioButton optKeyDepositEuro;
 	@UiField RadioButton optKeyDepositUSD;
 	@UiField CheckBox chkContinueAfter;
+	@UiField FlexTable tblItems;
 
 	@Inject
 	ApplicationStep2View(Binder uiBinder) {
@@ -197,5 +201,17 @@ public class ApplicationStep2View extends
 		optKeyDepositCHF.setValue( app.isOptKeyDepositCHF() );
 		optKeyDepositEuro.setValue( app.isOptKeyDepositEuro() );
 		optKeyDepositUSD.setValue( app.isOptKeyDepositUSD() );
+	}
+
+	
+	/*
+	 * */
+	@Override
+	public void showSelectedItems(List<ApplicationItemProxy> ais) {
+		//
+		for (int i=0; i<ais.size(); i++) {
+			tblItems.setText(i, 0, ais.get(i).getItemDescription());
+			tblItems.setText(i, 1, ais.get(i).getItemAmount().toString());
+		}
 	}
 }

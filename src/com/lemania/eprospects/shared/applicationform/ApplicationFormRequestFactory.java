@@ -1,4 +1,4 @@
-package com.lemania.eprospects.shared.service;
+package com.lemania.eprospects.shared.applicationform;
 
 import java.util.List;
 
@@ -6,9 +6,8 @@ import com.google.web.bindery.requestfactory.shared.Request;
 import com.google.web.bindery.requestfactory.shared.RequestContext;
 import com.google.web.bindery.requestfactory.shared.RequestFactory;
 import com.google.web.bindery.requestfactory.shared.Service;
-import com.lemania.eprospects.server.service.ApplicationFormDao;
+import com.lemania.eprospects.server.applicationform.ApplicationFormDao;
 import com.lemania.eprospects.server.service.DaoServiceLocator;
-import com.lemania.eprospects.shared.ApplicationFormProxy;
 
 public interface ApplicationFormRequestFactory extends RequestFactory {
 	

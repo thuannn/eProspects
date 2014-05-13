@@ -1,9 +1,9 @@
-package com.lemania.eprospects.shared;
+package com.lemania.eprospects.shared.applicationform;
 
 import com.google.web.bindery.requestfactory.shared.EntityProxy;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
-import com.lemania.eprospects.server.ApplicationForm;
 import com.lemania.eprospects.server.ObjectifyLocator;
+import com.lemania.eprospects.server.applicationform.ApplicationForm;
 
 @ProxyFor(value=ApplicationForm.class, locator=ObjectifyLocator.class)
 public interface ApplicationFormProxy extends EntityProxy {

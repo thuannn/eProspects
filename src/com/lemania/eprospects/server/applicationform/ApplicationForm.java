@@ -1,6 +1,7 @@
-package com.lemania.eprospects.server;
+package com.lemania.eprospects.server.applicationform;
 
 import com.googlecode.objectify.annotation.Entity;
+import com.lemania.eprospects.server.DatastoreObject;
 
 @Entity
 public class ApplicationForm extends DatastoreObject {
