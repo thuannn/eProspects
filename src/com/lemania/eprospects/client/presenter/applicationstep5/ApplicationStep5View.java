@@ -36,6 +36,7 @@ public class ApplicationStep5View extends
 	@UiField TextBox txtFullName;
 	@UiField FlexTable tblItems;
 	@UiField Label lblTotalAmount;
+	@UiField Label lblApplicationInfo;
 
 	@Inject
 	ApplicationStep5View(Binder uiBinder) {
@@ -73,6 +74,8 @@ public class ApplicationStep5View extends
 	 * */
 	@Override
 	public void showApplicationDetails(ApplicationFormProxy app) {
+		//
+		lblApplicationInfo.setText( app.getEmailAddress() + " - " + app.getApplicationID() );
 		//
 		chkConditionAgreement.setValue( app.isChkConditionAgreement() );
 		txtDatePlace.setText( app.getTxtDatePlace() );

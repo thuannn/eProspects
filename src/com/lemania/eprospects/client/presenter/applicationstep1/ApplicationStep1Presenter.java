@@ -12,6 +12,7 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyEvent;
+import com.gwtplatform.mvp.client.annotations.UseGatekeeper;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
@@ -20,6 +21,7 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.lemania.eprospects.client.CurrentUser;
 import com.lemania.eprospects.client.FieldValidation;
+import com.lemania.eprospects.client.LoggedInGatekeeper;
 import com.lemania.eprospects.client.NotificationTypes;
 import com.lemania.eprospects.client.event.ApplicationStep1CompletedEvent;
 import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
@@ -56,6 +58,7 @@ public class ApplicationStep1Presenter
 
 	@NameToken(NameTokens.applicationstep1)
 	@ProxyCodeSplit
+	@UseGatekeeper(LoggedInGatekeeper.class)
 	public interface MyProxy extends ProxyPlace<ApplicationStep1Presenter> {
 	}
 

@@ -4,14 +4,17 @@
     <g:SimplePanel ui:field="main">
     	<g:VerticalPanel width="100%" height="" horizontalAlignment="ALIGN_CENTER">
     		<g:Label text="MEDICAL ET REGIME ALIMENTAIRE" styleName="pageTitle"/>
-    		<g:Label text="Step 5 of 5"/>
+    		<g:HorizontalPanel width="100%" spacing="5">
+    			<g:Label text="L&apos;inscription ID :" ui:field="lblApplicationInfo"/>
+    			<g:Label text="Step 5 of 5" horizontalAlignment="ALIGN_RIGHT"/>
+    		</g:HorizontalPanel>
     		<g:VerticalPanel width="900px" styleName="subSection" horizontalAlignment="ALIGN_CENTER">
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_CENTER">
     				<g:VerticalPanel horizontalAlignment="ALIGN_LEFT" width="80%" spacing="10">
     				<g:Label text="ELEMENTS CHOISIS" styleName="sectionTitle"/>
     				<g:FlexTable width="100%" ui:field="tblItems"/>
     				<g:HorizontalPanel width="100%">
-    					<g:Label text="Total" styleName="lablel_TotalAmount"/>
+    					<g:Label text="Total (CHF)" styleName="lablel_TotalAmount"/>
     					<g:Label text="." styleName="lablel_TotalAmount" horizontalAlignment="ALIGN_RIGHT" ui:field="lblTotalAmount"/>
     				</g:HorizontalPanel>
     			</g:VerticalPanel>

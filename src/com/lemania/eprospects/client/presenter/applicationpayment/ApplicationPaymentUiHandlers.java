@@ -13,5 +13,7 @@ public interface ApplicationPaymentUiHandlers extends UiHandlers {
 	//
 	void toggleLeaveNotice();
 	//
+	void clearLeaveNotice();
+	//
 	void previousStep();
 }

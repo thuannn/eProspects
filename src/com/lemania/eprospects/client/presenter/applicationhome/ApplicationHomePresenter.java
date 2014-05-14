@@ -136,6 +136,7 @@ public class ApplicationHomePresenter
 				curUser.setUserEmail( app.getEmailAddress() );
 				curUser.setApplicationId( app.getApplicationID() );
 				curUser.setCandidate( true );
+				curUser.setLoggedIn(true);
 				getEventBus().fireEvent( new LoginAuthenticatedEvent(curUser) );
 				// Go to the next page
 				getEventBus().fireEvent( new ApplicationStartEvent() );
@@ -164,6 +165,7 @@ public class ApplicationHomePresenter
 				curUser.setUserEmail( app.getEmailAddress() );
 				curUser.setApplicationId( app.getApplicationID() );
 				curUser.setCandidate( true );
+				curUser.setLoggedIn(true);
 				getEventBus().fireEvent( new LoginAuthenticatedEvent(curUser) );
 				// Go to the next page
 				getEventBus().fireEvent( new ApplicationStartEvent() );

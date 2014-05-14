@@ -43,6 +43,7 @@ public class ApplicationStep4View extends
 	@UiField TextArea txtOther;
 	@UiField FlexTable tblItems;
 	@UiField Label lblTotalAmount;
+	@UiField Label lblApplicationInfo;
 
 	@Inject
 	ApplicationStep4View(Binder uiBinder) {
@@ -92,6 +93,8 @@ public class ApplicationStep4View extends
 	 * */
 	@Override
 	public void showApplicationDetails(ApplicationFormProxy app) {
+		//
+		lblApplicationInfo.setText( app.getEmailAddress() + " - " + app.getApplicationID() );
 		//
 		optHealthProblemYes.setValue( app.isOptHealthProblemYes() );
 		optHealProblemNo.setValue( app.isOptHealProblemNo() );

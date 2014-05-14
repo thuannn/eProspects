@@ -26,6 +26,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.Grid;
 
 public class MainPageView extends ViewWithUiHandlers<MainPageUiHandler> implements MainPagePresenter.MyView {
 	
@@ -85,6 +86,7 @@ public class MainPageView extends ViewWithUiHandlers<MainPageUiHandler> implemen
 	@UiField Hyperlink cmdEvaluationInputEleve;
 	@UiField Hyperlink cmdEvaluationInputProfProf;
 	@UiField Hyperlink cmdEvaluationInputEleveProf;
+	@UiField Grid gridHeader;
 	
 	
 	// Thuan

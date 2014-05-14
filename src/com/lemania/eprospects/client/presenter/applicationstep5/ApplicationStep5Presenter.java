@@ -14,6 +14,7 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyEvent;
+import com.gwtplatform.mvp.client.annotations.UseGatekeeper;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
@@ -21,6 +22,7 @@ import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.lemania.eprospects.client.CurrentUser;
+import com.lemania.eprospects.client.LoggedInGatekeeper;
 import com.lemania.eprospects.client.NotificationTypes;
 import com.lemania.eprospects.client.event.ApplicationItemSavedEvent.ApplicationItemSavedHandler;
 import com.lemania.eprospects.client.event.ApplicationItemSavedEvent;
@@ -63,6 +65,7 @@ public class ApplicationStep5Presenter
 
 	@NameToken(NameTokens.applicationstep5)
 	@ProxyCodeSplit
+	@UseGatekeeper(LoggedInGatekeeper.class)
 	public interface MyProxy extends ProxyPlace<ApplicationStep5Presenter> {
 	}
 
@@ -153,9 +156,16 @@ public class ApplicationStep5Presenter
 	
 	/*
 	 * */
-	private boolean formCompleted(boolean chkConditionAgreement,
-			String txtDatePlace, String txtFullName) {
+	private boolean formCompleted(boolean chkConditionAgreement, String txtDatePlace, String txtFullName) {
 		// TODO Auto-generated method stub
+		if (!chkConditionAgreement) {
+			Window.alert( NotificationTypes.invalid_input + " Merci d'accepter les conditions financières et générale.");
+			return false;
+		}
+		if (txtDatePlace.equals("") || txtFullName.equals("")) {
+			Window.alert( NotificationTypes.invalid_input + " Merci de remplir tous les champs.");
+			return false;
+		}
 		return true;
 	}
 	

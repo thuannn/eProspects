@@ -56,6 +56,7 @@ public class ApplicationStep3View extends
 	@UiField CheckBox chkActivitiesPackage;
 	@UiField FlexTable tblItems;
 	@UiField Label lblTotalAmount;
+	@UiField Label lblApplicationInfo;
 
 	@Inject
 	ApplicationStep3View(Binder uiBinder) {
@@ -121,6 +122,8 @@ public class ApplicationStep3View extends
 	 * */
 	@Override
 	public void showApplicationDetails(ApplicationFormProxy app) {
+		//
+		lblApplicationInfo.setText( app.getEmailAddress() + " - " + app.getApplicationID() );
 		//
 		 FieldValidation.selectItemFromList(lstAirportDirection, app.getLstAirportDirection());
 		 optPrivateCourse.setValue( app.getOptPrivateCourse() );

@@ -58,6 +58,7 @@ public class ApplicationStep2View extends
 	@UiField CheckBox chkContinueAfter;
 	@UiField FlexTable tblItems;
 	@UiField Label lblTotalAmount;
+	@UiField Label lblApplicationInfo;
 
 	@Inject
 	ApplicationStep2View(Binder uiBinder) {
@@ -220,7 +221,11 @@ public class ApplicationStep2View extends
 	 * */
 	@Override
 	public void showApplicationDetails(ApplicationFormProxy app) {
-		// 
+		//
+		lblApplicationInfo.setText( app.getEmailAddress() + " - " + app.getApplicationID() );
+		//
+		lblApplicationInfo.setText( app.getEmailAddress() + " - " + app.getApplicationID() );
+		//
 		chkApplicaitonFee.setValue( app.isChkApplicationFee() );
 		chkPackAssurance.setValue( app.isChkPackAssurance());
 		FieldValidation.selectItemFromList( lstProgrammes, app.getProgrammesCode() );

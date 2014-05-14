@@ -41,6 +41,7 @@ public class ApplicationPaymentView extends
 	@UiField RadioButton optDirectCard;
 	@UiField FlexTable tblItems;
 	@UiField Label lblTotalAmount;
+	@UiField Label lblApplicationInfo;
 
 	@Inject
 	ApplicationPaymentView(Binder uiBinder) {
@@ -97,7 +98,7 @@ public class ApplicationPaymentView extends
 		//
 		showOptionDirect( false );
 		//
-		getUiHandlers().toggleLeaveNotice();
+		getUiHandlers().clearLeaveNotice();
 	}
 	
 
@@ -134,6 +135,8 @@ public class ApplicationPaymentView extends
 	 * */
 	@Override
 	public void showApplicationDetails(ApplicationFormProxy app) {
+		//
+		lblApplicationInfo.setText( app.getEmailAddress() + " - " + app.getApplicationID() );
 		//
 		 optPaypal.setValue( app.isOptPaypal() );
 		 optPayDirect.setValue( app.isOptPayDirect() );

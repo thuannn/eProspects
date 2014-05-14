@@ -14,7 +14,7 @@
 						<g:Image url="" width="" ui:field="imgLogo"/>
 					</g:at>
 					<g:at left="552" top="0">
-						<g:Grid height="24px" width="60%" borderWidth="0">
+						<g:Grid height="24px" width="60%" borderWidth="0" visible="false" ui:field="gridHeader">
 						<g:row>
 							<g:customCell>
 								<g:Label ui:field="lblCurrentMonth"/>
@@ -30,7 +30,7 @@
 					</g:Grid>
 					</g:at>
 					<g:at left="268" top="30">
-						<g:Button text="&lt;&lt; Masquer/ Afficher le menu" ui:field="cmdMenuToggle" width="190px" styleName="btnHideMenu" height="20px"/>
+						<g:Button text="&lt;&lt; Masquer/ Afficher le menu" ui:field="cmdMenuToggle" width="190px" styleName="btnHideMenu" height="20px" visible="false"/>
 					</g:at>
 				</g:AbsolutePanel>
 			</g:Dock>
