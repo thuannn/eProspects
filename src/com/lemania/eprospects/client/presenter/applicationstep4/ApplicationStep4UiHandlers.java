@@ -16,5 +16,7 @@ public interface ApplicationStep4UiHandlers extends UiHandlers {
 			String 	txtMedical,
 			String 	txtOther );
 	//
+	void toggleLeaveNotice();
+	//
 	void previousStep();
 }

@@ -12,7 +12,7 @@
     				<g:CheckBox text="Cours privé de langue 90 CHF par période" styleName="fieldTitle" ui:field="optPrivateCourse"/>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Si OUI, veuillez préciser le nombre de prériodes souhaitées par semaine :"/>
-    					<g:TextBox styleName="sis_textbox" ui:field="txtPrivateCoursePeriod"/>
+    					<g:TextBox ui:field="txtPrivateCoursePeriod"/>
     				</g:HorizontalPanel>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Service de Limousine" styleName="sectionTitle"/>

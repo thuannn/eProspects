@@ -1,6 +1,5 @@
 package com.lemania.eprospects.client.presenter.applicationpayment;
 
-import com.google.gwt.user.client.ui.RadioButton;
 import com.gwtplatform.mvp.client.UiHandlers;
 
 public interface ApplicationPaymentUiHandlers extends UiHandlers {
@@ -11,6 +10,8 @@ public interface ApplicationPaymentUiHandlers extends UiHandlers {
 			boolean optBankTransfer,
 			boolean optDirectCash,
 			boolean optDirectCard );
+	//
+	void toggleLeaveNotice();
 	//
 	void previousStep();
 }

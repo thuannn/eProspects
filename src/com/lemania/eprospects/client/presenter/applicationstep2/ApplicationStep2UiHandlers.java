@@ -40,5 +40,7 @@ public interface ApplicationStep2UiHandlers extends UiHandlers {
 	//
 	void editItemPrice( String itemCode, boolean selected );
 	//
+	void toggleLeaveNotice();
+	//
 	void previousStep();
 }

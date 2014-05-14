@@ -171,16 +171,124 @@ public class SummerCampSettingValues {
 	public static Double item_asssurancepack_amount = 190.0;
 	
 	//
+	
+	public static String item_privatecourse_code = "CD005";
+	public static String item_privatecourse_text = "Cours privé";
+	public static Double item_privatecourse_amount = 90.0;
+	
+	//
+	
+	public static String item_onewaygeneve_code = "CD006";
+	public static String item_onewaygeneve_text = "Aller simple - Geneve";
+	public static Double item_onewaygeneve_amount = 260.0;
+	
+	public static String item_onewayzurich_code = "CD007";
+	public static String item_onewayzurich_text = "Aller simple - Zurich";
+	public static Double item_onewayzurich_amount = 960.0;
+	
+	//
+	
+	public static String item_roundtripgeneve_code = "CD008";
+	public static String item_roundtripgeneve_text = "Aller retour - Geneve";
+	public static Double item_roundtripgeneve_amount = 520.0;
+	
+	public static String item_roundtripzurich_code = "CD009";
+	public static String item_roundtripzurich_text = "Aller retour - Zurich";
+	public static Double item_roundtripzurich_amount = 1920.0;
+	
+	//
+	
+	public static String item_visaletter_code = "CD010";
+	public static String item_visaletter_text = "Lettre de visa";
+	public static Double item_visaletter_amount = 80.0;
+	
+	//
+	
+	public static String item_deposit_code = "CD011";
+	public static String item_deposit_text = "Argent de poche en dépôt";
+	public static Double item_deposit_amount = 1.0;
+	
+	//
+	
+	public static String item_mealpackage_code = "CD012";
+	public static String item_mealpackage_text = "Forfait 5 repas du midi";
+	public static Double item_mealpackage_amount = 80.0;
+	
+	//
+	
+	public static String item_activitypackage_code = "CD013";
+	public static String item_activitypackage_text = "Pack d'activities";
+	public static Double item_activitypackage_amount = 230.0;
+	
+	//
 	public static Double getItemPrice( String itemCode ){
+		//
 		if (itemCode.equals(item_asssurancepack_code))
 			return item_asssurancepack_amount;
+		//
+		if (itemCode.equals( item_privatecourse_code ))
+			return item_privatecourse_amount;
+		//
+		if (itemCode.equals( item_onewaygeneve_code ))
+			return item_onewaygeneve_amount;
+		//
+		if (itemCode.equals( item_onewayzurich_code ))
+			return item_onewayzurich_amount;
+		//
+		if (itemCode.equals( item_roundtripgeneve_code ))
+			return item_roundtripgeneve_amount;
+		//
+		if (itemCode.equals( item_roundtripzurich_code ))
+			return item_roundtripzurich_amount;
+		//
+		if (itemCode.equals( item_visaletter_code ))
+			return item_visaletter_amount;
+		//
+		if (itemCode.equals( item_deposit_code ))
+			return item_deposit_amount;
+		//
+		if (itemCode.equals( item_mealpackage_code ))
+			return item_mealpackage_amount;
+		//
+		if (itemCode.equals( item_activitypackage_code ))
+			return item_activitypackage_amount;
+		//
 		return 0.0;
 	}
 	
 	//
 	public static String getItemDescription( String itemCode ){
+		//
 		if (itemCode.equals(item_asssurancepack_code))
 			return item_asssurancepack_text;
+		//
+		if (itemCode.equals(item_privatecourse_code))
+			return item_privatecourse_text;
+		//
+		if (itemCode.equals( item_onewaygeneve_code ))
+			return item_onewaygeneve_text;
+		//
+		if (itemCode.equals( item_onewayzurich_code ))
+			return item_onewayzurich_text;
+		//
+		if (itemCode.equals( item_roundtripgeneve_code ))
+			return item_roundtripgeneve_text;
+		//
+		if (itemCode.equals( item_roundtripzurich_code ))
+			return item_roundtripzurich_text;
+		//
+		if (itemCode.equals( item_visaletter_code ))
+			return item_visaletter_text;
+		//
+		if (itemCode.equals( item_deposit_code ))
+			return item_deposit_text;
+		//
+		if (itemCode.equals( item_mealpackage_code ))
+			return item_mealpackage_text;
+		//
+		if (itemCode.equals( item_activitypackage_code ))
+			return item_activitypackage_text;
+		//
 		return "";
 	}
 }

@@ -32,5 +32,8 @@ public interface ApplicationStep1UiHandlers extends UiHandlers {
 			String city_Invoice,
 			String country_Invoice
 	);
+	//
+	void toggleLeaveNotice();
+	//
 	void previousStep();
 }

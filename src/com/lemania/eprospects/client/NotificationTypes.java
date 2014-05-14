@@ -23,6 +23,8 @@ public class NotificationTypes {
 	
 	public static String system_student_block = "L'accès au système est bloqué dès à présent pour des raisons de maintenance.";
 	
+	public static String system_unsaveddata = "Merci de cliquer sur Enregistrer pour sauvegarder les informations modifiées.";
+	
 	public static Integer lineHeight = 30;
 	public static Integer lineHeightShortList = 40;
 	public static Integer headerHeight = 32;

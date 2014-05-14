@@ -17,6 +17,8 @@ import com.lemania.eprospects.client.SummerCampSettingValues;
 import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 
 public class ApplicationStep1View extends
 		ViewWithUiHandlers<ApplicationStep1UiHandlers> implements
@@ -54,6 +56,7 @@ public class ApplicationStep1View extends
 	@UiField TextBox txtAddress_Invoice;
 	@UiField TextBox txtCity_Invoice;
 	@UiField TextBox txtCountry_Invoice;
+	@UiField FlowPanel pnlStep1;
 
 	@Inject
 	ApplicationStep1View(Binder uiBinder) {
@@ -165,5 +168,106 @@ public class ApplicationStep1View extends
 		txtAddress_Invoice.setText( app.getAddress_Invoice() );
 		txtCity_Invoice.setText( app.getCity_Invoice() );
 		txtCountry_Invoice.setText( app.getCountry_Invoice() );
+	}
+	// 
+	@UiHandler("txtLastName_Parents")
+	void onTxtLastName_ParentsValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtMobilePhone_Father")
+	void onTxtMobilePhone_FatherValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtCity_Parents")
+	void onTxtCity_ParentsValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtEmail_Student")
+	void onTxtEmail_StudentValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtAddress_Parents")
+	void onTxtAddress_ParentsValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txt_MobilePhone_Mother")
+	void onTxt_MobilePhone_MotherValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtEmail_Parents")
+	void onTxtEmail_ParentsValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtCountry_Student")
+	void onTxtCountry_StudentValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtCity_Student")
+	void onTxtCity_StudentValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtCity_Invoice")
+	void onTxtCity_InvoiceValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtFirstName_Parents")
+	void onTxtFirstName_ParentsValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtCountry_Parents")
+	void onTxtCountry_ParentsValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtHomePhone_Parents")
+	void onTxtHomePhone_ParentsValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtFax_Parents")
+	void onTxtFax_ParentsValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtNationality_Student")
+	void onTxtNationality_StudentValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtDOB_Student")
+	void onTxtDOB_StudentValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtCompanyName_Invoice")
+	void onTxtCompanyName_InvoiceValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtWorkPhone_Parents")
+	void onTxtWorkPhone_ParentsValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtFirstName_Student")
+	void onTxtFirstName_StudentValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtLastName_Student")
+	void onTxtLastName_StudentValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtAddress_Invoice")
+	void onTxtAddress_InvoiceValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtCountry_Invoice")
+	void onTxtCountry_InvoiceValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtMobilePhone_Student")
+	void onTxtMobilePhone_StudentValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtFullName_Invoice")
+	void onTxtFullName_InvoiceValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtAddress_Student")
+	void onTxtAddress_StudentValueChange(ValueChangeEvent<String> event) {
+		getUiHandlers().toggleLeaveNotice();
 	}
 }

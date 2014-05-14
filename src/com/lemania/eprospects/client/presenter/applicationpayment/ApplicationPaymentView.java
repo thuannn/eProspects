@@ -83,7 +83,10 @@ public class ApplicationPaymentView extends
 	 * */
 	@UiHandler("optPayDirect")
 	void onOptPayDirectClick(ClickEvent event) {
+		//
 		showOptionDirect( true );
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 	
 	
@@ -91,7 +94,10 @@ public class ApplicationPaymentView extends
 	 * */
 	@UiHandler("optPaypal")
 	void onOptPaypalClick(ClickEvent event) {
+		//
 		showOptionDirect( false );
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 	
 
@@ -100,24 +106,6 @@ public class ApplicationPaymentView extends
 	@Override
 	public void initializeUI() {
 		//
-		htmlPaypalButton.setHTML(
-				"<form action='https://www.paypal.com/cgi-bin/webscr' method='post' target='_top'>" +
-				"<input type='hidden' name='cmd' value='_xclick'>" +
-				"<input type='hidden' name='item_name' value='Lemania Summer Camp & Courses'>" +
-				"<input type='hidden' name='amount' value='0.1'>" +
-				"<input type='hidden' name='business' value='J2A4WFF2URAN2'>" +
-				"<input type='hidden' name='lc' value='CH'>" +
-				"<input type='hidden' name='button_subtype' value='services'>" +
-				"<input type='hidden' name='no_note' value='1'>" +
-				"<input type='hidden' name='no_shipping' value='1'>" +
-				"<input type='hidden' name='rm' value='1'>" +
-				"<input type='hidden' name='return' value='http://lemania-eprospects-dev.appspot.com/#applicationfinal'>" +
-				"<input type='hidden' name='currency_code' value='CHF'>" +
-				"<input type='hidden' name='bn' value='PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted'>" +
-				"<input type='image' src='https://www.paypalobjects.com/fr_FR/CH/i/btn/btn_paynowCC_LG.gif' border='0' name='submit' alt='PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !'>" +
-				"<img alt='' border='0' src='https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif' width='1' height='1'>" +
-				"</form>"
-		);
 	}
 	
 	
@@ -137,6 +125,8 @@ public class ApplicationPaymentView extends
 		//
 		showOptionDirect(false);
 		cmdNextStep.setVisible(true);
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 
 	
@@ -167,5 +157,32 @@ public class ApplicationPaymentView extends
 			totalAmount = totalAmount + ais.get(i).getItemAmount();
 		}
 		lblTotalAmount.setText( Double.toString(totalAmount));
+		//
+		showPaypalButton();
+	}
+	
+
+	/*
+	 * */
+	private void showPaypalButton() {
+		//
+		htmlPaypalButton.setHTML(
+				"<form action='https://www.paypal.com/cgi-bin/webscr' method='post' target='_top'>" +
+					"<input type='hidden' name='cmd' value='_xclick'>" +
+					"<input type='hidden' name='item_name' value='Lemania Summer Camp & Courses'>" +
+					"<input type='hidden' name='amount' value='"+ lblTotalAmount.getText() +"'>" +
+					"<input type='hidden' name='business' value='J2A4WFF2URAN2'>" +
+					"<input type='hidden' name='lc' value='CH'>" +
+					"<input type='hidden' name='button_subtype' value='services'>" +
+					"<input type='hidden' name='no_note' value='1'>" +
+					"<input type='hidden' name='no_shipping' value='1'>" +
+					"<input type='hidden' name='rm' value='1'>" +
+					"<input type='hidden' name='return' value='http://lemania-eprospects-dev.appspot.com/#applicationfinal'>" +
+					"<input type='hidden' name='currency_code' value='CHF'>" +
+					"<input type='hidden' name='bn' value='PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted'>" +
+					"<input type='image' src='https://www.paypalobjects.com/fr_FR/CH/i/btn/btn_paynowCC_LG.gif' border='0' name='submit' alt='PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !'>" +
+					"<img alt='' border='0' src='https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif' width='1' height='1'>" +
+				"</form>"
+		);
 	}
 }

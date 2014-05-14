@@ -12,6 +12,7 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyEvent;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -19,6 +20,7 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.lemania.eprospects.client.CurrentUser;
 import com.lemania.eprospects.client.FieldValidation;
+import com.lemania.eprospects.client.NotificationTypes;
 import com.lemania.eprospects.client.event.ApplicationStep1CompletedEvent;
 import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
@@ -39,6 +41,8 @@ public class ApplicationStep1Presenter
 	
 	// Keep the current user
 	CurrentUser curUser;
+	//
+	private final PlaceManager placeManager;
 	
 	interface MyView extends View, HasUiHandlers<ApplicationStep1UiHandlers> {
 		//
@@ -57,8 +61,10 @@ public class ApplicationStep1Presenter
 
 	@Inject
 	public ApplicationStep1Presenter(EventBus eventBus, MyView view,
-			MyProxy proxy) {
+			MyProxy proxy, PlaceManager placeManager ) {
 		super(eventBus, view, proxy, MainPagePresenter.TYPE_SetMainContent);
+		
+		this.placeManager = placeManager;
 
 		getView().setUiHandlers(this);
 	}
@@ -198,6 +204,8 @@ public class ApplicationStep1Presenter
 		.fire( new Receiver<Boolean>() {
 			@Override
 			public void onSuccess(Boolean saved){
+				//
+				placeManager.setOnLeaveConfirmation(null);
 				// Go to the next page
 				getEventBus().fireEvent( new ApplicationStep1CompletedEvent() );
 			}
@@ -298,6 +306,15 @@ public class ApplicationStep1Presenter
 		//
 		this.curUser = event.getCurrentUser();
 		this.getView().showApplicationInfo( curUser.getUserEmail(), curUser.getApplicationId() );
+	}
+
+	
+	/*
+	 * */
+	@Override
+	public void toggleLeaveNotice() {
+		//
+		placeManager.setOnLeaveConfirmation( NotificationTypes.system_unsaveddata );
 	}
 
 }

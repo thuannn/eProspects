@@ -14,6 +14,7 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyEvent;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -21,6 +22,7 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.lemania.eprospects.client.ApplicationItem;
 import com.lemania.eprospects.client.CurrentUser;
+import com.lemania.eprospects.client.NotificationTypes;
 import com.lemania.eprospects.client.event.ApplicationItemSavedEvent;
 import com.lemania.eprospects.client.event.ApplicationItemSavedEvent.ApplicationItemSavedHandler;
 import com.lemania.eprospects.client.event.ApplicationItemSelectedEvent;
@@ -50,6 +52,8 @@ public class ApplicationPaymentPresenter
 	
 	//
 	private CurrentUser curUser;
+	//
+	private final PlaceManager placeManager;
 	
 	
 	interface MyView extends View, HasUiHandlers<ApplicationPaymentUiHandlers> {
@@ -71,8 +75,10 @@ public class ApplicationPaymentPresenter
 
 	@Inject
 	public ApplicationPaymentPresenter(EventBus eventBus, MyView view,
-			MyProxy proxy) {
+			MyProxy proxy, PlaceManager placeManager ) {
 		super(eventBus, view, proxy, MainPagePresenter.TYPE_SetMainContent);
+		
+		this.placeManager = placeManager;
 
 		getView().setUiHandlers(this);
 	}
@@ -143,6 +149,8 @@ public class ApplicationPaymentPresenter
 		.fire( new Receiver<Boolean>() {
 			@Override
 			public void onSuccess(Boolean saved){
+				//
+				placeManager.setOnLeaveConfirmation(null);
 				// Go to the next page
 				getEventBus().fireEvent( new ApplicationPaymentEvent() );
 			}
@@ -237,6 +245,16 @@ public class ApplicationPaymentPresenter
 				Window.alert(error.getMessage());
 			}
 		});
+	}
+	
+	
+	
+	/*
+	 * */
+	@Override
+	public void toggleLeaveNotice() {
+		//
+		placeManager.setOnLeaveConfirmation( NotificationTypes.system_unsaveddata );
 	}
 
 }

@@ -8,7 +8,7 @@
     			<g:Label text="L&apos;inscription ID :" ui:field="lblApplicationInfo"/>
     			<g:Label text="Step 1 of 5" horizontalAlignment="ALIGN_RIGHT"/>
     		</g:HorizontalPanel>
-    		<g:FlowPanel width="900px">
+    		<g:FlowPanel width="900px" ui:field="pnlStep1">
     			<g:Label text="Etudiant(e)" styleName="sectionTitle"/>
     			<g:Grid width="100%">
     			<g:row>

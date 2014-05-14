@@ -19,6 +19,7 @@ import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
 import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 
 public class ApplicationStep5View extends
 		ViewWithUiHandlers<ApplicationStep5UiHandlers> implements
@@ -91,7 +92,29 @@ public class ApplicationStep5View extends
 			tblItems.setText(i, 0, ais.get(i).getItemDescription());
 			tblItems.setText(i, 1, ais.get(i).getItemAmount().toString());
 			totalAmount = totalAmount + ais.get(i).getItemAmount();
+			//
+			tblItems.getCellFormatter().setStyleName(i, 0, "brancheLine");
+			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine");
 		}
 		lblTotalAmount.setText( Double.toString(totalAmount));
+	}
+	
+	
+	/*
+	 * */
+	@UiHandler("chkConditionAgreement")
+	void onChkConditionAgreementValueChange(ValueChangeEvent<Boolean> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtFullName")
+	void onTxtFullNameValueChange(ValueChangeEvent<String> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtDatePlace")
+	void onTxtDatePlaceValueChange(ValueChangeEvent<String> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 }

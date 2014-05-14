@@ -24,5 +24,11 @@ public interface ApplicationStep3UiHandlers extends UiHandlers {
 			boolean chkMealPackage,
 			boolean chkActivitiesPackage );
 	//
+	void editItemPrice( String itemCode, boolean selected );
+	//
+	void editItemPrice( String itemCode, boolean selected, double quantity );
+	//
+	void toggleLeaveNotice();
+	//
 	void previousStep();
 }

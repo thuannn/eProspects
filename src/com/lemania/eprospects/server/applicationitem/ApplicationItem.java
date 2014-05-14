@@ -4,7 +4,7 @@ import com.googlecode.objectify.Key;
 import com.lemania.eprospects.server.DatastoreObject;
 import com.lemania.eprospects.server.applicationform.ApplicationForm;
 
-public class ApplicationItem extends DatastoreObject{
+public class ApplicationItem extends DatastoreObject implements Comparable<ApplicationItem> {
 	//
 	Key<ApplicationForm> app;
 	//
@@ -43,5 +43,11 @@ public class ApplicationItem extends DatastoreObject{
 
 	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
+	}
+
+	@Override
+	public int compareTo(ApplicationItem o) {
+		//
+		return itemCode.compareTo( o.getItemCode() );
 	}
 }

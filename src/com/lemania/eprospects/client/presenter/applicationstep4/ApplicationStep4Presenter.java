@@ -15,6 +15,7 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyEvent;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
@@ -23,6 +24,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.lemania.eprospects.client.CurrentUser;
+import com.lemania.eprospects.client.NotificationTypes;
 import com.lemania.eprospects.client.event.ApplicationItemSavedEvent;
 import com.lemania.eprospects.client.event.ApplicationItemSavedEvent.ApplicationItemSavedHandler;
 import com.lemania.eprospects.client.event.ApplicationStep3CompletedEvent;
@@ -50,6 +52,8 @@ public class ApplicationStep4Presenter
 	
 	//
 	private CurrentUser curUser;
+	//
+	private final PlaceManager placeManager;
 	
 	//
 	
@@ -70,8 +74,10 @@ public class ApplicationStep4Presenter
 
 	@Inject
 	public ApplicationStep4Presenter(EventBus eventBus, MyView view,
-			MyProxy proxy) {
+			MyProxy proxy, PlaceManager placeManager ) {
 		super(eventBus, view, proxy, MainPagePresenter.TYPE_SetMainContent);
+		
+		this.placeManager = placeManager;
 
 		getView().setUiHandlers(this);
 	}
@@ -156,6 +162,8 @@ public class ApplicationStep4Presenter
 			.fire( new Receiver<Boolean>() {
 				@Override
 				public void onSuccess(Boolean saved){
+					//
+					placeManager.setOnLeaveConfirmation(null);
 					// Go to the next page
 					getEventBus().fireEvent( new ApplicationStep4CompletedEvent() );
 				}
@@ -211,5 +219,13 @@ public class ApplicationStep4Presenter
 				Window.alert(error.getMessage());
 			}
 		});
+	}
+	
+	/*
+	 * */
+	@Override
+	public void toggleLeaveNotice() {
+		//
+		placeManager.setOnLeaveConfirmation( NotificationTypes.system_unsaveddata );
 	}
 }

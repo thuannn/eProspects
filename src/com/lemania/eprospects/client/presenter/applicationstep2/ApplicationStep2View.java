@@ -158,6 +158,10 @@ public class ApplicationStep2View extends
 			lstWeekNumber.removeItem( lstWeekNumber.getItemCount()-1 );
 		// Show the weeks in detail
 		onLstWeekNumberChange(null);
+		
+		//
+		if (!event.equals(null))
+			getUiHandlers().toggleLeaveNotice();
 	}
 	
 	
@@ -198,6 +202,9 @@ public class ApplicationStep2View extends
 				optConfortPlusShare.getValue(),
 				optConfortShare.getValue(),
 				optStandardShare.getValue() );
+		
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 	
 	
@@ -276,6 +283,8 @@ public class ApplicationStep2View extends
 				optConfortPlusShare.getValue(),
 				optConfortShare.getValue(),
 				optStandardShare.getValue() );
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 	
 	
@@ -297,6 +306,8 @@ public class ApplicationStep2View extends
 				optConfortPlusShare.getValue(),
 				optConfortShare.getValue(),
 				optStandardShare.getValue() );
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 	
 	/*
@@ -317,6 +328,8 @@ public class ApplicationStep2View extends
 				optConfortPlusShare.getValue(),
 				optConfortShare.getValue(),
 				optStandardShare.getValue() );
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 	
 	
@@ -338,6 +351,8 @@ public class ApplicationStep2View extends
 				optConfortPlusShare.getValue(),
 				optConfortShare.getValue(),
 				optStandardShare.getValue() );
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 	
 	
@@ -359,6 +374,8 @@ public class ApplicationStep2View extends
 				optConfortPlusShare.getValue(),
 				optConfortShare.getValue(),
 				optStandardShare.getValue() );
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 	
 	
@@ -380,6 +397,8 @@ public class ApplicationStep2View extends
 				optConfortPlusShare.getValue(),
 				optConfortShare.getValue(),
 				optStandardShare.getValue() );
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 	
 	
@@ -401,6 +420,8 @@ public class ApplicationStep2View extends
 				optConfortPlusShare.getValue(),
 				optConfortShare.getValue(),
 				optStandardShare.getValue() );
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 	
 	
@@ -422,6 +443,8 @@ public class ApplicationStep2View extends
 				optConfortPlusShare.getValue(),
 				optConfortShare.getValue(),
 				optStandardShare.getValue() );
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 	
 	
@@ -431,5 +454,39 @@ public class ApplicationStep2View extends
 	void onChkPackAssuranceClick(ClickEvent event) {
 		//
 		getUiHandlers().editItemPrice( SummerCampSettingValues.item_asssurancepack_code, chkPackAssurance.getValue() );
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	
+	/*
+	 * */
+	@UiHandler("chkContinueAfter")
+	void onChkContinueAfterClick(ClickEvent event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	
+	/*
+	 * */
+	@UiHandler("optKeyDepositCHF")
+	void onOptKeyDepositCHFClick(ClickEvent event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	
+	/*
+	 * */
+	@UiHandler("optKeyDepositEuro")
+	void onOptKeyDepositEuroClick(ClickEvent event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	
+	/*
+	 * */
+	@UiHandler("optKeyDepositUSD")
+	void onOptKeyDepositUSDClick(ClickEvent event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 }

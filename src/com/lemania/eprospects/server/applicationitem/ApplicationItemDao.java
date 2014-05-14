@@ -1,6 +1,7 @@
 package com.lemania.eprospects.server.applicationitem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.googlecode.objectify.Key;
@@ -30,6 +31,7 @@ public class ApplicationItemDao extends MyDAOBase {
 		for (ApplicationItem ai : q){
 			returnList.add(ai);
 		}
+		Collections.sort(returnList);
 		return returnList;
 	}
 	
@@ -53,6 +55,7 @@ public class ApplicationItemDao extends MyDAOBase {
 		for (ApplicationItem ai : qi){
 			returnList.add(ai);
 		}
+		Collections.sort(returnList);
 		return returnList;
 	}
 	

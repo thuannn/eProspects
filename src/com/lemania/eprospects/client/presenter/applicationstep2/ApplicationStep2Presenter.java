@@ -14,6 +14,7 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyEvent;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -50,6 +51,8 @@ public class ApplicationStep2Presenter
 	
 	//
 	CurrentUser curUser;
+	//
+	private final PlaceManager placeManager;
 	
 	/*
 	 * 
@@ -73,8 +76,10 @@ public class ApplicationStep2Presenter
 
 	@Inject
 	public ApplicationStep2Presenter(EventBus eventBus, MyView view,
-			MyProxy proxy) {
+			MyProxy proxy, PlaceManager placeManager ) {
 		super(eventBus, view, proxy, MainPagePresenter.TYPE_SetMainContent);
+		
+		this.placeManager = placeManager;
 
 		getView().setUiHandlers(this);
 	}
@@ -199,6 +204,8 @@ public class ApplicationStep2Presenter
 		.fire( new Receiver<Boolean>() {
 			@Override
 			public void onSuccess(Boolean saved){
+				//
+				placeManager.setOnLeaveConfirmation(null);
 				// Go to the next page
 				getEventBus().fireEvent( new ApplicationStep2CompletedEvent() );
 			}
@@ -556,5 +563,14 @@ public class ApplicationStep2Presenter
 								itemCode,
 								SummerCampSettingValues.getItemDescription(itemCode),
 								price )));
+	}
+	
+	
+	/*
+	 * */
+	@Override
+	public void toggleLeaveNotice() {
+		//
+		placeManager.setOnLeaveConfirmation( NotificationTypes.system_unsaveddata );
 	}
 }

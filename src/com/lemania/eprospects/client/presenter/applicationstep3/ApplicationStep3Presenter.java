@@ -13,15 +13,20 @@ import com.google.web.bindery.requestfactory.shared.ServerFailure;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.annotations.ProxyEvent;
+import com.lemania.eprospects.client.ApplicationItem;
 import com.lemania.eprospects.client.CurrentUser;
+import com.lemania.eprospects.client.NotificationTypes;
+import com.lemania.eprospects.client.SummerCampSettingValues;
 import com.lemania.eprospects.client.event.ApplicationItemSavedEvent;
 import com.lemania.eprospects.client.event.ApplicationItemSavedEvent.ApplicationItemSavedHandler;
+import com.lemania.eprospects.client.event.ApplicationItemSelectedEvent;
 import com.lemania.eprospects.client.event.ApplicationStep3CompletedEvent;
 import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
@@ -46,6 +51,8 @@ public class ApplicationStep3Presenter
 	
 	//
 	private CurrentUser curUser;
+	//
+	private final PlaceManager placeManager;
 	
 	interface MyView extends View, HasUiHandlers<ApplicationStep3UiHandlers> {
 		//
@@ -66,8 +73,10 @@ public class ApplicationStep3Presenter
 
 	@Inject
 	public ApplicationStep3Presenter(EventBus eventBus, MyView view,
-			MyProxy proxy) {
+			MyProxy proxy, PlaceManager placeManager ) {
 		super(eventBus, view, proxy, MainPagePresenter.TYPE_SetMainContent);
+		
+		this.placeManager = placeManager;
 
 		getView().setUiHandlers(this);
 	}
@@ -179,6 +188,8 @@ public class ApplicationStep3Presenter
 		.fire( new Receiver<Boolean>() {
 			@Override
 			public void onSuccess(Boolean saved){
+				//
+				placeManager.setOnLeaveConfirmation(null);
 				// Go to the next page
 				getEventBus().fireEvent( new ApplicationStep3CompletedEvent() );
 			}
@@ -256,6 +267,52 @@ public class ApplicationStep3Presenter
 				Window.alert(error.getMessage());
 			}
 		});
+	}
+	
+	
+	
+	/*
+	 * */
+	@Override
+	public void editItemPrice(String itemCode, boolean selected) {
+		//
+		double price = 0.0;
+		if(selected)
+			price = SummerCampSettingValues.getItemPrice(itemCode);
+		//
+		getEventBus().fireEvent( 
+				new ApplicationItemSelectedEvent( 
+						new ApplicationItem( 
+								itemCode,
+								SummerCampSettingValues.getItemDescription(itemCode),
+								price )));
+	}
+
+	
+	/*
+	 * */
+	@Override
+	public void editItemPrice(String itemCode, boolean selected, double quantity) {
+		//
+		double price = 0.0;
+		if(selected)
+			price = SummerCampSettingValues.getItemPrice(itemCode) * quantity;
+		//
+		getEventBus().fireEvent( 
+				new ApplicationItemSelectedEvent( 
+						new ApplicationItem( 
+								itemCode,
+								SummerCampSettingValues.getItemDescription(itemCode),
+								price )));
+	}
+	
+	
+	/*
+	 * */
+	@Override
+	public void toggleLeaveNotice() {
+		//
+		placeManager.setOnLeaveConfirmation( NotificationTypes.system_unsaveddata );
 	}
 
 }

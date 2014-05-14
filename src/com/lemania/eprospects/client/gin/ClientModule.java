@@ -69,17 +69,17 @@ public class ClientModule extends AbstractPresenterModule {
 
 	@Override
 	protected void configure() {
+		//
 		install(new ApplicationHomeModule());
+		
 		// Singletons
 		install(new DefaultModule(SISPlaceManager.class));
 		
-		// Set DefaultPlace to homepage
-		// bindConstant().annotatedWith(DefaultPlace.class).to(
-		//		NameTokens.homepage);
-		
+		// Set default page
 		bindConstant().annotatedWith(DefaultPlace.class).to (
 				NameTokens.applicationhome);
 		
+		//
 		bindPresenter(MainPagePresenter.class, MainPagePresenter.MyView.class,
 				MainPageView.class, MainPagePresenter.MyProxy.class);
 

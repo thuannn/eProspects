@@ -15,11 +15,11 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.TextArea;
-import com.lemania.eprospects.client.FieldValidation;
 import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
 import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 
 public class ApplicationStep4View extends
 		ViewWithUiHandlers<ApplicationStep4UiHandlers> implements
@@ -118,7 +118,60 @@ public class ApplicationStep4View extends
 			tblItems.setText(i, 0, ais.get(i).getItemDescription());
 			tblItems.setText(i, 1, ais.get(i).getItemAmount().toString());
 			totalAmount = totalAmount + ais.get(i).getItemAmount();
+			//
+			tblItems.getCellFormatter().setStyleName(i, 0, "brancheLine");
+			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine");
 		}
 		lblTotalAmount.setText( Double.toString(totalAmount));
+	}
+	@UiHandler("txtAllergy")
+	void onTxtAllergyValueChange(ValueChangeEvent<String> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtMedical")
+	void onTxtMedicalValueChange(ValueChangeEvent<String> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtHealthProblem")
+	void onTxtHealthProblemValueChange(ValueChangeEvent<String> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("txtOther")
+	void onTxtOtherValueChange(ValueChangeEvent<String> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("optMedicalNo")
+	void onOptMedicalNoValueChange(ValueChangeEvent<Boolean> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("optMedicalYes")
+	void onOptMedicalYesValueChange(ValueChangeEvent<Boolean> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("optHealProblemNo")
+	void onOptHealProblemNoValueChange(ValueChangeEvent<Boolean> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("optAllergyNo")
+	void onOptAllergyNoValueChange(ValueChangeEvent<Boolean> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("optAllergyYes")
+	void onOptAllergyYesValueChange(ValueChangeEvent<Boolean> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
+	}
+	@UiHandler("optHealthProblemYes")
+	void onOptHealthProblemYesValueChange(ValueChangeEvent<Boolean> event) {
+		//
+		getUiHandlers().toggleLeaveNotice();
 	}
 }

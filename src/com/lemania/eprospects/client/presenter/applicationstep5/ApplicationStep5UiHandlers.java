@@ -10,5 +10,7 @@ public interface ApplicationStep5UiHandlers extends UiHandlers {
 			String txtFullName
 		);
 	//
+	void toggleLeaveNotice();
+	//
 	void previousStep();
 }
