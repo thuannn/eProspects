@@ -164,4 +164,23 @@ public class SummerCampSettingValues {
 	public static String item_summercourse2510_standard_private_text = "Cours de langue intensifs & 10 cours de conversation - Chambre Standard privée";
 	public static Double item_summercourse2510_standard_private_amount = 2570.0;
 	
+	// -- 
+	
+	public static String item_asssurancepack_code = "CD004";
+	public static String item_asssurancepack_text = "Pack assurance santé";
+	public static Double item_asssurancepack_amount = 190.0;
+	
+	//
+	public static Double getItemPrice( String itemCode ){
+		if (itemCode.equals(item_asssurancepack_code))
+			return item_asssurancepack_amount;
+		return 0.0;
+	}
+	
+	//
+	public static String getItemDescription( String itemCode ){
+		if (itemCode.equals(item_asssurancepack_code))
+			return item_asssurancepack_text;
+		return "";
+	}
 }

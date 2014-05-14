@@ -38,5 +38,7 @@ public interface ApplicationStep2UiHandlers extends UiHandlers {
 			boolean optConfortShare,
 			boolean optStandardShare );
 	//
+	void editItemPrice( String itemCode, boolean selected );
+	//
 	void previousStep();
 }

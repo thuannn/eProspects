@@ -423,4 +423,13 @@ public class ApplicationStep2View extends
 				optConfortShare.getValue(),
 				optStandardShare.getValue() );
 	}
+	
+	
+	/*
+	 * */
+	@UiHandler("chkPackAssurance")
+	void onChkPackAssuranceClick(ClickEvent event) {
+		//
+		getUiHandlers().editItemPrice( SummerCampSettingValues.item_asssurancepack_code, chkPackAssurance.getValue() );
+	}
 }

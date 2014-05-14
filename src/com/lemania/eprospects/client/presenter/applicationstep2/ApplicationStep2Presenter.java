@@ -243,6 +243,11 @@ public class ApplicationStep2Presenter
 				Window.alert( NotificationTypes.invalid_input + " Merci de choisir un choix de chambre.");
 				return false;
 			}	
+			//
+			if (!optKeyDepositCHF && !optKeyDepositEuro && !optKeyDepositUSD ){
+				Window.alert( NotificationTypes.invalid_input + " Merci de choisir un choix de la monnaie du dépôt.");
+				return false;
+			}
 		}
 		return true;
 	}
@@ -532,5 +537,24 @@ public class ApplicationStep2Presenter
 				}
 			}
 		}
+	}
+
+	
+	
+	/*
+	 * */
+	@Override
+	public void editItemPrice(String itemCode, boolean selected) {
+		//
+		double price = 0.0;
+		if(selected)
+			price = SummerCampSettingValues.getItemPrice(itemCode);
+		//
+		getEventBus().fireEvent( 
+				new ApplicationItemSelectedEvent( 
+						new ApplicationItem( 
+								itemCode,
+								SummerCampSettingValues.getItemDescription(itemCode),
+								price )));
 	}
 }
