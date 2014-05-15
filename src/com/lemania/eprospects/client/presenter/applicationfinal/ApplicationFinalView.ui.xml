@@ -9,6 +9,17 @@
     			<g:HorizontalPanel width="100%" spacing="10">
     				<g:VerticalPanel width="100%" spacing="10">
     					<g:Label text="MERCI"/>
+    					<g:HTML wordWrap="true"><p>Chère Madame, Cher Monsieur,</p>
+								<p>L’école Lémania vous remercie chaleureusement pour cette inscription.</p>
+								<p>Nous allons vous envoyer prochainement par e-mail la facture et la lettre de confirmation.
+								L’inscription sera définitive après réception du paiement.</p>
+								<p>Nous vous souhaitons un excellent Camp-Cours d’été Lémania dans la charmante ville suisse de Lausanne.</p>
+								<p>Meilleures Salutations</p>
+								Ecole Lemania<br></br>
+								Tel : +41 21 320 15 01<br></br>
+								E-mail : <a href="mailto:summercamp@lemania.ch">summercamp@lemania.ch</a>
+								<p>Note : Si la chambres de l’internat désirée n’est plus disponible, nous vous informerons des autres disponibilités par e-mail, et vous serez remboursé intégralement le cas échéant.</p>
+								</g:HTML>
     				</g:VerticalPanel>
     			</g:HorizontalPanel>
     			

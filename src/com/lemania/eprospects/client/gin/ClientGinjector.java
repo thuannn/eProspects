@@ -8,7 +8,6 @@ import com.google.inject.Provider;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.lemania.eprospects.client.AdminGateKeeper;
 import com.lemania.eprospects.client.LoggedInGatekeeper;
-import com.lemania.eprospects.client.presenter.ContactPresenter;
 import com.lemania.eprospects.client.presenter.CoursAddPresenter;
 import com.lemania.eprospects.client.presenter.CoursPresenter;
 import com.lemania.eprospects.client.presenter.EcoleAddPresenter;
@@ -44,6 +43,7 @@ import com.lemania.eprospects.client.presenter.applicationstep2.ApplicationStep2
 import com.lemania.eprospects.client.presenter.applicationstep3.ApplicationStep3Presenter;
 import com.lemania.eprospects.client.presenter.applicationstep4.ApplicationStep4Presenter;
 import com.lemania.eprospects.client.presenter.applicationstep5.ApplicationStep5Presenter;
+import com.lemania.eprospects.client.presenter.contact.ContactPresenter;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 
 @GinModules({ ClientModule.class })

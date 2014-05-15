@@ -21,6 +21,7 @@ import com.lemania.eprospects.client.NotificationTypes;
 import com.lemania.eprospects.client.event.ApplicationStartEvent;
 import com.lemania.eprospects.client.event.DrawSchoolInterfaceEvent;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
+import com.lemania.eprospects.client.event.NewApplicationNotificationEvent;
 import com.lemania.eprospects.client.presenter.mainpage.MainPagePresenter;
 import com.lemania.eprospects.client.place.NameTokens;
 import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
@@ -169,6 +170,8 @@ public class ApplicationHomePresenter
 				getEventBus().fireEvent( new LoginAuthenticatedEvent(curUser) );
 				// Go to the next page
 				getEventBus().fireEvent( new ApplicationStartEvent() );
+				// Say thanks to the client and notify the team
+				getEventBus().fireEvent( new NewApplicationNotificationEvent(app) );
 			}
 			@Override
 			public void onFailure(ServerFailure error){

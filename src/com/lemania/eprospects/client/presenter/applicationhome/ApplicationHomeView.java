@@ -7,7 +7,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.TextBox;
@@ -17,7 +16,6 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.lemania.eprospects.client.SummerCampSettingValues;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.RadioButton;
-import com.google.gwt.event.dom.client.BlurEvent;
 
 public class ApplicationHomeView extends
 		ViewWithUiHandlers<ApplicationHomeUiHandlers> implements
