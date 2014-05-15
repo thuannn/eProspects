@@ -3,46 +3,46 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <g:SimplePanel ui:field="main">
     	<g:VerticalPanel width="100%" height="" horizontalAlignment="ALIGN_CENTER">
-    		<g:Label text="MEDICAL ET REGIME ALIMENTAIRE" styleName="pageTitle"/>
+    		<g:Label text="MEDICAL AND DIETARY INFORMATION" styleName="pageTitle"/>
     		<g:HorizontalPanel width="100%" spacing="5">
-    			<g:Label text="L&apos;inscription ID :" ui:field="lblApplicationInfo"/>
+    			<g:Label text="Application ID" ui:field="lblApplicationInfo"/>
     			<g:Label text="Step 4 of 5" horizontalAlignment="ALIGN_RIGHT"/>
     		</g:HorizontalPanel>
     		<g:FlowPanel width="900px">
     			<g:HorizontalPanel width="100%" spacing="10">
     			<g:VerticalPanel width="100%">
-    				<g:Label text="L&apos;élève a-t-il/elle un problème de santé, nécessite-t-il un traitement ou un régime spécifique ou a-t-il handicap spécifique dont nous devrons avoir connaissance ?"/>
+    				<g:Label text="Does the student have any health problem or any specific disabilities of which we should be aware? Does he or she require treatment or a specific diet?"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:HorizontalPanel width="100%">
-    					<g:RadioButton name="HealthProblem" text="Oui" ui:field="optHealthProblemYes"/>
-    					<g:RadioButton name="HealthProblem" text="Non" ui:field="optHealProblemNo"/>
-    					<g:Label text="Si oui, veuillez préciser" styleName="fieldTitle"/>
+    					<g:RadioButton name="HealthProblem" text="Yes" ui:field="optHealthProblemYes"/>
+    					<g:RadioButton name="HealthProblem" text="No" ui:field="optHealProblemNo"/>
+    					<g:Label text="If yes, please specify" styleName="fieldTitle"/>
     					<g:TextArea styleName="sis-TextArea" ui:field="txtHealthProblem"/>
     				</g:HorizontalPanel>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:Label text="L&apos;élève est-il sujet à des allergies ?"/>
+    				<g:Label text="Does the student suffer from any allergies?"/>
     				<g:HorizontalPanel width="100%">
-    					<g:RadioButton name="Allergy" text="Oui" ui:field="optAllergyYes"/>
-    					<g:RadioButton name="Allergy" text="Non" ui:field="optAllergyNo"/>
-    					<g:Label text="Si oui, lesquelles" styleName="fieldTitle"/>
+    					<g:RadioButton name="Allergy" text="Yes" ui:field="optAllergyYes"/>
+    					<g:RadioButton name="Allergy" text="No" ui:field="optAllergyNo"/>
+    					<g:Label text="If yes, please specify" styleName="fieldTitle"/>
     					<g:TextArea styleName="sis-TextArea" ui:field="txtAllergy"/>
     				</g:HorizontalPanel>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:Label text="L&apos;élève doit-il prendre un traitement/médicament particulier ?"/>
+    				<g:Label text="Does the student need to take any specific medication/ have specific treatment?"/>
     				<g:HorizontalPanel width="100%">
-    					<g:RadioButton name="Medical" text="Oui" ui:field="optMedicalYes"/>
-    					<g:RadioButton name="Medical" text="Non" ui:field="optMedicalNo"/>
-    					<g:Label text="Si oui, lequel (posologie)" styleName="fieldTitle"/>
+    					<g:RadioButton name="Medical" text="Yes" ui:field="optMedicalYes"/>
+    					<g:RadioButton name="Medical" text="No" ui:field="optMedicalNo"/>
+    					<g:Label text="If yes, please specify" styleName="fieldTitle"/>
     					<g:TextArea styleName="sis-TextArea" ui:field="txtMedical"/>
     				</g:HorizontalPanel>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:Label text="Autres"/>
+    				<g:Label text="Other"/>
     				<g:HorizontalPanel width="100%">
     					<g:TextArea styleName="sis-TextArea" ui:field="txtOther" width="600px" height="200px"/>
     				</g:HorizontalPanel>
     			</g:VerticalPanel>
     			<g:VerticalPanel width="250px" styleName="subSection">
-    				<g:Label text="ELEMENTS CHOISIS" styleName="sectionTitle"/>
+    				<g:Label text="Selected items" styleName="sectionTitle"/>
     				<g:FlexTable width="100%" ui:field="tblItems"/>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Total (CHF)" styleName="lablel_TotalAmount"/>
@@ -52,8 +52,8 @@
     		</g:HorizontalPanel>
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
     				<g:HorizontalPanel width="35%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
-    				<g:Button ui:field="cmdPreviousStep">Précédant</g:Button>
-    			<g:Button ui:field="cmdNextStep" text="Enregistrer &amp; Suivant &gt;&gt;">Next Step</g:Button>
+    				<g:Button ui:field="cmdPreviousStep" text="Previous">Précédant</g:Button>
+    			<g:Button ui:field="cmdNextStep" text="Save &amp; Continue">Next Step</g:Button>
     		</g:HorizontalPanel>
     			</g:VerticalPanel>
     		</g:FlowPanel>

@@ -3,12 +3,11 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <g:SimplePanel ui:field="main">
     	<g:VerticalPanel width="100%" height="" horizontalAlignment="ALIGN_CENTER">
-    		<g:Label text="MERCI" styleName="pageTitle"/>
+    		<g:Label text="Thank you" styleName="pageTitle"/>
     		<g:Label text="." styleName="hiddenText"/>
     		<g:FlowPanel width="900px">
     			<g:HorizontalPanel width="100%" spacing="10">
     				<g:VerticalPanel width="100%" spacing="10">
-    					<g:Label text="MERCI"/>
     					<g:HTML wordWrap="true"><p>Chère Madame, Cher Monsieur,</p>
 								<p>L’école Lémania vous remercie chaleureusement pour cette inscription.</p>
 								<p>Nous allons vous envoyer prochainement par e-mail la facture et la lettre de confirmation.

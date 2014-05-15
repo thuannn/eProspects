@@ -3,15 +3,15 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <g:SimplePanel ui:field="main">
     	<g:VerticalPanel width="100%" height="" horizontalAlignment="ALIGN_CENTER">
-    		<g:Label text="MEDICAL ET REGIME ALIMENTAIRE" styleName="pageTitle"/>
+    		<g:Label text="CONFIRMATION" styleName="pageTitle"/>
     		<g:HorizontalPanel width="100%" spacing="5">
-    			<g:Label text="L&apos;inscription ID :" ui:field="lblApplicationInfo"/>
+    			<g:Label text="Application ID" ui:field="lblApplicationInfo"/>
     			<g:Label text="Step 5 of 5" horizontalAlignment="ALIGN_RIGHT"/>
     		</g:HorizontalPanel>
     		<g:VerticalPanel width="900px" styleName="subSection" horizontalAlignment="ALIGN_CENTER">
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_CENTER">
     				<g:VerticalPanel horizontalAlignment="ALIGN_LEFT" width="80%" spacing="10">
-    				<g:Label text="ELEMENTS CHOISIS" styleName="sectionTitle"/>
+    				<g:Label text="SELECTED ITEMS" styleName="sectionTitle"/>
     				<g:FlexTable width="100%" ui:field="tblItems"/>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Total (CHF)" styleName="lablel_TotalAmount"/>
@@ -20,18 +20,18 @@
     			</g:VerticalPanel>
     			</g:VerticalPanel>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:CheckBox text="J&apos;ai lu, compris et signé les conditions financières et générale, la politique d&apos;annulaltion et/ou les politiques de départ anticipé." width="" ui:field="chkConditionAgreement"/>
+    				<g:CheckBox text="I have read, understood and agree with the Generail and Financial Conditions, the Cancellation Policy and/or premature departure policy." width="" ui:field="chkConditionAgreement"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Grid width="80%">
     					<g:row>
     						<g:customCell>
-    							<g:Label text="Lieu / Date" styleName="fieldTitle"/>
+    							<g:Label text="Place / Date" styleName="fieldTitle"/>
     						</g:customCell>
     						<g:customCell>
     							<g:TextBox styleName="sis_textbox" ui:field="txtDatePlace"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:Label text="Nom / Prénom" styleName="fieldTitle"/>
+    							<g:Label text="Surname / First name" styleName="fieldTitle"/>
     						</g:customCell>
     						<g:customCell>
     							<g:TextBox styleName="sis_textbox" ui:field="txtFullName"/>
@@ -42,8 +42,8 @@
     		<g:FlowPanel width="900px">
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
     				<g:HorizontalPanel width="35%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
-    				<g:Button ui:field="cmdPreviousStep">Précédant</g:Button>
-    			<g:Button ui:field="cmdNextStep" text="Enregistrer &amp; Suivant &gt;&gt;">Next Step</g:Button>
+    				<g:Button ui:field="cmdPreviousStep" text="Previous">Précédant</g:Button>
+    			<g:Button ui:field="cmdNextStep" text="Save &amp; Continue">Next Step</g:Button>
     		</g:HorizontalPanel>
     			</g:VerticalPanel>
     		</g:FlowPanel>

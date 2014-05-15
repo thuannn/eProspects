@@ -9,7 +9,7 @@ public class NotificationTypes {
 	
 	public static String student_code_access_created = "Un code d'accès a été créé pour cet élève.";
 	
-	public static String invalid_input = "Donnée invalide : ";
+	public static String invalid_input = "Missing input : ";
 	
 	public static String branche_create_good = "La nouvelle branche a été créée avec succès.";
 	
@@ -23,7 +23,7 @@ public class NotificationTypes {
 	
 	public static String system_student_block = "L'accès au système est bloqué dès à présent pour des raisons de maintenance.";
 	
-	public static String system_unsaveddata = "Merci de cliquer sur Enregistrer pour sauvegarder les informations modifiées.";
+	public static String system_unsaveddata = "UNSAVED MODIFICATIONS - Click on the button Save & Continue before leaving this page.";
 	
 	public static Integer lineHeight = 30;
 	public static Integer lineHeightShortList = 40;

@@ -3,25 +3,26 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <g:SimplePanel ui:field="main" width="" styleName="body">
     	<g:VerticalPanel width="100%" height="" horizontalAlignment="ALIGN_CENTER">
-    		<g:Label text="Ecole Lémania - Inscription en ligne" styleName="pageTitle"/>
+    		<g:Label text="Ecole Lémania - Online application" styleName="pageTitle"/>
     		<g:Image url="images/inscription-title.png"/>
     		<g:Label text="." styleName="hiddenText"/>
-    		<g:Label text="Selectionnez un programme à s&apos;inscrire :"/>
+    		<g:Label text="Please choose a programme to apply :"/>
     		<g:ListBox ui:field="lstProgrammes"/>
     		<g:Label text="." styleName="hiddenText"/>
-    		<g:Label text="Merci de saisir votre adresse email pour commencer l&apos;inscription :"/>
+    		<g:Label text="Please type in your email to start the application processes:"/>
     		<g:HorizontalPanel>
     			<g:TextBox ui:field="txtEmail"/>
     		</g:HorizontalPanel>
     		<g:VerticalPanel horizontalAlignment="ALIGN_CENTER" ui:field="pnlApplicationIdRequest" visible="false" styleName="subSection">
-    			<g:Label text="Votre adresse email se trouve dans notre base de donné, merci de choisir une option ci-dessous :"/>
+    			<g:Label text="Your email has been found in our database, please choose either creating a new application, or edit an existing one:"/>
     			<g:HorizontalPanel spacing="5">
-    				<g:RadioButton name="new name" text="Nouvelle inscription" ui:field="optNew"/>
-    				<g:RadioButton name="new name" text="Modifier votre inscription, veuillez saisir l&apos;ID de votre inscription :" ui:field="optModify"/>
+    				<g:RadioButton name="new name" text="New application" ui:field="optNew"/>
+    				<g:RadioButton name="new name" text="Edit an exising application, please type in the Application ID:" ui:field="optModify"/>
     				<g:TextBox ui:field="txtApplicationId"/>
     			</g:HorizontalPanel>
     		</g:VerticalPanel>
-    		<g:Button text="Commencer" ui:field="cmdStartApplication"/>
+    		<g:Label text="."/>
+    		<g:Button text="Start" ui:field="cmdStartApplication"/>
     		<g:Label text="." styleName="hiddenText"/>
     	</g:VerticalPanel>
     </g:SimplePanel>
