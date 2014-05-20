@@ -9,6 +9,7 @@ import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyEvent;
 import com.lemania.eprospects.client.CurrentUser;
+import com.lemania.eprospects.client.SummerCampSettingValues;
 import com.lemania.eprospects.client.event.ApplicationStep5CompletedEvent;
 import com.lemania.eprospects.client.event.ApplicationStep5CompletedEvent.ApplicationStep5CompletedHandler;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
@@ -129,6 +130,8 @@ public class ContactPresenter extends
 	}
 
 	
+	/*
+	 * */
 	@ProxyEvent
 	@Override
 	public void onLoginAuthenticated(LoginAuthenticatedEvent event) {
@@ -171,7 +174,7 @@ public class ContactPresenter extends
 			@Override
 			public void onSuccess(List<ApplicationItemProxy> ais){
 				// 
-				String message =  getThankYouMessage() + "\n\n" + applicationBody;
+				String message =  applicationBody;
 				double total = 0.0;
 				message = message + "\n------ Programme details ------" + "\n\n";
 				for (ApplicationItemProxy aip : ais) {
@@ -186,7 +189,7 @@ public class ContactPresenter extends
 				sendMessageSummerTeam( message, subject );
 				
 				//
-				sendMessage (app.getEmailAddress(), message, subject );
+				sendMessage (app.getEmailAddress(), getThankYouMessage() + "\n\n" +message, subject );
 			}
 			@Override
 			public void onFailure(ServerFailure error){
@@ -204,6 +207,8 @@ public class ContactPresenter extends
 		
 		message = message + "Application ID:     " + app.getApplicationID() + "\n";
 		message = message + "Email:              " + app.getEmailAddress() + "\n";
+		message = message + "Start date:         " + app.getStartDate() + "\n";
+		message = message + "Duration:           " + app.getWeekNumber() + "\n";
 		
 		// step 1
 		message = message + "\n------ Students ------" + "\n";
@@ -237,6 +242,18 @@ public class ContactPresenter extends
 		message = message + "Address:         " + app.getAddress_Invoice() + "\n";
 		message = message + "City:            " + app.getCity_Invoice() + "\n";
 		message = message + "Country:         " + app.getCountry_Invoice() + "\n";
+		
+		message = message + "\n------ Pogramme details ------" + "\n";
+		message = message + "Language choice:        	" + SummerCampSettingValues.getItemDescription( app.getLanguageOption() ) + "\n";
+		message = message + "Continue afterward:        " + app.isChkContinueAfter() + "\n";
+		message = message + "Key deposit: 100 CHF:    " + app.isOptKeyDepositCHF() + " - 100 USD: " + app.isOptKeyDepositUSD() + " - 100 EUR: " + app.isOptKeyDepositEuro() + "\n";
+		message = message + "Limousine shuttle service: " + app.getLstAirportDirection() + "\n";
+		message = message + "Arrival information:       " + app.getTxtAirlineName() + " - " + app.getTxtArriveVol() + " - " + app.getTxtArriveTime() + "\n";
+		message = message + "Departure information:     " + app.getTxtAirlineName() + " - " + app.getTxtDepartVol() + " - " + app.getTxtDepartTime() + "\n";
+		message = message + "Diet:         				" + app.getTxtHealthProblem() + "\n";
+		message = message + "Allergy:         			" + app.getTxtAllergy() + "\n";
+		message = message + "Medical treatment:         " + app.getTxtMedical() + "\n";
+		message = message + "Other comment:        		" + app.getTxtOther() + "\n";
 		
 		return message;
 	}
@@ -287,11 +304,19 @@ public class ContactPresenter extends
 		sendMessage( app.getEmailAddress(), message, subject );
 	}
 	
+	
+	/* 
+	 * */
 	private final String getThankYouMessage(){
 		return  "Dear Madam, Dear Sir,\n\n"
 				+ "Ecole Lémania thanks you warmly for this enrollment.\n\n"
 				+ "We will send you by e-mail the invoice and confirmation letter.\n\n"
 				+ "The registration will be confirmed after receipt of payment.\n\n"
+				+ "Bank wire transfer:\n\n"
+				+ "UBS SA, Lausanne \nAccount : 243 – 285.400.01J \nSwift code: UBSWCHZH80A  \nClearing code and account number: 243 – 285.400.01J \nIBAN: CH20 0024 3243 285 40001 J\n\n"
+//				+ "Crédit Suisse,CS Lausanne \nAccount: 4425 – 481.715-01J \nSwift code: CRESCHZZ10A  \nClearing code and account number: 4425 – 481.715-01J \nIBAN: CH11 0483 5048 1715 0100 0\n\n"
+//				+ "Banque Cantonale Vaudoise,BCV Lausanne \nAccount: 767 – 302.09.50 \nSwift code: BCVLCH2L  \nClearing code and account number: 767 – 302.09.50 \nIBAN: CH30 0076 7000 E030 2095 0\n\n"
+				+ "\n\n"
 				+ "We wish you a great Lémania Summer Programme in the beautiful Swiss city of Lausanne.\n\n"
 				+ "Best Regards\n"
 				+ "Ecole Lemania\n"

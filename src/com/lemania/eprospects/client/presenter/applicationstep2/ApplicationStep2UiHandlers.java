@@ -22,7 +22,8 @@ public interface ApplicationStep2UiHandlers extends UiHandlers {
 			boolean optStandardShare,
 			boolean optKeyDepositCHF,
 			boolean optKeyDepositEuro,
-			boolean optKeyDepositUSD );
+			boolean optKeyDepositUSD,
+			String languageOption );
 	//
 	void calculatePrice (
 			String programmesCode,

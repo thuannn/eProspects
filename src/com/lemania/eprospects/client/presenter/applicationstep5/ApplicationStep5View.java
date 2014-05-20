@@ -20,6 +20,7 @@ import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.user.client.ui.HTML;
 
 public class ApplicationStep5View extends
 		ViewWithUiHandlers<ApplicationStep5UiHandlers> implements
@@ -37,6 +38,8 @@ public class ApplicationStep5View extends
 	@UiField FlexTable tblItems;
 	@UiField Label lblTotalAmount;
 	@UiField Label lblApplicationInfo;
+	@UiField Label lblStartDate;
+	@UiField Label lblDuration;
 
 	@Inject
 	ApplicationStep5View(Binder uiBinder) {
@@ -80,6 +83,9 @@ public class ApplicationStep5View extends
 		chkConditionAgreement.setValue( app.isChkConditionAgreement() );
 		txtDatePlace.setText( app.getTxtDatePlace() );
 		txtFullName.setText( app.getTxtFullName() );
+		//
+		lblStartDate.setText( app.getStartDate() );
+		lblDuration.setText( app.getWeekNumber() );
 	}
 	
 
@@ -97,7 +103,7 @@ public class ApplicationStep5View extends
 			totalAmount = totalAmount + ais.get(i).getItemAmount();
 			//
 			tblItems.getCellFormatter().setStyleName(i, 0, "brancheLine");
-			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine");
+			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine_number");
 		}
 		lblTotalAmount.setText( Double.toString(totalAmount));
 	}

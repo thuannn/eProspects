@@ -8,6 +8,18 @@
     		<g:FlowPanel width="900px">
     			<g:HorizontalPanel width="100%" spacing="10">
     				<g:VerticalPanel width="100%" spacing="10">
+    					<g:HTML wordWrap="true"><p>Dear Madam, Dear Sir,</p>
+								<p>Ecole Lémania thanks you warmly for this enrollment.</p>
+								<p>We will send you by e-mail the invoice and confirmation letter. The registration will be confirmed after receipt of payment.</p>
+								<p>We wish you a great Lémania Summer Programme in the beautiful Swiss city of Lausanne.</p>
+								<p>Best Regards</p>
+								Ecole Lemania<br></br>
+								Tel : +41 21 320 15 01<br></br>
+								E-mail : <a href="mailto:summercamp@lemania.ch">summercamp@lemania.ch</a>
+								<p>Note: If the desired room is no longer available, we will inform you of other availabilities by e-mail, and you will be reimbursed for the total amount if necessary.</p>
+								</g:HTML>
+    				</g:VerticalPanel>
+    				<g:VerticalPanel width="100%" spacing="10">
     					<g:HTML wordWrap="true"><p>Chère Madame, Cher Monsieur,</p>
 								<p>L’école Lémania vous remercie chaleureusement pour cette inscription.</p>
 								<p>Nous allons vous envoyer prochainement par e-mail la facture et la lettre de confirmation.

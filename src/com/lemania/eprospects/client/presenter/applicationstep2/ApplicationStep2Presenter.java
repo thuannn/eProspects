@@ -158,7 +158,8 @@ public class ApplicationStep2Presenter
 			boolean optStandardShare,
 			boolean optKeyDepositCHF,
 			boolean optKeyDepositEuro,
-			boolean optKeyDepositUSD ) {
+			boolean optKeyDepositUSD,
+			String languageOption ) {
 		//validate data
 		if ( !formCompleted(
 				 chkApplicaitonFee,
@@ -178,7 +179,8 @@ public class ApplicationStep2Presenter
 				 optStandardShare,
 				 optKeyDepositCHF,
 				 optKeyDepositEuro,
-				 optKeyDepositUSD) )
+				 optKeyDepositUSD, 
+				 languageOption ) )
 			return;
 		// save data
 		ApplicationFormRequestFactory rf = GWT.create(ApplicationFormRequestFactory.class);
@@ -203,7 +205,8 @@ public class ApplicationStep2Presenter
 				 optStandardShare,
 				 optKeyDepositCHF,
 				 optKeyDepositEuro,
-				 optKeyDepositUSD )
+				 optKeyDepositUSD,
+				 languageOption )
 		.fire( new Receiver<Boolean>() {
 			@Override
 			public void onSuccess(Boolean saved){
@@ -230,7 +233,8 @@ public class ApplicationStep2Presenter
 			boolean optConfortPrivate, boolean optStandardPrivate,
 			boolean optConfortPlusShare, boolean optConfortShare,
 			boolean optStandardShare, boolean optKeyDepositCHF,
-			boolean optKeyDepositEuro, boolean optKeyDepositUSD) {
+			boolean optKeyDepositEuro, boolean optKeyDepositUSD,
+			String languageOption ) {
 		//
 		if (programmesCode.equals("")) {
 			Window.alert( NotificationTypes.invalid_input + " Programme");
@@ -238,24 +242,29 @@ public class ApplicationStep2Presenter
 		}
 		//
 		if (courseCode.equals("")){
-			Window.alert( NotificationTypes.invalid_input + " Combination du cours");
+			Window.alert( NotificationTypes.invalid_input + " With or without conversation");
+			return false;
+		}
+		//
+		if (languageOption.equals("")){
+			Window.alert( NotificationTypes.invalid_input + " Please choose a language option");
 			return false;
 		}
 		//
 		if (startDate.equals("")){
-			Window.alert( NotificationTypes.invalid_input + " Date de début");
+			Window.alert( NotificationTypes.invalid_input + " Start date");
 			return false;
 		}
 		//
 		if (programmesCode.equals( SummerCampSettingValues.programme_code_summercamp)){
 			if (!optConfortPlusPrivate && !optConfortPrivate && !optStandardPrivate
 				&& !optConfortPlusShare && !optConfortShare && !optStandardShare ) {
-				Window.alert( NotificationTypes.invalid_input + " Merci de choisir un choix de chambre.");
+				Window.alert( NotificationTypes.invalid_input + " Please choose a type of room");
 				return false;
 			}	
 			//
 			if (!optKeyDepositCHF && !optKeyDepositEuro && !optKeyDepositUSD ){
-				Window.alert( NotificationTypes.invalid_input + " Merci de choisir un choix de la monnaie du dépôt.");
+				Window.alert( NotificationTypes.invalid_input + " Please choose the currency of deposit money");
 				return false;
 			}
 		}

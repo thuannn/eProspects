@@ -161,6 +161,9 @@ public interface ApplicationFormProxy extends EntityProxy {
 	public boolean isChkContinueAfter();
 	public void setChkContinueAfter(boolean chkContinueAfter);
 	
+	public void setLanguageOption(String languageOption);
+	public String getLanguageOption();
+	
 	// step 3
 	
 	public String getLstAirportDirection();

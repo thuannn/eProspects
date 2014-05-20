@@ -56,6 +56,7 @@ public class ApplicationForm extends DatastoreObject {
 	boolean optKeyDepositCHF;
 	boolean optKeyDepositEuro;
 	boolean optKeyDepositUSD;
+	String languageOption;
 	
 	// step 3
 	String lstAirportDirection;
@@ -776,5 +777,17 @@ public class ApplicationForm extends DatastoreObject {
 
 	public void setOptDirectCard(boolean optDirectCard) {
 		this.optDirectCard = optDirectCard;
+	}
+
+	public String getLanguageOption() {
+		return languageOption;
+	}
+
+	public void setLanguageOption(String languageOption) {
+		this.languageOption = languageOption;
+	}
+
+	public void setChkApplicationFee(boolean chkApplicationFee) {
+		this.chkApplicationFee = chkApplicationFee;
 	}
 }

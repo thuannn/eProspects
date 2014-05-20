@@ -161,7 +161,8 @@ public class ApplicationFormDao extends MyDAOBase {
 			boolean optStandardShare,
 			boolean optKeyDepositCHF,
 			boolean optKeyDepositEuro,
-			boolean optKeyDepositUSD ){
+			boolean optKeyDepositUSD,
+			String languageOption){
 		//
 		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
 				.filter( "applicationID", appId )
@@ -188,6 +189,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			app.setOptKeyDepositCHF(optKeyDepositCHF);
 			app.setOptKeyDepositEuro(optKeyDepositEuro);
 			app.setOptKeyDepositUSD(optKeyDepositUSD);
+			app.setLanguageOption( languageOption );
  			//
 			try {
 				this.ofy().put(app);

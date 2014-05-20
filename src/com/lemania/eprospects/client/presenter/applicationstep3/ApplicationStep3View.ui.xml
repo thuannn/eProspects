@@ -74,7 +74,9 @@
     				</g:Grid>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Letter for visa application" styleName="sectionTitle"/>
+    				<g:Label text="." styleName="hiddenText"/>
     				<g:CheckBox text="Visa, invoice or confirmation letter sent by express mail: CHF 80.-" ui:field="chkVisaLetterRequest"/>
+    				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="N.B. : A visa is required for foreign (non-EU) students. It takes at least 5-7 working days to send this visa from Switzerland to foreign countries by normal mail (free of charge). Please take account of the time required to obtain the visa. If possible, we must receive your enrolement application and payment at least 4 weeks before your arrival date for summer courses."/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="For boarding student only: Pocket money held in safe-keeping" styleName="sectionTitle"/>
@@ -95,6 +97,24 @@
     			</g:VerticalPanel>
     			<g:VerticalPanel width="250px" styleName="subSection">
     				<g:Label text="Selected items" styleName="sectionTitle"/>
+    				<g:Grid width="100%">
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Start date:"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="." ui:field="lblStartDate"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Duration (week):"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="." ui:field="lblDuration"/>
+    						</g:customCell>
+    					</g:row>
+    				</g:Grid>
     				<g:FlexTable width="100%" ui:field="tblItems"/>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Total (CHF)" styleName="lablel_TotalAmount"/>

@@ -13,6 +13,24 @@
     			<g:HorizontalPanel width="100%" spacing="10">
     				<g:VerticalPanel width="400px" styleName="subSection" spacing="10">
     				<g:Label text="SELECTED ITEMS" styleName="sectionTitle"/>
+    				<g:Grid width="100%">
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Start date:"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="." ui:field="lblStartDate"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Duration (week):"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="." ui:field="lblDuration"/>
+    						</g:customCell>
+    					</g:row>
+    				</g:Grid>
     				<g:FlexTable width="100%" ui:field="tblItems"/>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Total" styleName="lablel_TotalAmount"/>

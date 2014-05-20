@@ -3,7 +3,7 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <g:SimplePanel ui:field="main">
     	<g:VerticalPanel width="100%" height="" horizontalAlignment="ALIGN_CENTER">
-    		<g:Label text="MEDICAL AND DIETARY INFORMATION" styleName="pageTitle"/>
+    		<g:Label text="OTHERS" styleName="pageTitle"/>
     		<g:HorizontalPanel width="100%" spacing="5">
     			<g:Label text="Application ID" ui:field="lblApplicationInfo"/>
     			<g:Label text="Step 4 of 5" horizontalAlignment="ALIGN_RIGHT"/>
@@ -11,6 +11,7 @@
     		<g:FlowPanel width="900px">
     			<g:HorizontalPanel width="100%" spacing="10">
     			<g:VerticalPanel width="100%">
+    				<g:Label styleName="sectionTitle" text="Medical and dietary information"/>
     				<g:Label text="Does the student have any health problem or any specific disabilities of which we should be aware? Does he or she require treatment or a specific diet?"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:HorizontalPanel width="100%">
@@ -36,13 +37,32 @@
     					<g:TextArea styleName="sis-TextArea" ui:field="txtMedical"/>
     				</g:HorizontalPanel>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:Label text="Other"/>
+    				<g:Label styleName="sectionTitle" text="Comments and other information of which we should be aware"/>
+    				<g:Label text="." styleName="hiddenText"/>
     				<g:HorizontalPanel width="100%">
     					<g:TextArea styleName="sis-TextArea" ui:field="txtOther" width="600px" height="200px"/>
     				</g:HorizontalPanel>
     			</g:VerticalPanel>
     			<g:VerticalPanel width="250px" styleName="subSection">
     				<g:Label text="Selected items" styleName="sectionTitle"/>
+    				<g:Grid width="100%">
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Start date:"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="." ui:field="lblStartDate"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Duration (week):"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="." ui:field="lblDuration"/>
+    						</g:customCell>
+    					</g:row>
+    				</g:Grid>
     				<g:FlexTable width="100%" ui:field="tblItems"/>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Total (CHF)" styleName="lablel_TotalAmount"/>

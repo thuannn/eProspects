@@ -59,6 +59,9 @@ public class ApplicationStep2View extends
 	@UiField FlexTable tblItems;
 	@UiField Label lblTotalAmount;
 	@UiField Label lblApplicationInfo;
+	@UiField Label lblStartDate;
+	@UiField Label lblDuration;
+	@UiField ListBox lstLanguageOptions;
 
 	@Inject
 	ApplicationStep2View(Binder uiBinder) {
@@ -97,7 +100,8 @@ public class ApplicationStep2View extends
 				optStandardShare.getValue(),
 				optKeyDepositCHF.getValue(),
 				optKeyDepositEuro.getValue(),
-				optKeyDepositUSD.getValue() 
+				optKeyDepositUSD.getValue(),
+				lstLanguageOptions.getValue( lstLanguageOptions.getSelectedIndex() )
 		);
 	}
 
@@ -124,12 +128,12 @@ public class ApplicationStep2View extends
 		}
 		
 		// Programmes
-		lstProgrammes.addItem("Veuillez choisir","");
+		lstProgrammes.addItem("Please choose","");
 		lstProgrammes.addItem( SummerCampSettingValues.programme_name_summercamp,SummerCampSettingValues.programme_code_summercamp );
 		lstProgrammes.addItem( SummerCampSettingValues.programme_name_summercourse,SummerCampSettingValues.programme_code_summercourse );
 		
 		// Courses
-		lstCourses.addItem("Veuillez choisir","");
+		lstCourses.addItem("Please choose","");
 		lstCourses.addItem( SummerCampSettingValues.course_name_noconversation,SummerCampSettingValues.course_code_noconversation );
 		lstCourses.addItem( SummerCampSettingValues.course_name_withconversation,SummerCampSettingValues.course_code_withconversation );
 		
@@ -146,6 +150,7 @@ public class ApplicationStep2View extends
 		//
 		if (lstStartDate.getValue( lstStartDate.getSelectedIndex() ).equals(""))
 			return;
+		lblStartDate.setText(lstStartDate.getItemText(lstStartDate.getSelectedIndex()));
 		//
 		lstWeekNumber.clear();
 		//
@@ -161,7 +166,7 @@ public class ApplicationStep2View extends
 		onLstWeekNumberChange(null);
 		
 		//
-		if (!event.equals(null))
+		if ( event != null )
 			getUiHandlers().toggleLeaveNotice();
 	}
 	
@@ -188,7 +193,10 @@ public class ApplicationStep2View extends
 			txtJulyWeek.setText( "0" );
 			txtAugustWeek.setText( Integer.toString( weekNumber ) );
 		}
-			
+		
+		//
+		lblDuration.setText( lstWeekNumber.getValue(lstWeekNumber.getSelectedIndex()) );
+		
 		//
 		getUiHandlers().calculatePrice (
 				lstProgrammes.getValue( lstProgrammes.getSelectedIndex() ),
@@ -228,8 +236,11 @@ public class ApplicationStep2View extends
 		//
 		chkApplicaitonFee.setValue( app.isChkApplicationFee() );
 		chkPackAssurance.setValue( app.isChkPackAssurance());
+		//
 		FieldValidation.selectItemFromList( lstProgrammes, app.getProgrammesCode() );
 		FieldValidation.selectItemFromList( lstCourses, app.getCourseCode() );
+		onLstCoursesChange(null);
+		FieldValidation.selectItemFromList( lstLanguageOptions, app.getLanguageOption() );
 		//
 		FieldValidation.selectItemFromListByText( lstStartDate, app.getStartDate() );
 		onLstStartDateChange( null );
@@ -247,6 +258,9 @@ public class ApplicationStep2View extends
 		optKeyDepositCHF.setValue( app.isOptKeyDepositCHF() );
 		optKeyDepositEuro.setValue( app.isOptKeyDepositEuro() );
 		optKeyDepositUSD.setValue( app.isOptKeyDepositUSD() );
+		//
+		lblStartDate.setText( app.getStartDate() );
+		lblDuration.setText( app.getWeekNumber() );
 	}
 
 	
@@ -264,7 +278,7 @@ public class ApplicationStep2View extends
 			totalAmount = totalAmount + ais.get(i).getItemAmount();
 			//
 			tblItems.getCellFormatter().setStyleName(i, 0, "brancheLine");
-			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine");
+			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine_number");
 		}
 		lblTotalAmount.setText( Double.toString(totalAmount));
 	}
@@ -298,6 +312,8 @@ public class ApplicationStep2View extends
 	@UiHandler("lstCourses")
 	void onLstCoursesChange(ChangeEvent event) {
 		//
+		changeLanguageOptions();
+		//
 		getUiHandlers().calculatePrice (
 				lstProgrammes.getValue( lstProgrammes.getSelectedIndex() ),
 				lstCourses.getValue( lstCourses.getSelectedIndex() ),
@@ -314,6 +330,28 @@ public class ApplicationStep2View extends
 		//
 		getUiHandlers().toggleLeaveNotice();
 	}
+	
+	
+	/*
+	 * */
+	private void changeLanguageOptions() {
+		//
+		lstLanguageOptions.clear();
+		lstLanguageOptions.addItem("","");
+		//
+		if (lstCourses.getValue(lstCourses.getSelectedIndex()).equals( SummerCampSettingValues.course_code_noconversation )) {
+			lstLanguageOptions.addItem( SummerCampSettingValues.course_name_english, SummerCampSettingValues.course_code_english );
+			lstLanguageOptions.addItem( SummerCampSettingValues.course_name_french, SummerCampSettingValues.course_code_french );
+		}
+		//
+		if (lstCourses.getValue(lstCourses.getSelectedIndex()).equals( SummerCampSettingValues.course_code_withconversation )) {
+			lstLanguageOptions.addItem( SummerCampSettingValues.course_name_englishenglish, SummerCampSettingValues.course_code_englishenglish );
+			lstLanguageOptions.addItem( SummerCampSettingValues.course_name_englishfrench, SummerCampSettingValues.course_code_englishfrench );
+			lstLanguageOptions.addItem( SummerCampSettingValues.course_name_frenchfrench, SummerCampSettingValues.course_code_frenchfrench );
+			lstLanguageOptions.addItem( SummerCampSettingValues.course_name_frenchenglish, SummerCampSettingValues.course_code_frenchenglish );
+		}
+	}
+
 	
 	/*
 	 * */

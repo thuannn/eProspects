@@ -69,7 +69,8 @@ public interface ApplicationFormRequestFactory extends RequestFactory {
 				boolean optStandardShare,
 				boolean optKeyDepositCHF,
 				boolean optKeyDepositEuro,
-				boolean optKeyDepositUSD );
+				boolean optKeyDepositUSD,
+				String languageOption);
 		//
 		Request<Boolean> saveStep3 ( String emailAddress, String appId,
 				String lstAirportDirection,

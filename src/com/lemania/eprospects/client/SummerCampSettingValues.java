@@ -25,6 +25,25 @@ public class SummerCampSettingValues {
 	public static String course_name_withconversation = "French/English courses & conversation";
 	public static String course_code_withconversation = "LANGUECONVERSATION";
 	
+	// Language options
+	public static String course_name_english = "English Morning";
+	public static String course_code_english = "LANGUAGEOPTION1";
+	
+	public static String course_name_englishenglish = "English Morning et English conversation on afternoon";
+	public static String course_code_englishenglish = "LANGUAGEOPTION2";
+	
+	public static String course_name_englishfrench = "English Morning et French conversation on afternoon";
+	public static String course_code_englishfrench = "LANGUAGEOPTION3";
+	
+	public static String course_name_french = "French Morning";
+	public static String course_code_french = "LANGUAGEOPTION4";
+	
+	public static String course_name_frenchfrench = "French Morning et French conversation on afternoon";
+	public static String course_code_frenchfrench = "LANGUAGEOPTION5";
+	
+	public static String course_name_frenchenglish = "French Morning et English conversation on afternoon";
+	public static String course_code_frenchenglish = "LANGUAGEOPTION6";
+	
 	//
 	public static String sexe_male_description = "Boy";
 	public static String sexe_male_code = "MALE";
@@ -288,6 +307,24 @@ public class SummerCampSettingValues {
 		//
 		if (itemCode.equals( item_activitypackage_code ))
 			return item_activitypackage_text;
+		//
+		if (itemCode.equals( course_code_english ))
+			return course_name_english;
+		//
+		if (itemCode.equals( course_code_englishenglish ))
+			return course_name_englishenglish;
+		//
+		if (itemCode.equals( course_code_englishfrench ))
+			return course_name_englishfrench;
+		//
+		if (itemCode.equals( course_code_french ))
+			return course_name_french;
+		//
+		if (itemCode.equals( course_code_frenchenglish ))
+			return course_name_frenchenglish;
+		//
+		if (itemCode.equals( course_code_frenchfrench ))
+			return course_name_frenchfrench;
 		//
 		return "";
 	}

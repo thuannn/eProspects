@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -15,6 +16,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.ListBox;
 import com.lemania.eprospects.client.FieldValidation;
+import com.lemania.eprospects.client.NotificationTypes;
 import com.lemania.eprospects.client.SummerCampSettingValues;
 import com.lemania.eprospects.shared.applicationform.ApplicationFormProxy;
 import com.lemania.eprospects.shared.applicationitem.ApplicationItemProxy;
@@ -57,6 +59,8 @@ public class ApplicationStep3View extends
 	@UiField FlexTable tblItems;
 	@UiField Label lblTotalAmount;
 	@UiField Label lblApplicationInfo;
+	@UiField Label lblStartDate;
+	@UiField Label lblDuration;
 
 	@Inject
 	ApplicationStep3View(Binder uiBinder) {
@@ -143,6 +147,9 @@ public class ApplicationStep3View extends
 		 txtMoneyDepositAmount.setText( app.getTxtMoneyDepositAmount() );
 		 chkMealPackage.setValue( app.getChkMealPackage() );
 		 chkActivitiesPackage.setValue( app.getChkActivitiesPackage() );
+		 //
+		lblStartDate.setText( app.getStartDate() );
+		lblDuration.setText( app.getWeekNumber() );
 	}
 	
 	
@@ -160,7 +167,7 @@ public class ApplicationStep3View extends
 			totalAmount = totalAmount + ais.get(i).getItemAmount();
 			//
 			tblItems.getCellFormatter().setStyleName(i, 0, "brancheLine");
-			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine");
+			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine_number");
 		}
 		lblTotalAmount.setText( Double.toString(totalAmount));
 	}
@@ -224,7 +231,7 @@ public class ApplicationStep3View extends
 	@UiHandler("chkMealPackage")
 	void onChkMealPackageClick(ClickEvent event) {
 		//
-		getUiHandlers().editItemPrice( SummerCampSettingValues.item_mealpackage_code, chkMealPackage.getValue() );
+		getUiHandlers().editItemPrice( SummerCampSettingValues.item_mealpackage_code, chkMealPackage.getValue(),  Double.parseDouble(lblDuration.getText()) );
 		//
 		getUiHandlers().toggleLeaveNotice();
 	}
@@ -234,7 +241,7 @@ public class ApplicationStep3View extends
 	@UiHandler("chkActivitiesPackage")
 	void onChkActivitiesPackageClick(ClickEvent event) {
 		//
-		getUiHandlers().editItemPrice( SummerCampSettingValues.item_activitypackage_code, chkActivitiesPackage.getValue() );
+		getUiHandlers().editItemPrice( SummerCampSettingValues.item_activitypackage_code, chkActivitiesPackage.getValue(), Double.parseDouble(lblDuration.getText()) );
 		//
 		getUiHandlers().toggleLeaveNotice();
 	}
@@ -247,7 +254,7 @@ public class ApplicationStep3View extends
 		if (!txtPrivateCoursePeriod.getText().equals("")
 			&& FieldValidation.isNumeric( txtPrivateCoursePeriod.getText())) {
 			//
-			getUiHandlers().editItemPrice( SummerCampSettingValues.item_privatecourse_code, optPrivateCourse.getValue(), Double.parseDouble(txtPrivateCoursePeriod.getText()) );
+			getUiHandlers().editItemPrice( SummerCampSettingValues.item_privatecourse_code, optPrivateCourse.getValue(), Double.parseDouble(txtPrivateCoursePeriod.getText()) * Double.parseDouble(lblDuration.getText()) );
 			//
 			getUiHandlers().toggleLeaveNotice();
 		}
@@ -274,6 +281,10 @@ public class ApplicationStep3View extends
 			getUiHandlers().editItemPrice( SummerCampSettingValues.item_deposit_code, optMoneyDepositYes.getValue(), Double.parseDouble( txtMoneyDepositAmount.getText() ) );
 			//
 			getUiHandlers().toggleLeaveNotice();
+		}
+		else {
+			Window.alert( NotificationTypes.invalid_input + " Please type in the amount in NUMBER ONLY.");
+			txtMoneyDepositAmount.setText("");
 		}
 	}
 	

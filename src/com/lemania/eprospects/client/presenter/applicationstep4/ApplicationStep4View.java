@@ -44,6 +44,8 @@ public class ApplicationStep4View extends
 	@UiField FlexTable tblItems;
 	@UiField Label lblTotalAmount;
 	@UiField Label lblApplicationInfo;
+	@UiField Label lblStartDate;
+	@UiField Label lblDuration;
 
 	@Inject
 	ApplicationStep4View(Binder uiBinder) {
@@ -106,6 +108,9 @@ public class ApplicationStep4View extends
 		optMedicalNo.setValue( app.isOptMedicalNo() );
 		txtMedical.setText( app.getTxtMedical() );
 		txtOther.setText( app.getTxtOther() );
+		//
+		lblStartDate.setText( app.getStartDate() );
+		lblDuration.setText( app.getWeekNumber() );
 	}
 	
 	
@@ -123,7 +128,7 @@ public class ApplicationStep4View extends
 			totalAmount = totalAmount + ais.get(i).getItemAmount();
 			//
 			tblItems.getCellFormatter().setStyleName(i, 0, "brancheLine");
-			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine");
+			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine_number");
 		}
 		lblTotalAmount.setText( Double.toString(totalAmount));
 	}

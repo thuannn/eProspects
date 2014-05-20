@@ -268,8 +268,8 @@ public class ApplicationStep1Presenter
 			return false;
 		if ( FieldValidation.isEmptyString( email_Student, "Email - Etudiant"))
 			return false;
-		if ( FieldValidation.isEmptyString( mobilePhone_Student, "Mobile - Etudiant"))
-			return false;
+//		if ( FieldValidation.isEmptyString( mobilePhone_Student, "Mobile - Etudiant"))
+//			return false;
 		if ( FieldValidation.isEmptyString( lastName_Parents, "Nom - Parents"))
 			return false;
 		if ( FieldValidation.isEmptyString( firstName_Parents, "Prénom - Parents"))
@@ -280,16 +280,16 @@ public class ApplicationStep1Presenter
 			return false;
 		if ( FieldValidation.isEmptyString( country_Parents, "Pays - Parents"))
 			return false;
-		if ( FieldValidation.isEmptyString( mobilePhone_Mother, "Mobile - Mère"))
-			return false;
-		if ( FieldValidation.isEmptyString( mobilePhone_Father, "Mobile - Père"))
-			return false;
+//		if ( FieldValidation.isEmptyString( mobilePhone_Mother, "Mobile - Mère"))
+//			return false;
+//		if ( FieldValidation.isEmptyString( mobilePhone_Father, "Mobile - Père"))
+//			return false;
 		if ( FieldValidation.isEmptyString( homePhone_Parents, "Téléphone (domicile) - Parents"))
 			return false;
-		if ( FieldValidation.isEmptyString( workPhone_Parents, "Téléphone (professionnel) - Parents"))
-			return false;
-		if ( FieldValidation.isEmptyString( fax_Parents, "Fax - Parents"))
-			return false;
+//		if ( FieldValidation.isEmptyString( workPhone_Parents, "Téléphone (professionnel) - Parents"))
+//			return false;
+//		if ( FieldValidation.isEmptyString( fax_Parents, "Fax - Parents"))
+//			return false;
 		if ( FieldValidation.isEmptyString( email_Parents, "Email - Parents"))
 			return false;
 		return true;

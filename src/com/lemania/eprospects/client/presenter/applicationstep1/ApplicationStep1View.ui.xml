@@ -75,7 +75,7 @@
     					<g:TextBox styleName="sis_textbox" ui:field="txtEmail_Student"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Mobile no. (for activities)" styleName="requiredField"/>
+    					<g:Label text="Mobile no. (for activities)" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
     					<g:TextBox styleName="sis_textbox" ui:field="txtMobilePhone_Student"/>
@@ -120,13 +120,13 @@
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Mobile no. (Mother)" styleName="requiredField"/>
+    					<g:Label text="Mobile no. (Mother)" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
     					<g:TextBox styleName="sis_textbox" ui:field="txt_MobilePhone_Mother"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Mobile no. (Father)" styleName="requiredField"/>
+    					<g:Label text="Mobile no. (Father)" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
     					<g:TextBox styleName="sis_textbox" ui:field="txtMobilePhone_Father"/>
@@ -140,7 +140,7 @@
     					<g:TextBox styleName="sis_textbox" ui:field="txtHomePhone_Parents"/>
     				</g:customCell>
     				<g:customCell>
-    					<g:Label text="Work phone" styleName="requiredField"/>
+    					<g:Label text="Work phone" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
     					<g:TextBox styleName="sis_textbox" ui:field="txtWorkPhone_Parents"/>
@@ -148,7 +148,7 @@
     			</g:row>
     			<g:row>
     				<g:customCell>
-    					<g:Label text="Fax" styleName="requiredField"/>
+    					<g:Label text="Fax" styleName="fieldTitle"/>
     				</g:customCell>
     				<g:customCell>
     					<g:TextBox styleName="sis_textbox" ui:field="txtFax_Parents"/>

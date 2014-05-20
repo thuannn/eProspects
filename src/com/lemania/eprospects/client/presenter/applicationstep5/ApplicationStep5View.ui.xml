@@ -8,10 +8,28 @@
     			<g:Label text="Application ID" ui:field="lblApplicationInfo"/>
     			<g:Label text="Step 5 of 5" horizontalAlignment="ALIGN_RIGHT"/>
     		</g:HorizontalPanel>
-    		<g:VerticalPanel width="900px" styleName="subSection" horizontalAlignment="ALIGN_CENTER">
+    		<g:VerticalPanel width="900px" styleName="subSection" horizontalAlignment="ALIGN_CENTER" spacing="5">
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_CENTER">
     				<g:VerticalPanel horizontalAlignment="ALIGN_LEFT" width="80%" spacing="10">
     				<g:Label text="SELECTED ITEMS" styleName="sectionTitle"/>
+    				<g:Grid width="100%">
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Start date:"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="." ui:field="lblStartDate"/>
+    						</g:customCell>
+    					</g:row>
+    					<g:row>
+    						<g:customCell>
+    							<g:Label text="Duration (week):"/>
+    						</g:customCell>
+    						<g:customCell>
+    							<g:Label text="." ui:field="lblDuration"/>
+    						</g:customCell>
+    					</g:row>
+    				</g:Grid>
     				<g:FlexTable width="100%" ui:field="tblItems"/>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Total (CHF)" styleName="lablel_TotalAmount"/>
@@ -20,7 +38,7 @@
     			</g:VerticalPanel>
     			</g:VerticalPanel>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:CheckBox text="I have read, understood and agree with the Generail and Financial Conditions, the Cancellation Policy and/or premature departure policy." width="" ui:field="chkConditionAgreement"/>
+    				<g:CheckBox text="I have read and understood the General and Financial Conditions, the Cancellation Policy and/or premature departure policy." width="" ui:field="chkConditionAgreement"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Grid width="80%">
     					<g:row>
@@ -38,8 +56,7 @@
     						</g:customCell>
     					</g:row>
     				</g:Grid>
-    			</g:VerticalPanel>
-    		<g:FlowPanel width="900px">
+    				<g:FlowPanel width="900px">
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
     				<g:HorizontalPanel width="35%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
     				<g:Button ui:field="cmdPreviousStep" text="Previous">Précédant</g:Button>
@@ -47,6 +64,9 @@
     		</g:HorizontalPanel>
     			</g:VerticalPanel>
     		</g:FlowPanel>
+    				<g:Label text="." styleName="hiddenText"/>
+    				<g:Frame url="http://www.lemaniasummerschool.com/en/general-conditions" width="98%" height="300px"/>
+    			</g:VerticalPanel>
     	</g:VerticalPanel>
     </g:SimplePanel>
 </ui:UiBinder>
