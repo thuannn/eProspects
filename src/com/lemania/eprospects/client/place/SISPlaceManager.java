@@ -1,8 +1,8 @@
 package com.lemania.eprospects.client.place;
 
 import com.gwtplatform.mvp.client.proxy.PlaceManagerImpl;
-import com.gwtplatform.mvp.client.proxy.PlaceRequest;
-import com.gwtplatform.mvp.client.proxy.TokenFormatter;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
+import com.gwtplatform.mvp.shared.proxy.TokenFormatter;
 import com.lemania.eprospects.client.place.DefaultPlace;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.inject.Inject;

@@ -2,9 +2,11 @@ package com.lemania.eprospects.server;
 
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.NotSaved;
+import com.googlecode.objectify.annotation.IgnoreSave;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
+@Index
 public class EvaluationHeader extends DatastoreObject {
 	//
 	private String fromDate;
@@ -15,7 +17,7 @@ public class EvaluationHeader extends DatastoreObject {
 	Key<Professor> classMaster;
 	Key<Classe> classe;
 	
-	@NotSaved
+	@IgnoreSave
 	String classMasterName = "";	
 	
 	public String getFromDate() {

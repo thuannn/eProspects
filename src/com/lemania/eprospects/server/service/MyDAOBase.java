@@ -1,7 +1,8 @@
 package com.lemania.eprospects.server.service;
 
+import com.googlecode.objectify.Objectify;
+import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
-import com.googlecode.objectify.util.DAOBase;
 import com.lemania.eprospects.server.Assignment;
 import com.lemania.eprospects.server.Branche;
 import com.lemania.eprospects.server.Bulletin;
@@ -25,7 +26,15 @@ import com.lemania.eprospects.server.applicationform.ApplicationForm;
 import com.lemania.eprospects.server.applicationitem.ApplicationItem;
 import com.lemania.eprospects.server.itemprice.ItemPrice;
 
-public class MyDAOBase extends DAOBase {
+public class MyDAOBase {
+	
+	public static Objectify ofy() {
+        return ObjectifyService.ofy();
+    }
+
+    public static ObjectifyFactory factory() {
+        return ObjectifyService.factory();
+    }
 
 	static {
 		//

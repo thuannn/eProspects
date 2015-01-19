@@ -1,9 +1,11 @@
 package com.lemania.eprospects.server;
 
 import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.NotSaved;
+import com.googlecode.objectify.annotation.IgnoreSave;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
+@Index
 public class Professor extends DatastoreObject implements Comparable<Professor> {
 
 	private String profName;
@@ -11,54 +13,54 @@ public class Professor extends DatastoreObject implements Comparable<Professor> 
 	private Boolean profActive;
 	private String logModifyDate = "";
 	
-	@NotSaved
+	@IgnoreSave
 	double total_01 = 0;
-	@NotSaved
+	@IgnoreSave
 	double total_02 = 0;
-	@NotSaved
+	@IgnoreSave
 	double total_03 = 0;
-	@NotSaved
+	@IgnoreSave
 	double total_04 = 0;
-	@NotSaved
+	@IgnoreSave
 	double total_05 = 0;
-	@NotSaved
+	@IgnoreSave
 	double total_06 = 0;
-	@NotSaved
+	@IgnoreSave
 	double total_07 = 0;
-	@NotSaved
+	@IgnoreSave
 	double total_08 = 0;
-	@NotSaved
+	@IgnoreSave
 	double total_09 = 0;
-	@NotSaved
+	@IgnoreSave
 	double total_10 = 0;
-	@NotSaved
+	@IgnoreSave
 	double total_11 = 0;
-	@NotSaved
+	@IgnoreSave
 	double total_12 = 0;
 	
-	@NotSaved
+	@IgnoreSave
 	double fee_01 = 0;
-	@NotSaved
+	@IgnoreSave
 	double fee_02 = 0;
-	@NotSaved
+	@IgnoreSave
 	double fee_03 = 0;
-	@NotSaved
+	@IgnoreSave
 	double fee_04 = 0;
-	@NotSaved
+	@IgnoreSave
 	double fee_05 = 0;
-	@NotSaved
+	@IgnoreSave
 	double fee_06 = 0;
-	@NotSaved
+	@IgnoreSave
 	double fee_07 = 0;
-	@NotSaved
+	@IgnoreSave
 	double fee_08 = 0;
-	@NotSaved
+	@IgnoreSave
 	double fee_09 = 0;
-	@NotSaved
+	@IgnoreSave
 	double fee_10 = 0;
-	@NotSaved
+	@IgnoreSave
 	double fee_11 = 0;
-	@NotSaved
+	@IgnoreSave
 	double fee_12 = 0;
 	
 	public String getProfName() {

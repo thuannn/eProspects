@@ -132,6 +132,7 @@ public class ApplicationStep4View extends
 		}
 		lblTotalAmount.setText( Double.toString(totalAmount));
 	}
+	
 	@UiHandler("txtAllergy")
 	void onTxtAllergyValueChange(ValueChangeEvent<String> event) {
 		//

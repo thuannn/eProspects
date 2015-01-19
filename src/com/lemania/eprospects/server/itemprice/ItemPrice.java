@@ -1,6 +1,7 @@
 package com.lemania.eprospects.server.itemprice;
 
-import com.gwtplatform.crawlerservice.server.domain.DatastoreObject;
+import com.lemania.eprospects.server.DatastoreObject;
+
 
 public class ItemPrice extends DatastoreObject {
 	//

@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.googlecode.objectify.Key;
-import com.googlecode.objectify.Query;
+import com.googlecode.objectify.cmd.Query;
 import com.lemania.eprospects.server.service.MyDAOBase;
 
 public class ApplicationFormDao extends MyDAOBase {
@@ -17,15 +17,17 @@ public class ApplicationFormDao extends MyDAOBase {
 	
 	/*
 	 * */
-	public void save(ApplicationForm a){
-		this.ofy().put(a);
+	public void save(ApplicationForm a) {
+		//
+		ofy().save().entities(a).now();
 	}
 	
 	
 	/*
 	 * */
-	public List<ApplicationForm> listAll(){
-		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class);
+	public List<ApplicationForm> listAll() {
+		//
+		Query<ApplicationForm> q = ofy().load().type(ApplicationForm.class);
 		List<ApplicationForm> returnList = new ArrayList<ApplicationForm>();
 		for (ApplicationForm a : q){
 			returnList.add(a);
@@ -33,12 +35,14 @@ public class ApplicationFormDao extends MyDAOBase {
 		return returnList;
 	}
 	
+	
 	/*
 	 * */
 	public ApplicationForm saveAndReturn(ApplicationForm app){
-		Key<ApplicationForm> key = this.ofy().put(app);
+		//
+		Key<ApplicationForm> key = ofy().save().entities(app).now().keySet().iterator().next();
 		try {
-			return this.ofy().get(key);
+			return ofy().load().key(key).now();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -57,8 +61,8 @@ public class ApplicationFormDao extends MyDAOBase {
 				+ Integer.toString( cal.get(Calendar.HOUR_OF_DAY) + cal.get(Calendar.MINUTE) ) );
 		//
 		try {
-			this.ofy().put(app);
-			return app;
+			Key<ApplicationForm> key = ofy().save().entities(app).now().keySet().iterator().next();
+			return ofy().load().key(key).now();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -95,7 +99,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			String city_Invoice,
 			String country_Invoice 
 			){
-		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+		Query<ApplicationForm> q = ofy().load().type(ApplicationForm.class)
 				.filter( "applicationID", appId )
 				.filter( "emailAddress", emailAddress );
 		ApplicationForm app;
@@ -130,7 +134,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			app.setCountry_Invoice(country_Invoice);
 			//
 			try {
-				this.ofy().put(app);
+				ofy().save().entities(app).now();
 				return true;
 			} catch (Exception e) {
 				throw new RuntimeException(e);
@@ -164,7 +168,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			boolean optKeyDepositUSD,
 			String languageOption){
 		//
-		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+		Query<ApplicationForm> q = ofy().load().type(ApplicationForm.class)
 				.filter( "applicationID", appId )
 				.filter( "emailAddress", emailAddress );
 		ApplicationForm app;
@@ -192,7 +196,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			app.setLanguageOption( languageOption );
  			//
 			try {
-				this.ofy().put(app);
+				ofy().save().entities(app).now();
 				return true;
 			} catch (Exception e) {
 				throw new RuntimeException(e);
@@ -226,7 +230,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			boolean chkMealPackage,
 			boolean chkActivitiesPackage ){
 		//
-		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+		Query<ApplicationForm> q = ofy().load().type(ApplicationForm.class)
 				.filter( "applicationID", appId )
 				.filter( "emailAddress", emailAddress );
 		ApplicationForm app;
@@ -253,7 +257,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			app.setChkActivitiesPackage(chkActivitiesPackage);
  			//
 			try {
-				this.ofy().put(app);
+				ofy().save().entities(app).now();
 				return true;
 			} catch (Exception e) {
 				throw new RuntimeException(e);
@@ -279,7 +283,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			String 	txtMedical,
 			String 	txtOther ){
 		//
-		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+		Query<ApplicationForm> q = ofy().load().type(ApplicationForm.class)
 				.filter( "applicationID", appId )
 				.filter( "emailAddress", emailAddress );
 		ApplicationForm app;
@@ -298,7 +302,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			app.setTxtOther(txtOther);
  			//
 			try {
-				this.ofy().put(app);
+				ofy().save().entities(app).now();
 				return true;
 			} catch (Exception e) {
 				throw new RuntimeException(e);
@@ -317,7 +321,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			String txtDatePlace,
 			String txtFullName ){
 		//
-		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+		Query<ApplicationForm> q = ofy().load().type(ApplicationForm.class)
 				.filter( "applicationID", appId )
 				.filter( "emailAddress", emailAddress );
 		ApplicationForm app;
@@ -329,7 +333,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			app.setTxtFullName(txtFullName);
  			//
 			try {
-				this.ofy().put(app);
+				ofy().save().entities(app).now();
 				return true;
 			} catch (Exception e) {
 				throw new RuntimeException(e);
@@ -350,7 +354,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			boolean optDirectCash,
 			boolean optDirectCard ){
 		//
-		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+		Query<ApplicationForm> q = ofy().load().type(ApplicationForm.class)
 				.filter( "applicationID", appId )
 				.filter( "emailAddress", emailAddress );
 		ApplicationForm app;
@@ -364,7 +368,7 @@ public class ApplicationFormDao extends MyDAOBase {
 			app.setOptDirectCash(optDirectCash);
  			//
 			try {
-				this.ofy().put(app);
+				ofy().save().entities(app).now();
 				return true;
 			} catch (Exception e) {
 				throw new RuntimeException(e);
@@ -379,7 +383,7 @@ public class ApplicationFormDao extends MyDAOBase {
 	/*
 	 * */
 	public boolean checkExistence(String emailAddress){
-		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+		Query<ApplicationForm> q = ofy().load().type(ApplicationForm.class)
 				.filter("emailAddress", emailAddress);
 		if (q.count()>0)
 			return true;
@@ -392,7 +396,7 @@ public class ApplicationFormDao extends MyDAOBase {
 	/*
 	 * */
 	public ApplicationForm loadAndReturn( String emailAddress, String appId ){
-		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+		Query<ApplicationForm> q = ofy().load().type(ApplicationForm.class)
 				.filter( "applicationID", appId )
 				.filter( "emailAddress", emailAddress );
 		if (q.count()>0)

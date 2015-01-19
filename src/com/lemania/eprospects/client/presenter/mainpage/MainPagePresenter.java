@@ -40,13 +40,13 @@ import com.lemania.eprospects.client.event.ApplicationStep4CompletedEvent.Applic
 import com.lemania.eprospects.client.event.ApplicationStep5CompletedEvent;
 import com.lemania.eprospects.client.event.ApplicationStep5CompletedEvent.ApplicationStep5CompletedHandler;
 import com.lemania.eprospects.client.event.DrawSchoolInterfaceEvent;
+import com.lemania.eprospects.client.event.DrawSchoolInterfaceEvent.DrawSchoolInterfaceHandler;
 import com.lemania.eprospects.client.event.GotoPreviousPageEvent;
 import com.lemania.eprospects.client.event.GotoPreviousPageEvent.GotoPreviousPageHandler;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent;
 import com.lemania.eprospects.client.event.PageAfterSelectEvent;
 import com.lemania.eprospects.client.event.ActionCompletedEvent.ActionCompletedHandler;
 import com.lemania.eprospects.client.event.ActionInProgressEvent.ActionInProgressHandler;
-import com.lemania.eprospects.client.event.DrawSchoolInterfaceEvent.DrawSchoolInterfaceHandler;
 import com.lemania.eprospects.client.event.LoginAuthenticatedEvent.LoginAuthenticatedHandler;
 import com.lemania.eprospects.client.event.PageAfterSelectEvent.PageAfterSelectHandler;
 import com.lemania.eprospects.client.place.NameTokens;
@@ -346,24 +346,23 @@ public class MainPagePresenter extends
 	@Override
 	public void onDrawSchoolInterface(DrawSchoolInterfaceEvent event) {
 		//
-		SettingOptionRequestFactory rf = GWT.create(SettingOptionRequestFactory.class);
-		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
-		SettingOptionRequestContext rc = rf.settingOptionRequest();
-		rc.listAll().fire(new Receiver<List<SettingOptionProxy>>(){
-			@Override
-			public void onFailure(ServerFailure error){
-				Window.alert(error.getMessage());
-			}
-			@Override
-			public void onSuccess(List<SettingOptionProxy> response) {
-				for (SettingOptionProxy setting : response){
-					if (setting.getOptionName().equals("ECOLE")) {
-						getView().drawSchoolInterface( setting.getOptionValue() );
-					}
-				}
-			}
-		});
-		
+//		SettingOptionRequestFactory rf = GWT.create(SettingOptionRequestFactory.class);
+//		rf.initialize(this.getEventBus(), new EventSourceRequestTransport(this.getEventBus()));
+//		SettingOptionRequestContext rc = rf.settingOptionRequest();
+//		rc.listAll().fire(new Receiver<List<SettingOptionProxy>>(){
+//			@Override
+//			public void onFailure(ServerFailure error){
+//				Window.alert(error.getMessage());
+//			}
+//			@Override
+//			public void onSuccess(List<SettingOptionProxy> response) {
+//				for (SettingOptionProxy setting : response){
+//					if (setting.getOptionName().equals("ECOLE")) {
+//						getView().drawSchoolInterface( setting.getOptionValue() );
+//					}
+//				}
+//			}
+//		});
 	}
 
 	/*

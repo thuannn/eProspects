@@ -2,9 +2,11 @@ package com.lemania.eprospects.server;
 
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.NotSaved;
+import com.googlecode.objectify.annotation.IgnoreSave;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
+@Index
 public class Assignment extends DatastoreObject implements Comparable<Assignment> {
 	//
 	private Key<Professor> prof;
@@ -13,16 +15,16 @@ public class Assignment extends DatastoreObject implements Comparable<Assignment
 	
 	private Boolean active = false;
 	
-	@NotSaved
+	@IgnoreSave
 	private String classeName;
 	
-	@NotSaved
+	@IgnoreSave
 	private String programmeName;
 	
-	@NotSaved
+	@IgnoreSave
 	private String schoolName;
 	
-	@NotSaved
+	@IgnoreSave
 	private String subjectName;
 	
 	

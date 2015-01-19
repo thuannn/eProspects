@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.googlecode.objectify.Key;
-import com.googlecode.objectify.Query;
+import com.googlecode.objectify.cmd.Query;
 import com.lemania.eprospects.server.applicationform.ApplicationForm;
 import com.lemania.eprospects.server.service.MyDAOBase;
 
@@ -19,14 +19,16 @@ public class ApplicationItemDao extends MyDAOBase {
 	/*
 	 * */
 	public void save(ApplicationItem ai){
-		this.ofy().put(ai);
+		//
+		ofy().save().entities(ai).now();
 	}
 	
 	
 	/*
 	 * */
-	public List<ApplicationItem> listAll(){
-		Query<ApplicationItem> q = this.ofy().query(ApplicationItem.class);
+	public List<ApplicationItem> listAll() {
+		//
+		Query<ApplicationItem> q = ofy().load().type(ApplicationItem.class);
 		List<ApplicationItem> returnList = new ArrayList<ApplicationItem>();
 		for (ApplicationItem ai : q){
 			returnList.add(ai);
@@ -41,15 +43,15 @@ public class ApplicationItemDao extends MyDAOBase {
 	 * */
 	public List<ApplicationItem> listAll( String emailAddress, String appId ){
 		// check if the current application is valid
-		Query<ApplicationForm> qa = this.ofy().query(ApplicationForm.class)
+		Query<ApplicationForm> qa = ofy().load().type(ApplicationForm.class)
 				.filter( "applicationID", appId )
 				.filter( "emailAddress", emailAddress );
 		if (qa.count()<1)
 			throw new RuntimeException( new Exception("Application not found") );
 		
 		// check if this item is already existed
-		Query<ApplicationItem> qi = this.ofy().query(ApplicationItem.class)
-				.filter( "app", qa.getKey() );
+		Query<ApplicationItem> qi = ofy().load().type(ApplicationItem.class)
+				.filter( "app", qa.keys() );
 		//
 		List<ApplicationItem> returnList = new ArrayList<ApplicationItem>();
 		for (ApplicationItem ai : qi){
@@ -63,10 +65,11 @@ public class ApplicationItemDao extends MyDAOBase {
 	
 	/*
 	 * */
-	public ApplicationItem saveAndReturn(ApplicationItem app){
-		Key<ApplicationItem> key = this.ofy().put(app);
+	public ApplicationItem saveAndReturn(ApplicationItem app) {
+		//
+		Key<ApplicationItem> key = ofy().save().entities(app).now().keySet().iterator().next();
 		try {
-			return this.ofy().get(key);
+			return ofy().load().key(key).now();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -78,15 +81,15 @@ public class ApplicationItemDao extends MyDAOBase {
 	 * */
 	public ApplicationItem saveAndReturn(String emailAddress, String appId, String itemCode, String itemDesc, Double itemAmount){
 		// check if the current application is valid
-		Query<ApplicationForm> q = this.ofy().query(ApplicationForm.class)
+		Query<ApplicationForm> q = ofy().load().type(ApplicationForm.class)
 				.filter( "applicationID", appId )
 				.filter( "emailAddress", emailAddress );
 		if (q.count()<1)
 			throw new RuntimeException( new Exception("Application not found") );
 		
 		// check if this item is already existed
-		Query<ApplicationItem> qi = this.ofy().query(ApplicationItem.class)
-				.filter( "app", q.getKey() )
+		Query<ApplicationItem> qi = ofy().load().type(ApplicationItem.class)
+				.filter( "app", q.keys() )
 				.filter( "itemCode", itemCode );
 		ApplicationItem ai;
 		if (qi.count() <1) {
@@ -94,24 +97,24 @@ public class ApplicationItemDao extends MyDAOBase {
 			ai.setItemCode(itemCode);
 			ai.setItemDescription(itemDesc);
 			ai.setItemAmount(itemAmount);
-			ai.setApp( q.getKey() );
+			ai.setApp( q.keys().list().get(0) );
 			//
-			Key<ApplicationItem> key = this.ofy().put(ai);
+			Key<ApplicationItem> key = ofy().save().entities(ai).now().keySet().iterator().next();
 			try {
-				return this.ofy().get(key);
+				return ofy().load().key(key).now();
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
 		}
 		else {
-			ai = qi.get();
+			ai = qi.list().get(0);
 			ai.setItemDescription(itemDesc);
 			ai.setItemAmount(itemAmount);
-			ai.setApp( q.getKey() );
+			ai.setApp( q.keys().list().get(0) );
 			//
-			Key<ApplicationItem> key = this.ofy().put(ai);
+			Key<ApplicationItem> key = ofy().save().entities(ai).now().keySet().iterator().next();
 			try {
-				return this.ofy().get(key);
+				return ofy().load().key(key).now();
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
