@@ -87,12 +87,18 @@ public class ApplicationStep2Presenter
 		getView().setUiHandlers(this);
 	}
 
+	
+	/*
+	 * */
 	protected void onBind() {
 		super.onBind();
 		//
 		getView().initializeUI();
 	}
 
+	
+	/*
+	 * */
 	protected void onReset() {
 		super.onReset();
 		//
@@ -104,6 +110,7 @@ public class ApplicationStep2Presenter
 	
 	
 	/*
+	 * Add the application fee as application item, the code is executed in ApplicationPaymentPresenter 
 	 * */
 	private void addApplicationFee() {
 		//
@@ -114,6 +121,7 @@ public class ApplicationStep2Presenter
 								SummerCampSettingValues.item_applicationfee,
 								SummerCampSettingValues.item_applicationfee_amount )));
 	}
+	
 
 	/*
 	 * */
@@ -314,6 +322,7 @@ public class ApplicationStep2Presenter
 
 	
 	/*
+	 * 20150119 : no more different prices for Aug
 	 * */
 	@Override
 	public void calculatePrice(String programmesCode, String courseCode,
@@ -334,14 +343,14 @@ public class ApplicationStep2Presenter
 								new ApplicationItem( 
 										SummerCampSettingValues.item_summercourse20_code,
 										SummerCampSettingValues.item_summercourse20_text,
-										SummerCampSettingValues.item_summercourse20_amount * Integer.parseInt(txtJulyWeek) )));
-				getEventBus().fireEvent( 
-						new ApplicationItemSelectedEvent( 
-								new ApplicationItem( 
-										SummerCampSettingValues.item_summercourse25_code,
-										SummerCampSettingValues.item_summercourse25_text,
-										SummerCampSettingValues.item_summercourse25_amount * Integer.parseInt(txtAugustWeek) )));
-			}
+										SummerCampSettingValues.item_summercourse20_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//				getEventBus().fireEvent( 
+//						new ApplicationItemSelectedEvent( 
+//								new ApplicationItem( 
+//										SummerCampSettingValues.item_summercourse20_code,
+//										SummerCampSettingValues.item_summercourse20_text,
+//										SummerCampSettingValues.item_summercourse20_amount * Integer.parseInt(txtAugustWeek) )));
+//			}
 			// with conversation
 			if (courseCode.equals( SummerCampSettingValues.course_code_withconversation )) {
 				getEventBus().fireEvent( 
@@ -349,14 +358,14 @@ public class ApplicationStep2Presenter
 								new ApplicationItem( 
 										SummerCampSettingValues.item_summercourse205_code,
 										SummerCampSettingValues.item_summercourse205_text,
-										SummerCampSettingValues.item_summercourse205_amount * Integer.parseInt(txtJulyWeek) )));
-				if (!txtAugustWeek.equals("")){
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse2510_code,
-											SummerCampSettingValues.item_summercourse2510_text,
-											SummerCampSettingValues.item_summercourse2510_amount * Integer.parseInt(txtAugustWeek) )));
+										SummerCampSettingValues.item_summercourse205_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//				if (!txtAugustWeek.equals("")){
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse205_code,
+//											SummerCampSettingValues.item_summercourse205_text,
+//											SummerCampSettingValues.item_summercourse205_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 			}
 		}
@@ -378,13 +387,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse20_confortplus_private_code,
 											SummerCampSettingValues.item_summercourse20_confortplus_private_text,
-											SummerCampSettingValues.item_summercourse20_confortplus_private_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse25_confortplus_private_code,
-											SummerCampSettingValues.item_summercourse25_confortplus_private_text,
-											SummerCampSettingValues.item_summercourse25_confortplus_private_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse20_confortplus_private_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse20_confortplus_private_code,
+//											SummerCampSettingValues.item_summercourse20_confortplus_private_text,
+//											SummerCampSettingValues.item_summercourse20_confortplus_private_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 				//
 				if (optConfortPrivate) {
@@ -393,13 +402,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse20_confort_private_code,
 											SummerCampSettingValues.item_summercourse20_confort_private_text,
-											SummerCampSettingValues.item_summercourse20_confort_private_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse25_confort_private_code,
-											SummerCampSettingValues.item_summercourse25_confort_private_text,
-											SummerCampSettingValues.item_summercourse25_confort_private_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse20_confort_private_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse20_confort_private_code,
+//											SummerCampSettingValues.item_summercourse20_confort_private_text,
+//											SummerCampSettingValues.item_summercourse20_confort_private_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 				//
 				if (optStandardPrivate) {
@@ -408,13 +417,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse20_standard_private_code,
 											SummerCampSettingValues.item_summercourse20_standard_private_text,
-											SummerCampSettingValues.item_summercourse20_standard_private_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse25_standard_private_code,
-											SummerCampSettingValues.item_summercourse25_standard_private_text,
-											SummerCampSettingValues.item_summercourse25_standard_private_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse20_standard_private_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse20_standard_private_code,
+//											SummerCampSettingValues.item_summercourse20_standard_private_text,
+//											SummerCampSettingValues.item_summercourse20_standard_private_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 				//
 				if (optConfortPlusShare) {
@@ -423,13 +432,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse20_confortplus_share_code,
 											SummerCampSettingValues.item_summercourse20_confortplus_share_text,
-											SummerCampSettingValues.item_summercourse20_confortplus_share_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse25_confortplus_share_code,
-											SummerCampSettingValues.item_summercourse25_confortplus_share_text,
-											SummerCampSettingValues.item_summercourse25_confortplus_share_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse20_confortplus_share_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse20_confortplus_share_code,
+//											SummerCampSettingValues.item_summercourse20_confortplus_share_text,
+//											SummerCampSettingValues.item_summercourse20_confortplus_share_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 				//
 				if (optConfortShare) {
@@ -438,13 +447,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse20_confort_share_code,
 											SummerCampSettingValues.item_summercourse20_confort_share_text,
-											SummerCampSettingValues.item_summercourse20_confort_share_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse25_confort_share_code,
-											SummerCampSettingValues.item_summercourse25_confort_share_text,
-											SummerCampSettingValues.item_summercourse25_confort_share_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse20_confort_share_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse20_confort_share_code,
+//											SummerCampSettingValues.item_summercourse20_confort_share_text,
+//											SummerCampSettingValues.item_summercourse20_confort_share_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 				//
 				if (optStandardShare) {
@@ -453,13 +462,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse20_standard_share_code,
 											SummerCampSettingValues.item_summercourse20_standard_share_text,
-											SummerCampSettingValues.item_summercourse20_standard_share_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse25_standard_share_code,
-											SummerCampSettingValues.item_summercourse25_standard_share_text,
-											SummerCampSettingValues.item_summercourse25_standard_share_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse20_standard_share_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse20_standard_share_code,
+//											SummerCampSettingValues.item_summercourse20_standard_share_text,
+//											SummerCampSettingValues.item_summercourse20_standard_share_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 			}
 			// with conversation
@@ -471,13 +480,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse205_confortplus_private_code,
 											SummerCampSettingValues.item_summercourse205_confortplus_private_text,
-											SummerCampSettingValues.item_summercourse205_confortplus_private_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse2510_confortplus_private_code,
-											SummerCampSettingValues.item_summercourse2510_confortplus_private_text,
-											SummerCampSettingValues.item_summercourse2510_confortplus_private_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse205_confortplus_private_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse205_confortplus_private_code,
+//											SummerCampSettingValues.item_summercourse205_confortplus_private_text,
+//											SummerCampSettingValues.item_summercourse205_confortplus_private_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 				//
 				if (optConfortPrivate) {
@@ -486,13 +495,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse205_confort_private_code,
 											SummerCampSettingValues.item_summercourse205_confort_private_text,
-											SummerCampSettingValues.item_summercourse205_confort_private_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse2510_confort_private_code,
-											SummerCampSettingValues.item_summercourse2510_confort_private_text,
-											SummerCampSettingValues.item_summercourse2510_confort_private_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse205_confort_private_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse205_confort_private_code,
+//											SummerCampSettingValues.item_summercourse205_confort_private_text,
+//											SummerCampSettingValues.item_summercourse205_confort_private_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 				//
 				if (optStandardPrivate) {
@@ -501,13 +510,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse205_standard_private_code,
 											SummerCampSettingValues.item_summercourse205_standard_private_text,
-											SummerCampSettingValues.item_summercourse205_standard_private_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse2510_standard_private_code,
-											SummerCampSettingValues.item_summercourse2510_standard_private_text,
-											SummerCampSettingValues.item_summercourse2510_standard_private_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse205_standard_private_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse205_standard_private_code,
+//											SummerCampSettingValues.item_summercourse205_standard_private_text,
+//											SummerCampSettingValues.item_summercourse205_standard_private_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 				//
 				if (optConfortPlusShare) {
@@ -516,13 +525,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse205_confortplus_share_code,
 											SummerCampSettingValues.item_summercourse205_confortplus_share_text,
-											SummerCampSettingValues.item_summercourse205_confortplus_share_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse2510_confortplus_share_code,
-											SummerCampSettingValues.item_summercourse2510_confortplus_share_text,
-											SummerCampSettingValues.item_summercourse2510_confortplus_share_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse205_confortplus_share_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse205_confortplus_share_code,
+//											SummerCampSettingValues.item_summercourse205_confortplus_share_text,
+//											SummerCampSettingValues.item_summercourse205_confortplus_share_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 				//
 				if (optConfortShare) {
@@ -531,13 +540,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse205_confort_share_code,
 											SummerCampSettingValues.item_summercourse205_confort_share_text,
-											SummerCampSettingValues.item_summercourse205_confort_share_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse2510_confort_share_code,
-											SummerCampSettingValues.item_summercourse2510_confort_share_text,
-											SummerCampSettingValues.item_summercourse2510_confort_share_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse205_confort_share_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse205_confort_share_code,
+//											SummerCampSettingValues.item_summercourse205_confort_share_text,
+//											SummerCampSettingValues.item_summercourse205_confort_share_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 				//
 				if (optStandardShare) {
@@ -546,13 +555,13 @@ public class ApplicationStep2Presenter
 									new ApplicationItem( 
 											SummerCampSettingValues.item_summercourse205_standard_share_code,
 											SummerCampSettingValues.item_summercourse205_standard_share_text,
-											SummerCampSettingValues.item_summercourse205_standard_share_amount * Integer.parseInt(txtJulyWeek) )));
-					getEventBus().fireEvent( 
-							new ApplicationItemSelectedEvent( 
-									new ApplicationItem( 
-											SummerCampSettingValues.item_summercourse2510_standard_share_code,
-											SummerCampSettingValues.item_summercourse2510_standard_share_text,
-											SummerCampSettingValues.item_summercourse2510_standard_share_amount * Integer.parseInt(txtAugustWeek) )));
+											SummerCampSettingValues.item_summercourse205_standard_share_amount * (Integer.parseInt(txtJulyWeek) + Integer.parseInt(txtAugustWeek)) )));
+//					getEventBus().fireEvent( 
+//							new ApplicationItemSelectedEvent( 
+//									new ApplicationItem( 
+//											SummerCampSettingValues.item_summercourse205_standard_share_code,
+//											SummerCampSettingValues.item_summercourse205_standard_share_text,
+//											SummerCampSettingValues.item_summercourse205_standard_share_amount * Integer.parseInt(txtAugustWeek) )));
 				}
 			}
 		}

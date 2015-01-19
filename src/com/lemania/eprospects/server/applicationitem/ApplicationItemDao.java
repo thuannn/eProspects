@@ -51,7 +51,7 @@ public class ApplicationItemDao extends MyDAOBase {
 		
 		// check if this item is already existed
 		Query<ApplicationItem> qi = ofy().load().type(ApplicationItem.class)
-				.filter( "app", qa.keys() );
+				.filter( "app", qa.keys().list().get(0) );
 		//
 		List<ApplicationItem> returnList = new ArrayList<ApplicationItem>();
 		for (ApplicationItem ai : qi){
@@ -89,7 +89,7 @@ public class ApplicationItemDao extends MyDAOBase {
 		
 		// check if this item is already existed
 		Query<ApplicationItem> qi = ofy().load().type(ApplicationItem.class)
-				.filter( "app", q.keys() )
+				.filter( "app", q.keys().list().get(0) )
 				.filter( "itemCode", itemCode );
 		ApplicationItem ai;
 		if (qi.count() <1) {

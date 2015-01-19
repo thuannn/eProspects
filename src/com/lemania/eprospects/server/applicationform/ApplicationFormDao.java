@@ -381,8 +381,10 @@ public class ApplicationFormDao extends MyDAOBase {
 	
 	
 	/*
+	 * Check if an email address has been stored in the database, return true if found
 	 * */
-	public boolean checkExistence(String emailAddress){
+	public boolean checkExistence(String emailAddress) {
+		//
 		Query<ApplicationForm> q = ofy().load().type(ApplicationForm.class)
 				.filter("emailAddress", emailAddress);
 		if (q.count()>0)

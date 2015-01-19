@@ -1,9 +1,11 @@
 package com.lemania.eprospects.server.applicationform;
 
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 import com.lemania.eprospects.server.DatastoreObject;
 
 @Entity
+@Index
 public class ApplicationForm extends DatastoreObject {
 	//
 	private String applicationID = "";

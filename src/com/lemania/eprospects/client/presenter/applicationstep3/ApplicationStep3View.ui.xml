@@ -10,7 +10,7 @@
     		</g:HorizontalPanel>
     		<g:FlowPanel width="900px">
     			<g:HorizontalPanel width="100%" spacing="10">
-    			<g:VerticalPanel width="100%">
+    			<g:VerticalPanel width="100%" spacing="2">
     				<g:Label text="Private course" styleName="sectionTitle"/>
     				<g:CheckBox text="Private language tuition: 90 CHF per lesson" styleName="fieldTitle" ui:field="optPrivateCourse"/>
     				<g:HorizontalPanel width="100%">
@@ -75,7 +75,7 @@
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Letter for visa application" styleName="sectionTitle"/>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:CheckBox text="Visa, invoice or confirmation letter sent by express mail: CHF 80.-" ui:field="chkVisaLetterRequest"/>
+    				<g:CheckBox text="Visa, invoice or confirmation letter sent by express mail: CHF 90.-" ui:field="chkVisaLetterRequest"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="N.B. : A visa is required for foreign (non-EU) students. It takes at least 5-7 working days to send this visa from Switzerland to foreign countries by normal mail (free of charge). Please take account of the time required to obtain the visa. If possible, we must receive your enrolement application and payment at least 4 weeks before your arrival date for summer courses."/>
     				<g:Label text="." styleName="hiddenText"/>
@@ -92,7 +92,7 @@
     				<g:Label text="For external students only" styleName="sectionTitle"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:CheckBox text="5 lunches per week for external students: CHF 80.- per week" ui:field="chkMealPackage"/>
-    				<g:CheckBox text="Activity pack for external students: 5-6 activities from Monday to Friday and/or Saturday afternoons: CHF 230.-" ui:field="chkActivitiesPackage" width=""/>
+    				<g:CheckBox text="Activity Pack: 5-6 activities, for external students, from Tuesday to Friday and/or Saturday afternoons: CHF 300.-" ui:field="chkActivitiesPackage" width=""/>
     				<g:Label text="N.B. : All activities and meals are included for boarders."/>
     			</g:VerticalPanel>
     			<g:VerticalPanel width="250px" styleName="subSection">
@@ -124,8 +124,8 @@
     		</g:HorizontalPanel>
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
     				<g:HorizontalPanel width="35%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
-    				<g:Button ui:field="cmdPreviousStep" text="Previous">Précédant</g:Button>
-    			<g:Button ui:field="cmdNextStep" text="Save &amp; Continue">Next Step</g:Button>
+    				<g:Button ui:field="cmdPreviousStep" text="Previous" styleName="button-yellow">Précédant</g:Button>
+    			<g:Button ui:field="cmdNextStep" text="Save &amp; Continue" styleName="button-yellow">Next Step</g:Button>
     		</g:HorizontalPanel>
     			</g:VerticalPanel>
     		</g:FlowPanel>

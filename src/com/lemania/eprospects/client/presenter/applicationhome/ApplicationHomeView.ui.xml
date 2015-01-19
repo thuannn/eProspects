@@ -4,7 +4,7 @@
     <g:SimplePanel ui:field="main" width="" styleName="body">
     	<g:VerticalPanel width="100%" height="" horizontalAlignment="ALIGN_CENTER">
     		<g:Label text="Ecole Lémania - Online application" styleName="pageTitle"/>
-    		<g:Image url="images/inscription-title.png"/>
+    		<g:Image url="images/inscription-title-en.png"/>
     		<g:Label text="." styleName="hiddenText"/>
     		<g:Label text="Please choose a programme to apply :"/>
     		<g:ListBox ui:field="lstProgrammes"/>
@@ -21,8 +21,8 @@
     				<g:TextBox ui:field="txtApplicationId"/>
     			</g:HorizontalPanel>
     		</g:VerticalPanel>
-    		<g:Label text="."/>
-    		<g:Button text="Start" ui:field="cmdStartApplication"/>
+    		<g:Label text="." styleName="hiddenText"/>
+    		<g:Button text="Start" ui:field="cmdStartApplication" styleName="button-yellow"/>
     		<g:Label text="." styleName="hiddenText"/>
     	</g:VerticalPanel>
     </g:SimplePanel>

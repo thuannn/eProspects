@@ -89,6 +89,8 @@ public class ApplicationPaymentView extends
 		//
 		showOptionDirect( true );
 		//
+		htmlPaypalButton.setVisible(false);
+		//
 		getUiHandlers().toggleLeaveNotice();
 	}
 	
@@ -99,6 +101,8 @@ public class ApplicationPaymentView extends
 	void onOptPaypalClick(ClickEvent event) {
 		//
 		showOptionDirect( false );
+		//
+		htmlPaypalButton.setVisible(true);
 		//
 		getUiHandlers().clearLeaveNotice();
 	}
@@ -128,6 +132,8 @@ public class ApplicationPaymentView extends
 		//
 		showOptionDirect(false);
 		cmdNextStep.setVisible(true);
+		//
+		htmlPaypalButton.setVisible(false);
 		//
 		getUiHandlers().toggleLeaveNotice();
 	}

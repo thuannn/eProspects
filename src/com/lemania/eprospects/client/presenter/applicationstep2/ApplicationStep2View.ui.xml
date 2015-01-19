@@ -13,10 +13,10 @@
     			<g:VerticalPanel width="100%">
     				<g:Label styleName="sectionTitle" text="Application"/>
     				<g:Label styleName="hiddenText" text="."/>
-    				<g:CheckBox text="Frais d&apos;inscription, CHF 100.-" checked="true" enabled="false" ui:field="chkApplicaitonFee"/>
-    				<g:CheckBox text="Pack Assurance santé CHF 190.- (obligatoire pour les internes sauf les résidents en Suisse)" ui:field="chkPackAssurance"/>
+    				<g:CheckBox text="Enrolment fee: CHF 100.-" checked="true" enabled="false" ui:field="chkApplicaitonFee"/>
+    				<g:CheckBox text="Health insurance pack: CHF 190.- (mandantory for boarders)" ui:field="chkPackAssurance"/>
     				<g:Label styleName="hiddenText" text="."/>
-    				<g:Label text="Programmes" styleName="sectionTitle"/>
+    				<g:Label text="Choice of programme" styleName="sectionTitle"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Grid width="100%">
     					<g:row>
@@ -66,39 +66,6 @@
     						</g:customCell>
     						<g:customCell>
     							<g:Label text="Reccomandation : au moins 2 semaines"/>
-    						</g:customCell>
-    					</g:row>
-    					<g:row>
-    						<g:customCell>
-    							<g:Label text="." styleName="hiddenText"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:Label text="July"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:Label text="August"/>
-    						</g:customCell>
-    					</g:row>
-    					<g:row>
-    						<g:customCell>
-    							<g:Label text="." styleName="hiddenText"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtJulyWeek" readOnly="true"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtAugustWeek" readOnly="true"/>
-    						</g:customCell>
-    					</g:row>
-    					<g:row>
-    						<g:customCell>
-    							<g:Label text="." styleName="hiddenText"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:Label text="(Standard course)"/>
-    						</g:customCell>
-    						<g:customCell>
-    							<g:Label text="(Intensive course)"/>
     						</g:customCell>
     					</g:row>
     				</g:Grid>
@@ -185,9 +152,17 @@
     			</g:VerticalPanel>
     		</g:HorizontalPanel>
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
+    				<g:HorizontalPanel width="100%" visible="false">
+    					<g:Label text="July"/>
+    					<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtJulyWeek" readOnly="true"/>
+    					<g:Label text="(Standard course)"/>
+    					<g:Label text="August"/>
+    					<g:TextBox styleName="sis_textbox_readonly" width="100px" ui:field="txtAugustWeek" readOnly="true"/>
+    					<g:Label text="(Intensive course)"/>
+    				</g:HorizontalPanel>
     				<g:HorizontalPanel width="35%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
-    				<g:Button ui:field="cmdPreviousStep" text="Previous">Précédant</g:Button>
-    			<g:Button ui:field="cmdNextStep" text="Save &amp; Continue">Next Step</g:Button>
+    				<g:Button ui:field="cmdPreviousStep" text="Previous" styleName="button-yellow">Précédant</g:Button>
+    			<g:Button ui:field="cmdNextStep" text="Save &amp; Continue" styleName="button-yellow">Next Step</g:Button>
     		</g:HorizontalPanel>
     			</g:VerticalPanel>
     		</g:FlowPanel>

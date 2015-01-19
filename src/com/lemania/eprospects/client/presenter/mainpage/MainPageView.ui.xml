@@ -35,7 +35,7 @@
 				</g:AbsolutePanel>
 			</g:Dock>
 			<g:Dock direction="WEST">
-				<g:VerticalPanel ui:field="leftPanel" horizontalAlignment="ALIGN_LEFT">
+				<g:VerticalPanel ui:field="leftPanel" horizontalAlignment="ALIGN_LEFT" visible="false">
 					<g:Tree animationEnabled="true" styleName="sideBar" height="" width="250px" ui:field="treeMenuAdmin">
 						<g:Label text="-" width="" horizontalAlignment="ALIGN_RIGHT" styleName="left_header"/>
 					<g:Hyperlink text="Accueil" targetHistoryToken="!homepage" ui:field="cmdHome"/>

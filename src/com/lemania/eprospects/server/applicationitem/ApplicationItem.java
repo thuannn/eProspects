@@ -1,9 +1,13 @@
 package com.lemania.eprospects.server.applicationitem;
 
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 import com.lemania.eprospects.server.DatastoreObject;
 import com.lemania.eprospects.server.applicationform.ApplicationForm;
 
+@Entity
+@Index
 public class ApplicationItem extends DatastoreObject implements Comparable<ApplicationItem> {
 	//
 	Key<ApplicationForm> app;

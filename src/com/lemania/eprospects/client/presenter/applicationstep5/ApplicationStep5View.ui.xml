@@ -59,13 +59,13 @@
     				<g:FlowPanel width="900px">
     			<g:VerticalPanel width="100%" horizontalAlignment="ALIGN_RIGHT">
     				<g:HorizontalPanel width="35%" horizontalAlignment="ALIGN_RIGHT" spacing="10">
-    				<g:Button ui:field="cmdPreviousStep" text="Previous">Précédant</g:Button>
-    			<g:Button ui:field="cmdNextStep" text="Save &amp; Continue">Next Step</g:Button>
+    				<g:Button ui:field="cmdPreviousStep" text="Previous" styleName="button-yellow">Précédant</g:Button>
+    			<g:Button ui:field="cmdNextStep" text="Save &amp; Continue" styleName="button-yellow">Next Step</g:Button>
     		</g:HorizontalPanel>
     			</g:VerticalPanel>
     		</g:FlowPanel>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:Frame url="http://www.lemaniasummerschool.com/en/general-conditions" width="98%" height="300px"/>
+    				<g:Frame url="http://www.lemaniasummerschool.com/general-conditions/" width="98%" height="300px"/>
     			</g:VerticalPanel>
     	</g:VerticalPanel>
     </g:SimplePanel>
