@@ -6,6 +6,7 @@
     		<g:Label text="OPTIONAL SERVICES" styleName="pageTitle"/>
     		<g:HorizontalPanel width="100%" spacing="5">
     			<g:Label text="Application ID" ui:field="lblApplicationInfo"/>
+    			<g:Label horizontalAlignment="ALIGN_CENTER" styleName="redNotice" text="You MUST complete the application until page 6 (PAYMENT OPTIONS) and click&#10;on FINISH (button), otherwise you application is not sent/valid."/>
     			<g:Label text="Step 3 of 5" horizontalAlignment="ALIGN_RIGHT"/>
     		</g:HorizontalPanel>
     		<g:FlowPanel width="900px">

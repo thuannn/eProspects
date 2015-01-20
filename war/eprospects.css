@@ -52,8 +52,16 @@ th {
 }
 
 
+/*
+	Text format
+*/
+.redNotice {
+	color: red;
+}
+
 
 /* stock list header row */
+
 .pageTitle {
 	color: #FFFFFF;
 	padding: 3px;

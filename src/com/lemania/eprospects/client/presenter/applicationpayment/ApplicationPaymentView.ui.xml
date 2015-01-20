@@ -7,6 +7,7 @@
     		<g:HorizontalPanel width="100%" spacing="5">
     			<g:Label text="Application ID" ui:field="lblApplicationInfo"/>
     			<g:Label text="." horizontalAlignment="ALIGN_RIGHT"/>
+    			<g:Label horizontalAlignment="ALIGN_CENTER" styleName="redNotice" text="You MUST choose a payment option, otherwise you application is not sent/valid. Then click on the FINISH (button) or click on the PAYPAL button to make a payment."/>
     		</g:HorizontalPanel>
     		<g:Label text="." styleName="hiddenText"/>
     		<g:FlowPanel width="900px">
