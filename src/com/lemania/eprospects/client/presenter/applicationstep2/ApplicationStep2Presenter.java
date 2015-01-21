@@ -350,7 +350,7 @@ public class ApplicationStep2Presenter
 //										SummerCampSettingValues.item_summercourse20_code,
 //										SummerCampSettingValues.item_summercourse20_text,
 //										SummerCampSettingValues.item_summercourse20_amount * Integer.parseInt(txtAugustWeek) )));
-//			}
+			}
 			// with conversation
 			if (courseCode.equals( SummerCampSettingValues.course_code_withconversation )) {
 				getEventBus().fireEvent( 
@@ -367,7 +367,6 @@ public class ApplicationStep2Presenter
 //											SummerCampSettingValues.item_summercourse205_text,
 //											SummerCampSettingValues.item_summercourse205_amount * Integer.parseInt(txtAugustWeek) )));
 				}
-			}
 		}
 		// for summer CAMP
 		if ( programmesCode.equals( SummerCampSettingValues.programme_code_summercamp )) {

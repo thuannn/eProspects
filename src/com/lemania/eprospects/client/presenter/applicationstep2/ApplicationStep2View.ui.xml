@@ -30,7 +30,7 @@
     					</g:row>
     					<g:row>
     						<g:customCell>
-    							<g:Label text="With or without conversation courses"/>
+    							<g:Label text="." styleName="hiddenText"/>
     						</g:customCell>
     						<g:customCell>
     							<g:ListBox ui:field="lstCourses"/>
