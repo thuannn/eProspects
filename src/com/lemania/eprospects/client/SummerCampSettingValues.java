@@ -10,7 +10,7 @@ public class SummerCampSettingValues {
 	public static String lastMonday = "10/08/2015";
 	//
 	public static int maxWeek = 8; // real number of weeks is: maxWeek - 1
-	public static int minimumNumberOfWeek = 2;
+	public static int minimumNumberOfWeek = 1;
 	
 	//
 	public static String programme_name_summercamp = "Lemania Summer camp WITH Boarding";

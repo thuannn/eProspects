@@ -48,6 +48,7 @@ public class ContactDao extends MyDAOBase {
 	        //
 //	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress("shane.levine@lemania.ch", "Shane Levine"));
 	        //
+	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress("summercamp@lemania.ch", "Summer Camp"));
 	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress("Anh-Tan.THAI@lemania.ch", "THAI Anh-Tan"));
 	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress("Pascal.CAVADINI@lemania.ch", "CAVADINI Pascal"));
 	        //

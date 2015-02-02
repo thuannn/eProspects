@@ -159,9 +159,12 @@ public class ApplicationStep2View extends
 			lstWeekNumber.addItem( Integer.toString(weekNumber), Integer.toString(weekNumber));
 			weekNumber--;
 		}
+		//
 		// If the number of week is more than 2, the minimum duration is 2 weeks, otherwise they can choose one week
-		if ( Integer.parseInt( lstStartDate.getValue(lstStartDate.getSelectedIndex())) > SummerCampSettingValues.minimumNumberOfWeek )
-			lstWeekNumber.removeItem( lstWeekNumber.getItemCount()-1 );
+		// 20150202 - Allow people to choose one week
+//		if ( Integer.parseInt( lstStartDate.getValue(lstStartDate.getSelectedIndex())) > SummerCampSettingValues.minimumNumberOfWeek )
+//			lstWeekNumber.removeItem( lstWeekNumber.getItemCount()-1 );
+		
 		// Show the weeks in detail
 		onLstWeekNumberChange(null);
 		
