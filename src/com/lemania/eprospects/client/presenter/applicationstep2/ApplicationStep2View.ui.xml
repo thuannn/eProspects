@@ -14,8 +14,8 @@
     			<g:VerticalPanel width="100%">
     				<g:Label styleName="sectionTitle" text="Application"/>
     				<g:Label styleName="hiddenText" text="."/>
-    				<g:CheckBox text="Enrolment fee: CHF 100.-" checked="true" enabled="false" ui:field="chkApplicaitonFee"/>
-    				<g:CheckBox text="Health insurance pack: CHF 190.- (mandantory for boarders)" ui:field="chkPackAssurance"/>
+    				<g:CheckBox text="Enrolment fee: CHF 110.-" checked="true" enabled="false" ui:field="chkApplicaitonFee"/>
+    				<g:CheckBox text="Health insurance pack: CHF 210.- (mandantory for boarders)" ui:field="chkPackAssurance"/>
     				<g:Label styleName="hiddenText" text="."/>
     				<g:Label text="Choice of programme" styleName="sectionTitle"/>
     				<g:Label text="." styleName="hiddenText"/>

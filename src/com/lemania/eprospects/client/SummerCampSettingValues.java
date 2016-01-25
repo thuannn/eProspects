@@ -6,8 +6,8 @@ public class SummerCampSettingValues {
 	public static String applicationCode = "APPSUMMER";
 	
 	// For the calculation of weeks
-	public static String firstMonday = "22/06/2015";
-	public static String lastMonday = "10/08/2015";
+	public static String firstMonday = "27/06/2016";
+	public static String lastMonday = "08/08/2016";
 	//
 	public static int maxWeek = 8; // real number of weeks is: maxWeek - 1
 	public static int minimumNumberOfWeek = 1;
@@ -61,67 +61,67 @@ public class SummerCampSettingValues {
 	 * */
 	public static String item_applicationfee_code = "CD001";
 	public static String item_applicationfee = "Application fee";
-	public static Double item_applicationfee_amount = 100.0;
+	public static Double item_applicationfee_amount = 110.0;
 	
 	// Price for July, same code, different description, different price
 	
 	public static String item_summercourse20_code = "CD002";
 	public static String item_summercourse20_text = "Intensive Programme";
-	public static Double item_summercourse20_amount = 510.0;
+	public static Double item_summercourse20_amount = 520.0;
 	
 	public static String item_summercourse20_confortplus_share_code = "CD002";
 	public static String item_summercourse20_confortplus_share_text = "Intensive Programme - Shared Confort+ room";
-	public static Double item_summercourse20_confortplus_share_amount = 2300.0;
+	public static Double item_summercourse20_confortplus_share_amount = 2350.0;
 	
 	public static String item_summercourse20_confort_share_code = "CD002";
 	public static String item_summercourse20_confort_share_text = "Intensive Programme - Shared Comfort room";
-	public static Double item_summercourse20_confort_share_amount = 2100.0;
+	public static Double item_summercourse20_confort_share_amount = 2150.0;
 	
 	public static String item_summercourse20_standard_share_code = "CD002";
 	public static String item_summercourse20_standard_share_text = "Intensive Programme - Shared Standard room";
-	public static Double item_summercourse20_standard_share_amount = 1850.0;
+	public static Double item_summercourse20_standard_share_amount = 1900.0;
 	
 	public static String item_summercourse20_confortplus_private_code = "CD002";
 	public static String item_summercourse20_confortplus_private_text = "Intensive Programme - Private Comfort+ room";
-	public static Double item_summercourse20_confortplus_private_amount = 3400.0;
+	public static Double item_summercourse20_confortplus_private_amount = 3450.0;
 	
 	public static String item_summercourse20_confort_private_code = "CD002";
 	public static String item_summercourse20_confort_private_text = "Intensive Programme - Private Comfort room";
-	public static Double item_summercourse20_confort_private_amount = 3200.0;
+	public static Double item_summercourse20_confort_private_amount = 3250.0;
 	
 	public static String item_summercourse20_standard_private_code = "CD002";
 	public static String item_summercourse20_standard_private_text = "Intensive Programme - Private Standard room";
-	public static Double item_summercourse20_standard_private_amount = 2600.0;
+	public static Double item_summercourse20_standard_private_amount = 2650.0;
 	
 	//--
 	
 	public static String item_summercourse205_code = "CD002";
 	public static String item_summercourse205_text = "Intensive Plus Programme";
-	public static Double item_summercourse205_amount = 660.0;
+	public static Double item_summercourse205_amount = 670.0;
 	
 	public static String item_summercourse205_confortplus_share_code = "CD002";
 	public static String item_summercourse205_confortplus_share_text = "Intensive Plus Programme - Shared Comfort+ room";
-	public static Double item_summercourse205_confortplus_share_amount = 2450.0;
+	public static Double item_summercourse205_confortplus_share_amount = 2500.0;
 	
 	public static String item_summercourse205_confort_share_code = "CD002";
 	public static String item_summercourse205_confort_share_text = "Intensive Plus Programme - Shared Comfort room";
-	public static Double item_summercourse205_confort_share_amount = 2250.0;
+	public static Double item_summercourse205_confort_share_amount = 2300.0;
 	
 	public static String item_summercourse205_standard_share_code = "CD002";
 	public static String item_summercourse205_standard_share_text = "Intensive Plus Programme - Shared Standard room";
-	public static Double item_summercourse205_standard_share_amount = 2000.0;
+	public static Double item_summercourse205_standard_share_amount = 2050.0;
 	
 	public static String item_summercourse205_confortplus_private_code = "CD002";
 	public static String item_summercourse205_confortplus_private_text = "Intensive Plus Programme - Private Comfort+ room";
-	public static Double item_summercourse205_confortplus_private_amount = 3550.0;
+	public static Double item_summercourse205_confortplus_private_amount = 3600.0;
 	
 	public static String item_summercourse205_confort_private_code = "CD002";
 	public static String item_summercourse205_confort_private_text = "Intensive Plus Programme - Private Comfort room";
-	public static Double item_summercourse205_confort_private_amount = 3350.0;
+	public static Double item_summercourse205_confort_private_amount = 3400.0;
 	
 	public static String item_summercourse205_standard_private_code = "CD002";
 	public static String item_summercourse205_standard_private_text = "Intensive Plus Programme - Private Standard room";
-	public static Double item_summercourse205_standard_private_amount = 2750.0;
+	public static Double item_summercourse205_standard_private_amount = 2800.0;
 	
 //	// Price for August, same code, different description, different price
 //	
@@ -187,39 +187,39 @@ public class SummerCampSettingValues {
 	
 	public static String item_asssurancepack_code = "CD004";
 	public static String item_asssurancepack_text = "Health insurance";
-	public static Double item_asssurancepack_amount = 190.0;
+	public static Double item_asssurancepack_amount = 210.0;
 	
 	//
 	
 	public static String item_privatecourse_code = "CD005";
 	public static String item_privatecourse_text = "Private language tuition";
-	public static Double item_privatecourse_amount = 90.0;
+	public static Double item_privatecourse_amount = 100.0;
 	
 	//
 	
 	public static String item_onewaygeneve_code = "CD006";
 	public static String item_onewaygeneve_text = "One-way - Geneve";
-	public static Double item_onewaygeneve_amount = 260.0;
+	public static Double item_onewaygeneve_amount = 270.0;
 	
 	public static String item_onewayzurich_code = "CD007";
 	public static String item_onewayzurich_text = "One-way - Zurich";
-	public static Double item_onewayzurich_amount = 960.0;
+	public static Double item_onewayzurich_amount = 970.0;
 	
 	//
 	
 	public static String item_roundtripgeneve_code = "CD008";
 	public static String item_roundtripgeneve_text = "Round trip - Geneve";
-	public static Double item_roundtripgeneve_amount = 520.0;
+	public static Double item_roundtripgeneve_amount = 540.0;
 	
 	public static String item_roundtripzurich_code = "CD009";
 	public static String item_roundtripzurich_text = "Round trip - Zurich";
-	public static Double item_roundtripzurich_amount = 1920.0;
+	public static Double item_roundtripzurich_amount = 1940.0;
 	
 	//
 	
 	public static String item_visaletter_code = "CD010";
 	public static String item_visaletter_text = "Letter for visa";
-	public static Double item_visaletter_amount = 90.0;
+	public static Double item_visaletter_amount = 120.0;
 	
 	//
 	
@@ -231,7 +231,7 @@ public class SummerCampSettingValues {
 	
 	public static String item_mealpackage_code = "CD012";
 	public static String item_mealpackage_text = "5 lunches per week";
-	public static Double item_mealpackage_amount = 80.0;
+	public static Double item_mealpackage_amount = 90.0;
 	
 	//
 	

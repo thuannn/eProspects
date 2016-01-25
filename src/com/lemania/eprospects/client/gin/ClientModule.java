@@ -2,9 +2,7 @@ package com.lemania.eprospects.client.gin;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
-import com.lemania.eprospects.client.place.DefaultPlace;
 import com.lemania.eprospects.client.place.NameTokens;
-import com.lemania.eprospects.client.place.SISPlaceManager;
 import com.lemania.eprospects.client.presenter.UserManagementPresenter;
 import com.lemania.eprospects.client.view.UserManagementView;
 import com.lemania.eprospects.client.presenter.applicationhome.ApplicationHomeModule;
@@ -20,12 +18,18 @@ public class ClientModule extends AbstractPresenterModule {
 		//
 		install(new ApplicationHomeModule());
 		
-		// Singletons
-		install(new DefaultModule(SISPlaceManager.class));
+//		// Singletons
+//		install(new DefaultModule(SISPlaceManager.class));
 		
-		// Set default page
-		bindConstant().annotatedWith(DefaultPlace.class).to (
-				NameTokens.applicationhome);
+		install( new DefaultModule.Builder()
+			.defaultPlace(NameTokens.applicationhome)
+			.errorPlace(NameTokens.applicationhome)
+			.unauthorizedPlace(NameTokens.applicationhome)
+			.build() );
+		
+//		// Set default page
+//		bindConstant().annotatedWith(DefaultPlace.class).to (
+//				NameTokens.applicationhome);
 		
 		//
 		bindPresenter(MainPagePresenter.class, MainPagePresenter.MyView.class,

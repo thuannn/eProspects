@@ -173,7 +173,7 @@ public class ApplicationPaymentView extends
 			tblItems.getCellFormatter().setStyleName(i, 0, "brancheLine");
 			tblItems.getCellFormatter().setStyleName(i, 1, "brancheLine_number");
 		}
-		lblTotalAmount.setText( Double.toString(totalAmount));
+		lblTotalAmount.setText( Double.toString( totalAmount + (totalAmount*3/100) ));
 		//
 		showPaypalButton();
 	}

@@ -245,8 +245,8 @@ public class ContactPresenter extends
 		
 		message = message + "\n------ Pogramme details ------" + "\n";
 		message = message + "Language choice:        	" + SummerCampSettingValues.getItemDescription( app.getLanguageOption() ) + "\n";
-		message = message + "Continue afterward:        " + app.isChkContinueAfter() + "\n";
-		message = message + "Key deposit: 100 CHF:    " + app.isOptKeyDepositCHF() + " - 100 USD: " + app.isOptKeyDepositUSD() + " - 100 EUR: " + app.isOptKeyDepositEuro() + "\n";
+		message = message + "Continue afterward:        " + (app.isChkContinueAfter() ? "Yes" : "No") + "\n";
+		message = message + "Key deposit: 100 CHF:    " + (app.isOptKeyDepositCHF() ? "Yes" : "No") + " - 100 USD: " + app.isOptKeyDepositUSD() + " - 100 EUR: " + app.isOptKeyDepositEuro() + "\n";
 		message = message + "Limousine shuttle service: " + app.getLstAirportDirection() + "\n";
 		message = message + "Arrival information:       " + app.getTxtAirlineName() + " - " + app.getTxtArriveVol() + " - " + app.getTxtArriveTime() + "\n";
 		message = message + "Departure information:     " + app.getTxtAirlineName() + " - " + app.getTxtDepartVol() + " - " + app.getTxtDepartTime() + "\n";

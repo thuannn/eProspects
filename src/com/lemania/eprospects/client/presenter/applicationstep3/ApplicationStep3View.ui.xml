@@ -13,7 +13,7 @@
     			<g:HorizontalPanel width="100%" spacing="10">
     			<g:VerticalPanel width="100%" spacing="2">
     				<g:Label text="Private course" styleName="sectionTitle"/>
-    				<g:CheckBox text="Private language tuition: 90 CHF per lesson" styleName="fieldTitle" ui:field="optPrivateCourse"/>
+    				<g:CheckBox text="Private language tuition: 100 CHF per lesson" styleName="fieldTitle" ui:field="optPrivateCourse"/>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="If you would like private tuition, please specify the number of lessons desired per week:"/>
     					<g:TextBox ui:field="txtPrivateCoursePeriod"/>
@@ -23,13 +23,13 @@
     				<g:HorizontalPanel width="100%">
     					<g:Label text="One-way"/>
     					<g:ListBox ui:field="lstAirportDirection"/>
-    					<g:CheckBox text="Geneva airport, CHF 260.- / trajet" ui:field="chkGeneveOneway"/>
-    					<g:CheckBox text="Zurich airport, CHF 960.- / trajet" ui:field="chkZurichOneway"/>
+    					<g:CheckBox text="Geneva airport, CHF 270.- / trajet" ui:field="chkGeneveOneway"/>
+    					<g:CheckBox text="Zurich airport, CHF 970.- / trajet" ui:field="chkZurichOneway"/>
     				</g:HorizontalPanel>
     				<g:HorizontalPanel width="100%">
     					<g:Label text="Round trip"/>
-    					<g:CheckBox text="Geneva airport, CHF 520.-" ui:field="chkGeneveRoundtrip"/>
-    					<g:CheckBox text="Zurich airport, CHF 1&apos;920.-" ui:field="chkZurichRoundtrip"/>
+    					<g:CheckBox text="Geneva airport, CHF 540.-" ui:field="chkGeneveRoundtrip"/>
+    					<g:CheckBox text="Zurich airport, CHF 1940.-" ui:field="chkZurichRoundtrip"/>
     				</g:HorizontalPanel>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Flight information, if already known, for the airport shuttle service"/>
@@ -76,7 +76,7 @@
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="Letter for visa application" styleName="sectionTitle"/>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:CheckBox text="Visa, invoice or confirmation letter sent by express mail: CHF 90.-" ui:field="chkVisaLetterRequest"/>
+    				<g:CheckBox text="Visa, invoice or confirmation letter sent by express mail: CHF 120.-" ui:field="chkVisaLetterRequest"/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="N.B. : A visa is required for foreign (non-EU) students. It takes at least 5-7 working days to send this visa from Switzerland to foreign countries by normal mail (free of charge). Please take account of the time required to obtain the visa. If possible, we must receive your enrolement application and payment at least 4 weeks before your arrival date for summer courses."/>
     				<g:Label text="." styleName="hiddenText"/>
@@ -92,7 +92,7 @@
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="For external students only" styleName="sectionTitle"/>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:CheckBox text="5 lunches per week for external students: CHF 80.- per week" ui:field="chkMealPackage"/>
+    				<g:CheckBox text="5 lunches per week for external students: CHF 90.- per week" ui:field="chkMealPackage"/>
     				<g:CheckBox text="Activity Pack: 5-6 activities, for external students, from Tuesday to Friday and/or Saturday afternoons: CHF 300.-" ui:field="chkActivitiesPackage" width=""/>
     				<g:Label text="N.B. : All activities and meals are included for boarders."/>
     			</g:VerticalPanel>

@@ -1,6 +1,7 @@
 package com.lemania.eprospects.server.guice;
 
-import com.gwtplatform.dispatch.server.guice.HandlerModule;
+import com.gwtplatform.dispatch.rpc.server.guice.HandlerModule;
+
 
 public class ServerModule extends HandlerModule {
 

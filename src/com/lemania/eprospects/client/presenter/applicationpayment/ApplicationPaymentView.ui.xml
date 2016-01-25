@@ -40,7 +40,7 @@
     			</g:VerticalPanel>
     				<g:VerticalPanel width="100%" spacing="10">
     					<g:RadioButton name="payment" text="PAYPAL" checked="true" ui:field="optPaypal"/>
-    					<g:Label text="We recommend using Paypal for a secure and fast online payment so that your place will be reserved immediately." width="457px" styleName="subjectLine"/>
+    					<g:Label text="We recommend using Paypal for a secure and fast online payment so that your place will be reserved immediately. Note that payment with PayPal will incur a 3% fee." width="457px" styleName="subjectLine"/>
     					<g:HTML wordWrap="true" ui:field="htmlPaypalButton"/>
     					<g:Label text="." styleName="hiddenText"/>
     					<g:RadioButton name="payment" text="Bank wire transfer" ui:field="optBankTransfer"/>

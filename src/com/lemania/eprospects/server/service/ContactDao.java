@@ -11,7 +11,7 @@ import javax.mail.internet.MimeMessage;
 
 public class ContactDao extends MyDAOBase {
 	
-	public void sendEmail ( String email, String subject, String message ){
+	public void sendEmail ( String email, String message, String subject ) {
 		//
 		Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
@@ -35,7 +35,7 @@ public class ContactDao extends MyDAOBase {
 	    }
 	}
 	
-	public void sendEmailSummerTeam ( String message, String subject ){
+	public void sendEmailSummerTeam ( String message, String subject ) {
 		//
 		Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
@@ -47,14 +47,15 @@ public class ContactDao extends MyDAOBase {
 	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress("thuan.lemania@gmail.com", "Thuan NGUYEN"));
 	        //
 //	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress("shane.levine@lemania.ch", "Shane Levine"));
+	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress("david.tshitoko@lemania.ch", "David Tshitoko"));
 	        //
 	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress("summercamp@lemania.ch", "Summer Camp"));
 	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress("Anh-Tan.THAI@lemania.ch", "THAI Anh-Tan"));
 	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress("Pascal.CAVADINI@lemania.ch", "CAVADINI Pascal"));
-	        //
-	        msg.setReplyTo( new javax.mail.Address[] {
-	        		new javax.mail.internet.InternetAddress("summercamp@lemania.ch", "Lemania Summer School")
-	        });
+//	        //
+//	        msg.setReplyTo( new javax.mail.Address[] {
+//	        		new javax.mail.internet.InternetAddress("summercamp@lemania.ch", "Lemania Summer School")
+//	        });
 	        //
 	        msg.setSubject( subject );
 	        msg.setText( message );

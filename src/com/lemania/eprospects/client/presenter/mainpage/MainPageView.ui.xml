@@ -125,10 +125,10 @@
 						<g:Grid>
 							<g:row>
 								<g:customCell>
-									<g:Label text="Besoin d&apos;assistance ?" horizontalAlignment="ALIGN_LEFT" width="" ui:field="txtCopyright"/>
+									<g:Label text="Need help ?" horizontalAlignment="ALIGN_LEFT" width="" ui:field="txtCopyright"/>
 								</g:customCell>
 								<g:customCell>
-									<g:Hyperlink text="Envoyez-nous un message" targetHistoryToken="!contact"/>
+									<g:Hyperlink text="Send us a message" targetHistoryToken="!contact"/>
 								</g:customCell>
 							</g:row>
 						</g:Grid>
