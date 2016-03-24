@@ -6,7 +6,7 @@ public class SummerCampSettingValues {
 	public static String applicationCode = "APPSUMMER";
 	
 	// For the calculation of weeks
-	public static String firstMonday = "27/06/2016";
+	public static String firstMonday = "20/06/2016";
 	public static String lastMonday = "08/08/2016";
 	//
 	public static int maxWeek = 8; // real number of weeks is: maxWeek - 1

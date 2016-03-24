@@ -66,7 +66,7 @@
     			</g:VerticalPanel>
     		</g:FlowPanel>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:Frame url="http://www.lemaniasummerschool.com/general-conditions/" width="98%" height="300px"/>
+    				<g:Frame url="https://www.lemaniasummerschool.com/wp-content/uploads/2016/03/SummerCamp2016-GeneralCondition.pdf" width="98%" height="300px"/>
     			</g:VerticalPanel>
     	</g:VerticalPanel>
     </g:SimplePanel>
