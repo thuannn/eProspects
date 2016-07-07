@@ -66,7 +66,7 @@
     							<g:ListBox ui:field="lstWeekNumber"/>
     						</g:customCell>
     						<g:customCell>
-    							<g:Label text="Reccomandation : au moins 2 semaines"/>
+    							<g:Label text="Reccomandation : at least 2 weeks"/>
     						</g:customCell>
     					</g:row>
     				</g:Grid>

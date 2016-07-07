@@ -66,6 +66,8 @@ public class ApplicationStep2Presenter
 		void showApplicationDetails( ApplicationFormProxy app );
 		//
 		void showSelectedItems( List<ApplicationItemProxy> ais);
+		//
+		void toggleAssurance( boolean useInternat );
 	}
 
 	@ContentSlot
@@ -366,7 +368,9 @@ public class ApplicationStep2Presenter
 //											SummerCampSettingValues.item_summercourse205_code,
 //											SummerCampSettingValues.item_summercourse205_text,
 //											SummerCampSettingValues.item_summercourse205_amount * Integer.parseInt(txtAugustWeek) )));
-				}
+			}
+			//
+			getView().toggleAssurance( false );
 		}
 		// for summer CAMP
 		if ( programmesCode.equals( SummerCampSettingValues.programme_code_summercamp )) {
@@ -469,6 +473,8 @@ public class ApplicationStep2Presenter
 //											SummerCampSettingValues.item_summercourse20_standard_share_text,
 //											SummerCampSettingValues.item_summercourse20_standard_share_amount * Integer.parseInt(txtAugustWeek) )));
 				}
+				//
+				getView().toggleAssurance( true );
 			}
 			// with conversation
 			if (courseCode.equals( SummerCampSettingValues.course_code_withconversation )) {

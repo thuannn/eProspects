@@ -78,7 +78,7 @@
     				<g:Label text="." styleName="hiddenText"/>
     				<g:CheckBox text="Visa, invoice or confirmation letter sent by express mail: CHF 120.-" ui:field="chkVisaLetterRequest"/>
     				<g:Label text="." styleName="hiddenText"/>
-    				<g:Label text="N.B. : A visa is required for foreign (non-EU) students. It takes at least 5-7 working days to send this visa from Switzerland to foreign countries by normal mail (free of charge). Please take account of the time required to obtain the visa. If possible, we must receive your enrolement application and payment at least 4 weeks before your arrival date for summer courses."/>
+    				<g:Label text="N.B. : A visa is required for foreign (non-EU) students. It takes at least 5-7 working days to send this visa from Switzerland to foreign countries by normal mail (free of charge). Please take account of the time required to obtain the visa. If possible, we must receive your enrolment application and payment at least 4 weeks before your arrival date for summer courses."/>
     				<g:Label text="." styleName="hiddenText"/>
     				<g:Label text="For boarding student only: Pocket money held in safe-keeping" styleName="sectionTitle"/>
     				<g:Label text="Would you like to send additional pocket money for your child?"/>

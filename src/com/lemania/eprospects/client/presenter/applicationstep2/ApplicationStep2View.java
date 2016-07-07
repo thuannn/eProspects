@@ -535,4 +535,16 @@ public class ApplicationStep2View extends
 		//
 		getUiHandlers().toggleLeaveNotice();
 	}
+	
+
+	/*
+	 * 
+	 * */
+	@Override
+	public void toggleAssurance(boolean useInternat) {
+		//
+		chkPackAssurance.setValue( useInternat );
+		//
+		onChkPackAssuranceClick( null ); 
+	}
 }
